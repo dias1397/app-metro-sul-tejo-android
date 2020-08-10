@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#56ccf2</color>
+    <color name="colorPrimaryDark">#2f80ed</color>
+    <color name="colorAccent">#ed7b00</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorDarkGrey">#808080</color>
+
+    <color name="linha1">#49c8f2</color>
+    <color name="linha2">#f7d340</color>
+    <color name="linha3">#8fc910</color>
+</resources>
