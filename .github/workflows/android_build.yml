@@ -22,6 +22,8 @@ jobs:
           java-version: 1.8
 
       - name: Run Tests
+        env:
+          ads_application_id: ${{ secrets.ADS_APPLICATION_ID }}
         run: ./gradlew test
 
       - name: Build Project
