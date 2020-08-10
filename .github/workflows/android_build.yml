@@ -22,7 +22,7 @@ jobs:
           java-version: 1.8
               
       - name: Decode app.properties file
-        run: echo "${{ secrets.PROPERTIES_FILE }}" > app.properties.asc |
+        run: echo "${{ secrets.PROPERTIES_FILE }}" > app.properties.asc  |
           gpg -d --passphrase "${{ secrets.PROPERTIES_PASSWORD }}" --batch app.properties.asc > app.properties
 
       - name: Run Tests
