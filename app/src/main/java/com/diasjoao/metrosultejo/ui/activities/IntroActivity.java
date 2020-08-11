@@ -1,10 +1,11 @@
-package com.diasjoao.metrosultejo;
+package com.diasjoao.metrosultejo.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import com.diasjoao.metrosultejo.R;
 import com.github.paolorotolo.appintro.AppIntro2;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 

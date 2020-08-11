@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo;
+package com.diasjoao.metrosultejo.ui.activities;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.diasjoao.metrosultejo.R;
+import com.diasjoao.metrosultejo.utils.DateUtils;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,8 +34,6 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import static com.diasjoao.metrosultejo.LiveActivity.ONE_MINUTE_IN_MILLIS;
 
 public class ScheduleActivity extends AppCompatActivity {
 
@@ -257,7 +258,7 @@ public class ScheduleActivity extends AppCompatActivity {
             String temp = "";
 
             for (Date d : stationTimes) {
-                rightNow.setTime(new Date(d.getTime() + (offsetSum * ONE_MINUTE_IN_MILLIS)));
+                rightNow.setTime(new Date(d.getTime() + (offsetSum * DateUtils.ONE_MINUTE_IN_MILLIS)));
                 temp += String.format("%02d", rightNow.get(Calendar.HOUR_OF_DAY)) + ":" + String.format("%02d", rightNow.get(Calendar.MINUTE));
                 temp += "  |  ";
             };
@@ -371,6 +372,7 @@ public class ScheduleActivity extends AppCompatActivity {
 
         return dayOfTheWeek = checkHoliday(rightNow, Arrays.asList(getResources().getStringArray(R.array.feriados))) ? "sundays" : dayOfTheWeek;
     }
+
     private static Boolean checkHoliday(Calendar date, List<String> feriados){
         String dia = String.format("%02d",date.get(Calendar.DAY_OF_MONTH)) +
                 "-" + String.format("%02d", date.get(Calendar.MONTH));

@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo;
+package com.diasjoao.metrosultejo.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,16 +17,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
+import com.diasjoao.metrosultejo.R;
+import com.diasjoao.metrosultejo.data.JsonHandler;
+import com.diasjoao.metrosultejo.utils.DateUtils;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -40,6 +39,7 @@ public class LiveActivity extends AppCompatActivity {
     ConstraintLayout board1, board2, board3;
     TextView hours1, hours2, hours3;
     TextView minutes1, minutes2, minutes3;
+    AdView mAdView;
 
     private int line;
     private int station;
@@ -53,52 +53,38 @@ public class LiveActivity extends AppCompatActivity {
     private int[] timerOnOff = new int[]{-1,-1,-1};
 
     private Calendar rightNow;
-    private Boolean summer = true;
+    private Boolean isSummer = true;
     private String dayOfTheWeek;
 
     CountDownTimer firstTimer = null;
     CountDownTimer secondTimer = null;
     CountDownTimer thirdTimer = null;
-   
-    private AdView mAdView;
-
-    static final long ONE_MINUTE_IN_MILLIS=60000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live);
         
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        initializeAds();
+        initializeViews();
 
+        // set initial line and station
         Intent intent = getIntent();
         line = intent.getIntExtra("line", 0);
         station = intent.getIntExtra("station", 0);
 
-        spinner_1 = (Spinner) findViewById(R.id.linhas);
-        spinner_2 = (Spinner) findViewById(R.id.estacoes);
-        board1 = findViewById(R.id.board1);
-        board2 = findViewById(R.id.board2);
-        board3 = findViewById(R.id.board3);
-        hours1 = findViewById(R.id.hours1);
-        hours2 = findViewById(R.id.hours2);
-        hours3 = findViewById(R.id.hours3);
-        minutes1 = findViewById(R.id.minutes1);
-        minutes2 = findViewById(R.id.minutes2);
-        minutes3 = findViewById(R.id.minutes3);
+        rightNow = Calendar.getInstance();
+        rightNow.add(Calendar.HOUR, -3);
+        // set season and day of the week
+        setTimeSettings(rightNow);
 
+        // set available lines on spinner 1
         ArrayAdapter<CharSequence> adapter_1 = ArrayAdapter.createFromResource(this,
                 R.array.linhas, android.R.layout.simple_spinner_item);
         adapter_1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_1.setAdapter(adapter_1);
 
+        // clicker handler on spinner 1
         spinner_1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -129,39 +115,49 @@ public class LiveActivity extends AppCompatActivity {
                             R.array.linha_32, android.R.layout.simple_spinner_item);
                 }
 
+                // set available stations on spinner 2
                 adapter_2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner_2.setAdapter(adapter_2);
-                station = station > adapter_2.getCount() ? adapter_2.getCount() - 1 : station;
+                station = station >= adapter_2.getCount() ? adapter_2.getCount() - 1 : station;
+                // set default station on spinner 2
                 spinner_2.setSelection(station);
 
+                // update line selected
                 line = i;
                 lineId = getLineId(line);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                System.out.println("Nothing Selected on spinner 2");
+
             }
         });
 
+        // clicker handler on spinner 2
         spinner_2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, final int i, long l) {
                 rightNow = Calendar.getInstance();
                 rightNow.add(Calendar.HOUR, -3);
 
-                setTimeSettings(rightNow);
-
                 try {
-                    JSONObject obj = new JSONObject(loadJSONFromAsset());
+                    JSONObject obj = new JSONObject(JsonHandler.loadJSONFromAsset(getResources().openRawResource(R.raw.data)));
 
-                    stationId = getStationId(obj, (String) adapterView.getItemAtPosition(i));
-                    stationNumber = getStationNumber(obj, lineId, stationId);
-                    stationOffset = getStationOffset(obj, lineId, stationNumber);
+                    // get station Id in Json file
+                    stationId = JsonHandler.getStationId(obj, (String) adapterView.getItemAtPosition(i));
+                    station = i;
 
+                    // get station position in the metro line
+                    stationNumber = JsonHandler.getStationNumber(obj, lineId, stationId, inverse);
+                    // get station offset to the beginning of the metro line
+                    stationOffset = JsonHandler.getStationOffset(obj, lineId, stationNumber, inverse);
+
+                    // get all times for specific station
                     stationTimes = getStationTimes(obj, stationOffset);
+                    // calculate three closest time differences from actual time
                     timeDiferences = setTimeDifferences(rightNow, stationTimes);
 
+                    // cancel previous timers if running
                     if (timerOnOff[0] != -1) {
                         firstTimer.cancel();
                         timerOnOff[0] = -1;
@@ -174,63 +170,22 @@ public class LiveActivity extends AppCompatActivity {
                         thirdTimer.cancel();
                         timerOnOff[2] = -1;
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (ParseException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
                 // Timer #1
                 if (timeDiferences.get(0) != -1) {
-                    board1.setVisibility(View.VISIBLE);
-                    hours1.setText(realTimes.get(0));
-                    timerOnOff[0] = 1;
-                    try{
-                        firstTimer = new CountDownTimer(1000000, 1000) {
-
-                            Long temp = -timeDiferences.get(0);
-
-                            public void onTick(long millisUntilFinished) {
-                                temp = temp + 1000;
-                                minutes1.setText('+' + millisecondsToString(temp));
-                            }
-
-                            public void onFinish() {
-
-                            }
-                        }.start();
-                    }catch (Exception e){
-
-                    }
+                    setFirstTimer();
                 } else {
                     board1.setVisibility(View.GONE);
                 }
 
                 // Timer #2
                 if (timeDiferences.get(1) != -1) {
-                    hours2.setText(realTimes.get(1));
-                    timerOnOff[1] = 1;
-                    try{
-                        secondTimer = new CountDownTimer(timeDiferences.get(1), 1000) {
-
-                            public void onTick(long millisUntilFinished) {
-                                minutes2.setText(millisecondsToString(millisUntilFinished));
-                            }
-
-                            public void onFinish() {
-                                Intent intent = new Intent(getBaseContext(), LiveActivity.class);
-                                intent.putExtra("line", line);
-                                intent.putExtra("station", i);
-                                intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
-                                startActivity(intent);
-                                finish();
-                            }
-                        }.start();
-                    }catch (Exception e){
-
-                    }
+                    setSecondTimer();
                 } else {
-                    hours2.setText("Volte Amanhã");
+                    hours2.setText(getResources().getString(R.string.volte_amanha));
                     hours2.setBackgroundColor(Color.TRANSPARENT);
                     minutes2.setText("    ");
                     minutes2.setBackgroundColor(Color.TRANSPARENT);
@@ -238,28 +193,10 @@ public class LiveActivity extends AppCompatActivity {
 
                 // Timer #3
                 if (timeDiferences.get(2) != -1) {
-                    board3.setVisibility(View.VISIBLE);
-                    hours3.setText(realTimes.get(2));
-                    timerOnOff[2] = 1;
-                    try{
-                        thirdTimer = new CountDownTimer(timeDiferences.get(2), 1000) {
-
-                            public void onTick(long millisUntilFinished) {
-                                minutes3.setText(millisecondsToString(millisUntilFinished));
-                            }
-
-                            public void onFinish() {
-
-                            }
-                        }.start();
-                    }catch (Exception e){
-
-                    }
+                    setThirdTimer();
                 } else {
                     board3.setVisibility(View.GONE);
                 }
-
-                station = i;
             }
 
             @Override
@@ -268,6 +205,7 @@ public class LiveActivity extends AppCompatActivity {
             }
         });
 
+        // select initial line (starts workflow)
         spinner_1.setSelection(line);
     }
 
@@ -289,20 +227,99 @@ public class LiveActivity extends AppCompatActivity {
         }
     }
 
-    public String loadJSONFromAsset() {
-        String json = null;
-        try {
-            InputStream is = getResources().openRawResource(R.raw.data);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
+    private void initializeAds() {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+    }
+
+    private void initializeViews() {
+        spinner_1 = (Spinner) findViewById(R.id.linhas);
+        spinner_2 = (Spinner) findViewById(R.id.estacoes);
+
+        board1 = findViewById(R.id.board1);
+        board2 = findViewById(R.id.board2);
+        board3 = findViewById(R.id.board3);
+
+        hours1 = findViewById(R.id.hours1);
+        hours2 = findViewById(R.id.hours2);
+        hours3 = findViewById(R.id.hours3);
+
+        minutes1 = findViewById(R.id.minutes1);
+        minutes2 = findViewById(R.id.minutes2);
+        minutes3 = findViewById(R.id.minutes3);
+    }
+
+    private void setFirstTimer() {
+        board1.setVisibility(View.VISIBLE);
+        hours1.setText(realTimes.get(0));
+        timerOnOff[0] = 1;
+        try{
+            firstTimer = new CountDownTimer(1000000, 1000) {
+
+                Long temp = -timeDiferences.get(0);
+
+                public void onTick(long millisUntilFinished) {
+                    temp = temp + 1000;
+                    minutes1.setText('+' + DateUtils.millisecondsToString(temp));
+                }
+
+                public void onFinish() {
+
+                }
+            }.start();
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        return json;
+    }
+
+    private void setSecondTimer() {
+        hours2.setText(realTimes.get(1));
+        timerOnOff[1] = 1;
+        try{
+            secondTimer = new CountDownTimer(timeDiferences.get(1), 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    minutes2.setText(DateUtils.millisecondsToString(millisUntilFinished));
+                }
+
+                public void onFinish() {
+                    Intent intent = new Intent(getBaseContext(), LiveActivity.class);
+                    intent.putExtra("line", line);
+                    intent.putExtra("station", station);
+                    intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(intent);
+                    finish();
+                }
+            }.start();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void setThirdTimer() {
+        board3.setVisibility(View.VISIBLE);
+        hours3.setText(realTimes.get(2));
+        timerOnOff[2] = 1;
+        try{
+            thirdTimer = new CountDownTimer(timeDiferences.get(2), 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    minutes3.setText(DateUtils.millisecondsToString(millisUntilFinished));
+                }
+
+                public void onFinish() {
+
+                }
+            }.start();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public int getLineId(int line) {
@@ -330,48 +347,6 @@ public class LiveActivity extends AppCompatActivity {
         }
     }
 
-    public int getStationId(JSONObject jsonFile, String stationName) throws JSONException {
-        JSONArray stationsList = jsonFile.getJSONArray("stations");
-
-        for (int i = 0; i < stationsList.length(); i++) {
-            if (stationsList.getJSONObject(i).getString("name").equals(stationName)) {
-                return Integer.parseInt(stationsList.getJSONObject(i).getString("id"));
-            }
-        }
-
-        return -1;
-    }
-
-    public int getStationNumber(JSONObject jsonFile, int lineId, int stationId) throws JSONException {
-        JSONObject line = jsonFile.getJSONArray("lines").getJSONObject(lineId);
-        JSONArray stationOrder = line.getJSONArray("stations");
-
-        for (int i = 0; i < stationOrder.length(); i++) {
-            if (Integer.parseInt(stationOrder.getString(i)) == stationId) {
-                if (inverse == false)
-                    return i;
-                else
-                    return (stationOrder.length() - 1) - i;
-            }
-        }
-
-        return -1;
-    }
-
-    public int getStationOffset(JSONObject jsonFile, int lineId, int stationNumber) throws JSONException {
-        JSONObject line = jsonFile.getJSONArray("lines").getJSONObject(lineId);
-        JSONObject lineWay = line.getJSONArray("directions").getJSONObject(inverse ? 1 : 0);
-        JSONArray offsets = lineWay.getJSONArray("offsets");
-
-        int cont = 0;
-
-        for (int i = 0; i < stationNumber; i++) {
-            cont += Integer.parseInt(offsets.getString(i));
-        }
-
-        return cont;
-    }
-
     public ArrayList<Date> getStationTimes(JSONObject jsonFile, int stationOffset) throws JSONException {
         ArrayList<Date> result = new ArrayList<>();
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
@@ -379,8 +354,8 @@ public class LiveActivity extends AppCompatActivity {
         JSONObject line = jsonFile.getJSONArray("lines").getJSONObject(lineId);
         JSONObject directions = line.getJSONArray("directions").getJSONObject(inverse ? 1 : 0);
 
-        int combination = 0;
-        if (summer) {
+        int combination;
+        if (isSummer) {
             if (dayOfTheWeek.equals("weekdays")) {
                 combination = 0;
             } else if (dayOfTheWeek.equals("saturdays")) {
@@ -403,7 +378,7 @@ public class LiveActivity extends AppCompatActivity {
 
         for (int i = 0; i < times.length(); i++) {
             try {
-                result.add(new Date(dateFormat.parse(times.getString(i)).getTime() + (stationOffset * ONE_MINUTE_IN_MILLIS)));
+                result.add(new Date(dateFormat.parse(times.getString(i)).getTime() + (stationOffset * DateUtils.ONE_MINUTE_IN_MILLIS)));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -413,14 +388,14 @@ public class LiveActivity extends AppCompatActivity {
     }
 
     public void setTimeSettings(Calendar rightNow) {
-        if (rightNow.get(Calendar.DAY_OF_MONTH) >= 8 && rightNow.get(Calendar.MONTH) == 9) {
-            summer = false;
+        if (rightNow.get(Calendar.DAY_OF_MONTH) >= 8 && rightNow.get(Calendar.MONTH) == Calendar.OCTOBER) {
+            isSummer = false;
         }
-        if (rightNow.get(Calendar.DAY_OF_MONTH) <= 14 && rightNow.get(Calendar.MONTH) == 7){
-            summer = false;
+        if (rightNow.get(Calendar.DAY_OF_MONTH) <= 14 && rightNow.get(Calendar.MONTH) == Calendar.AUGUST){
+            isSummer = false;
         }
         if (rightNow.get(Calendar.MONTH) > 9 || rightNow.get(Calendar.MONTH) < 7) {
-            summer = false;
+            isSummer = false;
         }
 
         switch (rightNow.get(Calendar.DAY_OF_WEEK)) {
@@ -435,7 +410,7 @@ public class LiveActivity extends AppCompatActivity {
                 break;
         }
 
-        dayOfTheWeek = checkHoliday(rightNow, Arrays.asList(getResources().getStringArray(R.array.feriados))) ? "sundays" : dayOfTheWeek;
+        dayOfTheWeek = DateUtils.checkHoliday(rightNow, Arrays.asList(getResources().getStringArray(R.array.feriados))) ? "sundays" : dayOfTheWeek;
     }
 
     public ArrayList<Long> setTimeDifferences(Calendar rightNowCalendar, ArrayList<Date> stationTimes) throws ParseException {
@@ -516,21 +491,5 @@ public class LiveActivity extends AppCompatActivity {
         }
 
         return result;
-    }
-
-    private static Boolean checkHoliday(Calendar date, List<String> feriados){
-        String dia = String.format("%02d",date.get(Calendar.DAY_OF_MONTH)) +
-                "-" + String.format("%02d", date.get(Calendar.MONTH));
-
-        for (String feriado : feriados) {
-            if (feriado.equals(dia))
-                return true;
-        }
-
-        return false;
-    }
-
-    private static String millisecondsToString(Long milliseconds){
-        return String.format("%1$3s", (((milliseconds / (1000*60))) + "'"));
     }
 }

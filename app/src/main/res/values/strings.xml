@@ -32,6 +32,8 @@
     <string name="proxima">Próxima Partida:</string>
     <string name="mais_tarde">Mais tarde:</string>
 
+    <string name="volte_amanha">Volte Amanhã</string>
+
     <string name="title_activity_paragens">Map</string>
     <string name="title_activity_menu">MenuActivity</string>
 

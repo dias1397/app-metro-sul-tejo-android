@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".IntroActivity"
+        <activity android:name=".ui.activities.IntroActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".MenuActivity"
+            android:name=".ui.activities.MenuActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -27,21 +27,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LiveActivity"
+            android:name=".ui.activities.LiveActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ScheduleActivity"
+            android:name=".ui.activities.ScheduleActivity"
             android:configChanges="orientation"
             android:noHistory="true"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MapActivity"
+            android:name=".ui.activities.MapActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".InfoActivity"
+            android:name=".ui.activities.InfoActivity"
             android:screenOrientation="portrait" />
 
         <meta-data
