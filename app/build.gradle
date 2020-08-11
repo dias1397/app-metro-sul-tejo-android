@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 
-def appPropertiesFile = rootProject.file("app.properties")
+def appPropertiesFile = rootProject.file("app/src/main/assets/app.properties")
 def appProperties = new Properties()
 appProperties.load(new FileInputStream(appPropertiesFile))
 
@@ -14,7 +14,7 @@ android {
         versionName "1.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        manifestPlaceholders = [ads_application_id:appProperties['ads_application_id']]
+        manifestPlaceholders = [ads_application_id: appProperties['ads_application_id']]
 
         buildConfigField("String", "ads_unit_id_menu", appProperties['ads_unit_id_menu'])
         buildConfigField("String", "ads_unit_id_live", appProperties['ads_unit_id_live'])
@@ -35,8 +35,11 @@ dependencies {
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
     implementation 'com.github.AppIntro:AppIntro:5.1.0'
     implementation 'com.google.android.gms:play-services-ads:18.2.0'
+
     testImplementation 'junit:junit:4.12'
+
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
     implementation files('libs/jsoup-1.12.1.jar')
 }

@@ -1,6 +1,7 @@
 package com.diasjoao.metrosultejo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -36,8 +37,9 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 public class LiveActivity extends AppCompatActivity {
 
     Spinner spinner_1, spinner_2;
-    TextView dif1, dif2, dif3;
-    TextView real1, real2, real3;
+    ConstraintLayout board1, board2, board3;
+    TextView hours1, hours2, hours3;
+    TextView minutes1, minutes2, minutes3;
 
     private int line;
     private int station;
@@ -82,12 +84,15 @@ public class LiveActivity extends AppCompatActivity {
 
         spinner_1 = (Spinner) findViewById(R.id.linhas);
         spinner_2 = (Spinner) findViewById(R.id.estacoes);
-        dif1 = findViewById(R.id.antes);
-        dif2 = findViewById(R.id.agora);
-        dif3 = findViewById(R.id.depois);
-        real1 = findViewById(R.id.ant);
-        real2 = findViewById(R.id.agr);
-        real3 = findViewById(R.id.dep);
+        board1 = findViewById(R.id.board1);
+        board2 = findViewById(R.id.board2);
+        board3 = findViewById(R.id.board3);
+        hours1 = findViewById(R.id.hours1);
+        hours2 = findViewById(R.id.hours2);
+        hours3 = findViewById(R.id.hours3);
+        minutes1 = findViewById(R.id.minutes1);
+        minutes2 = findViewById(R.id.minutes2);
+        minutes3 = findViewById(R.id.minutes3);
 
         ArrayAdapter<CharSequence> adapter_1 = ArrayAdapter.createFromResource(this,
                 R.array.linhas, android.R.layout.simple_spinner_item);
@@ -177,7 +182,8 @@ public class LiveActivity extends AppCompatActivity {
 
                 // Timer #1
                 if (timeDiferences.get(0) != -1) {
-                    real1.setText("Último: " + realTimes.get(0));
+                    board1.setVisibility(View.VISIBLE);
+                    hours1.setText(realTimes.get(0));
                     timerOnOff[0] = 1;
                     try{
                         firstTimer = new CountDownTimer(1000000, 1000) {
@@ -186,7 +192,7 @@ public class LiveActivity extends AppCompatActivity {
 
                             public void onTick(long millisUntilFinished) {
                                 temp = temp + 1000;
-                                dif1.setText('+' + millisecondsToString(temp));
+                                minutes1.setText('+' + millisecondsToString(temp));
                             }
 
                             public void onFinish() {
@@ -197,22 +203,18 @@ public class LiveActivity extends AppCompatActivity {
 
                     }
                 } else {
-                    real1.setText(" ");
-                    real1.setBackgroundColor(Color.TRANSPARENT);
-                    dif1.setText(" ");
-                    dif1.setBackgroundColor(Color.TRANSPARENT);
+                    board1.setVisibility(View.GONE);
                 }
 
                 // Timer #2
                 if (timeDiferences.get(1) != -1) {
-                    real2.setText("Próximo: " + realTimes.get(1));
+                    hours2.setText(realTimes.get(1));
                     timerOnOff[1] = 1;
                     try{
                         secondTimer = new CountDownTimer(timeDiferences.get(1), 1000) {
 
                             public void onTick(long millisUntilFinished) {
-                                dif2.setText(millisecondsToString(millisUntilFinished));
-                                System.out.println(millisUntilFinished);
+                                minutes2.setText(millisecondsToString(millisUntilFinished));
                             }
 
                             public void onFinish() {
@@ -228,21 +230,22 @@ public class LiveActivity extends AppCompatActivity {
 
                     }
                 } else {
-                    real2.setText(" ");
-                    real2.setBackgroundColor(Color.TRANSPARENT);
-                    dif2.setText("Volte Amanhã");
-                    dif2.setBackgroundColor(Color.TRANSPARENT);
+                    hours2.setText("Volte Amanhã");
+                    hours2.setBackgroundColor(Color.TRANSPARENT);
+                    minutes2.setText("    ");
+                    minutes2.setBackgroundColor(Color.TRANSPARENT);
                 }
 
                 // Timer #3
                 if (timeDiferences.get(2) != -1) {
-                    real3.setText("Mais tarde: " + realTimes.get(2));
+                    board3.setVisibility(View.VISIBLE);
+                    hours3.setText(realTimes.get(2));
                     timerOnOff[2] = 1;
                     try{
                         thirdTimer = new CountDownTimer(timeDiferences.get(2), 1000) {
 
                             public void onTick(long millisUntilFinished) {
-                                dif3.setText(millisecondsToString(millisUntilFinished));
+                                minutes3.setText(millisecondsToString(millisUntilFinished));
                             }
 
                             public void onFinish() {
@@ -253,10 +256,7 @@ public class LiveActivity extends AppCompatActivity {
 
                     }
                 } else {
-                    real3.setText(" ");
-                    real3.setBackgroundColor(Color.TRANSPARENT);
-                    dif3.setText(" ");
-                    dif3.setBackgroundColor(Color.TRANSPARENT);
+                    board3.setVisibility(View.GONE);
                 }
 
                 station = i;
@@ -531,10 +531,6 @@ public class LiveActivity extends AppCompatActivity {
     }
 
     private static String millisecondsToString(Long milliseconds){
-        return ((milliseconds / (1000*60)) % 60) + " min";
-    }
-
-    private static String realTime(String hours) {
-        return ((Integer.valueOf(hours.split(":")[0]) + 3) % 24) + ":" + hours.split(":")[1];
+        return String.format("%1$3s", (((milliseconds / (1000*60))) + "'"));
     }
 }

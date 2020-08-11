@@ -24,7 +24,9 @@ jobs:
       - name: Decode app.properties file
         env:
           SECRETS_PROPERTIES: ${{ secrets.PROPERTIES_FILE }}
-        run: echo "$SECRETS_PROPERTIES" | base64 -d > app.properties
+        run: mkdir -p app/src/main/assets |
+          echo "$SECRETS_PROPERTIES" |
+          base64 -d > app/src/main/assets/app.properties
         
       - name: Run Tests
         run: ./gradlew test
