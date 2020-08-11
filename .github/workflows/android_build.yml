@@ -24,7 +24,7 @@ jobs:
       - name: Decode app.properties file
         env:
           SECRETS_PROPERTIES: ${{ secrets.PROPERTIES_FILE }}
-        run: mkdir -p app/src/main/assets |
+        run: pwd | mkdir -p app/src/main/assets |
           echo "$SECRETS_PROPERTIES" |
           base64 -d > app/src/main/assets/app.properties
         
