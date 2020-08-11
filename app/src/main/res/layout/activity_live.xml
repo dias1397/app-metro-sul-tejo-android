@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorLightGrey"
     tools:context=".LiveActivity">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
+        android:id="@+id/guide1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -18,7 +19,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/gradient_6"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintBottom_toTopOf="@+id/guide1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -80,119 +81,234 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline11"
+        android:id="@+id/guide2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.30" />
 
-    <TextView
-        android:id="@+id/ant"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/board1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/toproundedbutton"
-        android:text="@string/ultimo"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:background="@drawable/roundedbutton"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/guide3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline11" />
+        app:layout_constraintTop_toTopOf="@+id/guide2">
 
-    <TextView
-        android:id="@+id/antes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/bottomroundedbutton"
-        android:text="@string/sem_dados"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ant" />
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="8sp"
+            android:text="TextView"
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/view3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/ultima" />
+
+        <TextView
+            android:id="@+id/hours1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="8sp"
+            android:text="--:--"
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/minutes1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text1" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="2dp"
+            android:layout_height="0dp"
+            android:background="@color/colorLightGrey"
+            app:layout_constraintBottom_toBottomOf="@+id/hours1"
+            app:layout_constraintEnd_toStartOf="@+id/minutes1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/minutes1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:paddingStart="6sp"
+            android:paddingEnd="6sp"
+            android:text="+00'"
+            android:textAlignment="textEnd"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/hours1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline9"
+        android:id="@+id/guide3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.40" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.50" />
 
-    <TextView
-        android:id="@+id/agr"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/board2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/toproundedbutton"
-        android:text="@string/proximo"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:background="@drawable/roundedbutton"
+        app:layout_constraintBottom_toTopOf="@+id/guide5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline9" />
+        app:layout_constraintTop_toTopOf="@+id/guide4">
 
-    <TextView
-        android:id="@+id/agora"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/bottomroundedbutton"
-        android:text="@string/sem_dados"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_green_light"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agr" />
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="8sp"
+            android:text="@string/proxima"
+            android:textColor="@color/colorBlack"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/view4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/hours2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="8sp"
+            android:text="--:--"
+            android:textColor="@color/colorBlack"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/view4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text2" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="2dp"
+            android:layout_height="0dp"
+            android:background="@color/colorLightGrey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/minutes2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.563" />
+
+        <TextView
+            android:id="@+id/minutes2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:paddingStart="6sp"
+            android:paddingEnd="6sp"
+            android:text="00'"
+            android:textColor="@android:color/holo_green_light"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="@+id/hours2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline12"
+        android:id="@+id/guide5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.60" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.70" />
 
-    <TextView
-        android:id="@+id/dep"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/board3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/toproundedbutton"
-        android:text="@string/mais_tarde"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:background="@drawable/roundedbutton"
+        app:layout_constraintBottom_toTopOf="@+id/guide7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline12" />
+        app:layout_constraintTop_toTopOf="@+id/guide6">
 
-    <TextView
-        android:id="@+id/depois"
-        android:layout_width="0dp"
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="8sp"
+            android:text="TextView"
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/view5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/mais_tarde" />
+
+        <TextView
+            android:id="@+id/hours3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="8sp"
+            android:text="--:--"
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/view5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text3" />
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="2dp"
+            android:layout_height="0dp"
+            android:background="@color/colorLightGrey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/minutes3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/minutes3"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:paddingStart="6sp"
+            android:paddingEnd="6sp"
+            android:text="00'"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/hours3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide7"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/bottomroundedbutton"
-        android:text="@string/sem_dados"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dep" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.80" />
 
     <TextView
         android:id="@+id/textView7"

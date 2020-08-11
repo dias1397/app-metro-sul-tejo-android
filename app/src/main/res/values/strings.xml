@@ -26,8 +26,11 @@
     <string name="estacao_prompt">Selecione uma estação</string>
 
     <string name="ultimo">Último</string>
-    <string name="mais_tarde">Mais tarde:</string>
     <string name="sem_dados">Sem dados</string>
+
+    <string name="ultima">Última Partida:</string>
+    <string name="proxima">Próxima Partida:</string>
+    <string name="mais_tarde">Mais tarde:</string>
 
     <string name="title_activity_paragens">Map</string>
     <string name="title_activity_menu">MenuActivity</string>
