@@ -105,13 +105,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingStart="8sp"
-            android:text="TextView"
+            android:text="@string/ultima"
             android:textColor="@color/colorBlack"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/view3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/ultima" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/hours1"
@@ -142,7 +141,6 @@
             android:paddingStart="6sp"
             android:paddingEnd="6sp"
             android:text="+00'"
-            android:textAlignment="textEnd"
             android:textColor="@android:color/holo_red_dark"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -258,13 +256,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingStart="8sp"
-            android:text="TextView"
+            android:text="@string/mais_tarde"
             android:textColor="@color/colorBlack"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/view5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/mais_tarde" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/hours3"

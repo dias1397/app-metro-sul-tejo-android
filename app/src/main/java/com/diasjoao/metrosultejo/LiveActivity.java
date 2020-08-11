@@ -531,10 +531,6 @@ public class LiveActivity extends AppCompatActivity {
     }
 
     private static String millisecondsToString(Long milliseconds){
-        return ((milliseconds / (1000*60)) % 60) + " min";
-    }
-
-    private static String realTime(String hours) {
-        return ((Integer.valueOf(hours.split(":")[0]) + 3) % 24) + ":" + hours.split(":")[1];
+        return String.format("%1$3s", (((milliseconds / (1000*60))) + "'"));
     }
 }
