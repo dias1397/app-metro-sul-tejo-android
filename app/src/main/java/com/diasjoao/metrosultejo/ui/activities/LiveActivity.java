@@ -388,13 +388,13 @@ public class LiveActivity extends AppCompatActivity {
     }
 
     public void setTimeSettings(Calendar rightNow) {
-        if (rightNow.get(Calendar.DAY_OF_MONTH) >= 8 && rightNow.get(Calendar.MONTH) == Calendar.OCTOBER) {
+        if (rightNow.get(Calendar.DAY_OF_MONTH) >= 8 && rightNow.get(Calendar.MONTH) == Calendar.SEPTEMBER) {
             isSummer = false;
         }
-        if (rightNow.get(Calendar.DAY_OF_MONTH) <= 14 && rightNow.get(Calendar.MONTH) == Calendar.AUGUST){
+        if (rightNow.get(Calendar.DAY_OF_MONTH) <= 14 && rightNow.get(Calendar.MONTH) == Calendar.JULY){
             isSummer = false;
         }
-        if (rightNow.get(Calendar.MONTH) > 9 || rightNow.get(Calendar.MONTH) < 7) {
+        if (rightNow.get(Calendar.MONTH) > Calendar.SEPTEMBER || rightNow.get(Calendar.MONTH) < Calendar.JULY) {
             isSummer = false;
         }
 
