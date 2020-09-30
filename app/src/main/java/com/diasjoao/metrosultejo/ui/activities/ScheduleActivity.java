@@ -343,15 +343,15 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     public Boolean setStationOfTheYear(Calendar rightNow) {
-        if (rightNow.get(Calendar.DAY_OF_MONTH) >= 8 && rightNow.get(Calendar.MONTH) == 9) {
+        if (rightNow.get(Calendar.DAY_OF_MONTH) >= 8 && rightNow.get(Calendar.MONTH) == Calendar.SEPTEMBER) {
             return false;
         }
 
-        if (rightNow.get(Calendar.DAY_OF_MONTH) <= 14 && rightNow.get(Calendar.MONTH) == 7){
+        if (rightNow.get(Calendar.DAY_OF_MONTH) <= 14 && rightNow.get(Calendar.MONTH) == Calendar.JULY){
             return false;
         }
 
-        if (rightNow.get(Calendar.MONTH) > 9 || rightNow.get(Calendar.MONTH) < 7) {
+        if (rightNow.get(Calendar.MONTH) > Calendar.SEPTEMBER || rightNow.get(Calendar.MONTH) < Calendar.JULY) {
             return false;
         }
 
