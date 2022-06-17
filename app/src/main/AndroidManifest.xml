@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.diasjoao.metrosultejo" >
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,6 +15,9 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name=".activities.LiveActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.IntroActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -24,7 +26,7 @@
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".ui.activities.LiveActivity"
+            android:name=".ui.activities.LiveActivityOld"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -42,7 +44,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.HomeActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

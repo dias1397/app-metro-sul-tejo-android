@@ -33,7 +33,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
-public class LiveActivity extends AppCompatActivity {
+public class LiveActivityOld extends AppCompatActivity {
 
     Spinner spinner_1, spinner_2;
     ConstraintLayout board1, board2, board3;
@@ -63,7 +63,7 @@ public class LiveActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_live);
+        setContentView(R.layout.activity_live_old);
         
         initializeAds();
         initializeViews();
@@ -289,7 +289,7 @@ public class LiveActivity extends AppCompatActivity {
                 }
 
                 public void onFinish() {
-                    Intent intent = new Intent(getBaseContext(), LiveActivity.class);
+                    Intent intent = new Intent(getBaseContext(), LiveActivityOld.class);
                     intent.putExtra("line", line);
                     intent.putExtra("station", station);
                     intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);

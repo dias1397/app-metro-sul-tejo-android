@@ -6,7 +6,7 @@ import androidx.cardview.widget.CardView;
 
 import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.ui.activities.InfoActivity;
-import com.diasjoao.metrosultejo.ui.activities.LiveActivity;
+import com.diasjoao.metrosultejo.ui.activities.LiveActivityOld;
 import com.diasjoao.metrosultejo.ui.activities.MapActivity;
 import com.diasjoao.metrosultejo.ui.activities.ScheduleActivity;
 
@@ -14,7 +14,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
@@ -40,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         CardView nextCardView = findViewById(R.id.next_cardview);
         nextCardView.setOnClickListener(view -> {
             Toast.makeText(HomeActivity.this, "Próximo", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getBaseContext(), LiveActivity.class);
+            Intent intent = new Intent(getBaseContext(), LiveActivityOld.class);
             intent.putExtra("line", 0);
             intent.putExtra("station", 0);
             startActivity(intent);
@@ -64,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
         CardView pricesCardView = findViewById(R.id.prices_cardview);
         pricesCardView.setOnClickListener(view -> {
             Toast.makeText(HomeActivity.this, "Tarifas", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getBaseContext(), InfoActivity.class);
+            Intent intent = new Intent(getBaseContext(), LiveActivity.class);
             startActivity(intent);
         });
     }
