@@ -105,7 +105,7 @@ public class MenuActivityOld extends AppCompatActivity {
         proximo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), LiveActivity.class);
+                Intent intent = new Intent(getBaseContext(), LiveActivityOld.class);
                 intent.putExtra("line", 0);
                 intent.putExtra("station", 0);
                 startActivity(intent);

@@ -1,8 +1,5 @@
 package com.diasjoao.metrosultejo.data;
 
-import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.ui.activities.LiveActivity;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
