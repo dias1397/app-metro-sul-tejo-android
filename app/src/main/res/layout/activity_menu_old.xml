@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLightGrey"
-    tools:context=".ui.activities.MenuActivity">
+    tools:context=".ui.activities.MenuActivityOld">
 
 
     <androidx.constraintlayout.widget.Guideline

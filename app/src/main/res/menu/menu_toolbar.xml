@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/miRefresh"
+        android:icon="@drawable/ic_baseline_refresh_24"
+        app:showAsAction="ifRoom"
+        android:title="Refresh">
+    </item>
+    <item
+        android:id="@+id/miInfo"
+        android:icon="@drawable/ic_baseline_info_24"
+        app:showAsAction="ifRoom"
+        android:title="Info">
+    </item>
+
+</menu>

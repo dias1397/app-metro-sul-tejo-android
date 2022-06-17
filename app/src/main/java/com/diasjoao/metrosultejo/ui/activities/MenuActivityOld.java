@@ -29,7 +29,7 @@ import java.io.IOException;
 import java.util.Calendar;
 
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivityOld extends AppCompatActivity {
     ImageView line1status;
     ImageView line2status;
     ImageView line3status;
@@ -41,7 +41,7 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_menu_old);
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -67,7 +67,7 @@ public class MenuActivity extends AppCompatActivity {
                 if (isFirstStart) {
 
                     //  Launch app intro
-                    final Intent i = new Intent(MenuActivity.this, IntroActivity.class);
+                    final Intent i = new Intent(MenuActivityOld.this, IntroActivity.class);
 
                     runOnUiThread(new Runnable() {
                         @Override public void run() {

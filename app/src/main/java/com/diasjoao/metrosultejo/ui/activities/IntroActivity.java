@@ -27,14 +27,14 @@ public class IntroActivity extends AppIntro2 {
     @Override
     public void onDonePressed(Fragment currentFragment) {
         super.onDonePressed(currentFragment);
-        startActivity(new Intent(IntroActivity.this, MenuActivity.class));
+        startActivity(new Intent(IntroActivity.this, MenuActivityOld.class));
         finish();
     }
 
     @Override
     public void onSkipPressed(Fragment currentFragment) {
         super.onSkipPressed(currentFragment);
-        startActivity(new Intent(IntroActivity.this, MenuActivity.class));
+        startActivity(new Intent(IntroActivity.this, MenuActivityOld.class));
         finish();
     }
 }
