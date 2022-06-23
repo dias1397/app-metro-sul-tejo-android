@@ -52,7 +52,7 @@ public class JsonHandler {
         return -1;
     }
 
-    public static int getStationOffset(JSONObject jsonFile, int lineId, int stationNumber, Boolean inverse) throws JSONException {
+    public static int getStationOffsetOld(JSONObject jsonFile, int lineId, int stationNumber, Boolean inverse) throws JSONException {
         JSONObject line = jsonFile.getJSONArray("lines").getJSONObject(lineId);
         JSONObject lineWay = line.getJSONArray("directions").getJSONObject(inverse ? 1 : 0);
         JSONArray offsets = lineWay.getJSONArray("offsets");

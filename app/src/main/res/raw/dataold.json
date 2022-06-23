@@ -1,4 +1,78 @@
 {
+   "periods":[
+      {
+         "name":"winter",
+         "period":{
+            "start":{
+               "day":8,
+               "month":9
+            },
+            "end":{
+               "day":14,
+               "month":7
+            }
+         }
+      },
+      {
+         "name":"summer",
+         "period":{
+            "start":{
+               "day":15,
+               "month":7
+            },
+            "end":{
+               "day":7,
+               "month":9
+            }
+         }
+      }
+   ],
+   "holidays":[
+      {
+         "day":1,
+         "month":1
+      },
+      {
+         "day":9,
+         "month":2
+      },
+      {
+         "day":25,
+         "month":3
+      },
+      {
+         "day":27,
+         "month":3
+      },
+      {
+         "day":25,
+         "month":4
+      },
+      {
+         "day":1,
+         "month":5
+      },
+      {
+         "day":10,
+         "month":6
+      },
+      {
+         "day":24,
+         "month":6
+      },
+      {
+         "day":15,
+         "month":8
+      },
+      {
+         "day":8,
+         "month":12
+      },
+      {
+         "day":25,
+         "month":12
+      }
+   ],
    "stations":[
       {
          "id":1,
@@ -99,19 +173,18 @@
             {
                "name":"1 - Corroios → Cacilhas",
                "offsets":[
-                  0,
                   2,
-                  3,
-                  5,
-                  7,
-                  8,
-                  10,
-                  12,
-                  13,
-                  14,
-                  16,
-                  17,
-                  19
+                  1,
+                  2,
+                  2,
+                  1,
+                  2,
+                  2,
+                  1,
+                  1,
+                  2,
+                  1,
+                  2
                ],
                "departures":[
                   {
@@ -669,19 +742,18 @@
             {
                "name":"1 - Cacilhas → Corroios",
                "offsets":[
-                  0,
                   2,
-                  3,
-                  4,
-                  6,
-                  7,
-                  9,
-                  10,
-                  11,
-                  13,
-                  15,
-                  17,
-                  19
+                  1,
+                  1,
+                  2,
+                  1,
+                  2,
+                  1,
+                  1,
+                  2,
+                  2,
+                  2,
+                  2
                ],
                "departures":[
                   {
@@ -1256,15 +1328,14 @@
             {
                "name":"2 - Corroios → Pragal",
                "offsets":[
-                  0,
                   2,
-                  3,
-                  5,
-                  7,
-                  8,
-                  10,
-                  12,
-                  15
+                  1,
+                  2,
+                  2,
+                  1,
+                  2,
+                  2,
+                  3
                ],
                "departures":[
                   {
@@ -1780,15 +1851,14 @@
             {
                "name":"2 - Pragal → Corroios",
                "offsets":[
-                  0,
                   2,
-                  5,
-                  6,
-                  7,
-                  9,
-                  11,
-                  13,
-                  15
+                  3,
+                  1,
+                  1,
+                  2,
+                  2,
+                  2,
+                  2
                ],
                "departures":[
                   {
@@ -2324,18 +2394,17 @@
             {
                "name":"3 - Cacilhas → Universidade",
                "offsets":[
-                  0,
+                  2,
+                  1,
+                  1,
+                  2,
+                  1,
                   2,
                   3,
-                  4,
-                  6,
-                  7,
-                  9,
-                  12,
-                  14,
-                  16,
-                  17,
-                  19
+                  2,
+                  2,
+                  1,
+                  2
                ],
                "departures":[
                   {
@@ -2870,18 +2939,17 @@
             {
                "name":"3 - Universidade → Cacilhas",
                "offsets":[
-                  0,
+                  1,
                   1,
                   2,
+                  3,
+                  2,
                   4,
-                  7,
-                  9,
-                  13,
-                  14,
-                  15,
-                  17,
-                  18,
-                  20
+                  1,
+                  1,
+                  2,
+                  1,
+                  2
                ],
                "departures":[
                   {

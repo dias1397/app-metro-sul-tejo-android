@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="10dp"
@@ -26,12 +26,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textView48"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
                 android:textSize="24sp"
                 app:fontFamily="sans-serif-black" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/next_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -53,12 +53,12 @@
                 app:cardCornerRadius="4dp"
                 app:cardElevation="4dp">
 
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imageView9"
                         android:layout_width="96dp"
                         android:layout_height="match_parent"
@@ -66,7 +66,7 @@
                         android:padding="4dp"
                         app:srcCompat="@drawable/ic_baseline_access_time_24" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textView49"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -76,10 +76,10 @@
                         android:text="Próximo"
                         android:textColor="@color/colorBlack"
                         android:textSize="18sp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/schedule_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -90,12 +90,12 @@
                 app:cardCornerRadius="4dp"
                 app:cardElevation="4dp">
 
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imageView10"
                         android:layout_width="96dp"
                         android:layout_height="match_parent"
@@ -103,7 +103,7 @@
                         android:padding="4dp"
                         app:srcCompat="@drawable/ic_baseline_calendar_today_24" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textView50"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -113,10 +113,10 @@
                         android:text="Horários"
                         android:textColor="@color/colorBlack"
                         android:textSize="18sp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/map_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -127,12 +127,12 @@
                 app:cardCornerRadius="4dp"
                 app:cardElevation="4dp">
 
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imageView11"
                         android:layout_width="96dp"
                         android:layout_height="match_parent"
@@ -140,7 +140,7 @@
                         android:padding="4dp"
                         app:srcCompat="@drawable/ic_baseline_map_24" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textView51"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -150,10 +150,10 @@
                         android:text="Mapa"
                         android:textColor="@color/colorBlack"
                         android:textSize="18sp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/prices_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -164,12 +164,12 @@
                 app:cardCornerRadius="4dp"
                 app:cardElevation="4dp">
 
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imageView12"
                         android:layout_width="96dp"
                         android:layout_height="match_parent"
@@ -177,7 +177,7 @@
                         android:padding="4dp"
                         app:srcCompat="@drawable/ic_baseline_attach_money_24" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textView52"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -187,21 +187,21 @@
                         android:text="Tarifas"
                         android:textColor="@color/colorBlack"
                         android:textSize="18sp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:cardCornerRadius="4dp"
                 app:cardElevation="4dp">
 
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textView53"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -214,12 +214,12 @@
                         android:textColor="@color/colorBlack"
                         android:textSize="20sp" />
 
-                    <LinearLayout
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <androidx.cardview.widget.CardView
+                        <com.google.android.material.card.MaterialCardView
                             android:id="@+id/line1_cardview"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
@@ -229,12 +229,12 @@
                             android:foreground="?android:attr/selectableItemBackground"
                             app:cardBackgroundColor="@color/linha1">
 
-                            <LinearLayout
+                            <androidx.appcompat.widget.LinearLayoutCompat
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:orientation="horizontal">
 
-                                <TextView
+                                <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/textView56"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
@@ -245,17 +245,17 @@
                                     android:textColor="@color/colorWhite"
                                     android:textSize="18sp" />
 
-                                <ImageView
+                                <androidx.appcompat.widget.AppCompatImageView
                                     android:id="@+id/imageView13"
                                     android:layout_width="96dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
                                     android:padding="4dp"
                                     app:srcCompat="@drawable/ic_baseline_check_24" />
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </com.google.android.material.card.MaterialCardView>
 
-                        <androidx.cardview.widget.CardView
+                        <com.google.android.material.card.MaterialCardView
                             android:id="@+id/line2_cardview"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
@@ -265,12 +265,12 @@
                             android:foreground="?android:attr/selectableItemBackground"
                             app:cardBackgroundColor="@color/linha2">
 
-                            <LinearLayout
+                            <androidx.appcompat.widget.LinearLayoutCompat
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:orientation="horizontal">
 
-                                <TextView
+                                <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/textView55"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
@@ -281,17 +281,17 @@
                                     android:textColor="@color/colorWhite"
                                     android:textSize="18sp" />
 
-                                <ImageView
+                                <androidx.appcompat.widget.AppCompatImageView
                                     android:id="@+id/imageView14"
                                     android:layout_width="96dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
                                     android:padding="4dp"
                                     app:srcCompat="@drawable/ic_baseline_check_24" />
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </com.google.android.material.card.MaterialCardView>
 
-                        <androidx.cardview.widget.CardView
+                        <com.google.android.material.card.MaterialCardView
                             android:id="@+id/line3_cardview"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
@@ -301,12 +301,12 @@
                             android:foreground="?android:attr/selectableItemBackground"
                             app:cardBackgroundColor="@color/linha3">
 
-                            <LinearLayout
+                            <androidx.appcompat.widget.LinearLayoutCompat
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:orientation="horizontal">
 
-                                <TextView
+                                <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/textView54"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
@@ -317,18 +317,18 @@
                                     android:textColor="@color/colorWhite"
                                     android:textSize="18sp" />
 
-                                <ImageView
+                                <androidx.appcompat.widget.AppCompatImageView
                                     android:id="@+id/imageView15"
                                     android:layout_width="96dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
                                     android:padding="4dp"
                                     app:srcCompat="@drawable/ic_baseline_check_24" />
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-                    </LinearLayout>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </com.google.android.material.card.MaterialCardView>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/textView37"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -336,11 +336,11 @@
                         android:gravity="center"
                         android:text="TextView" />
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
-    </ScrollView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView2"

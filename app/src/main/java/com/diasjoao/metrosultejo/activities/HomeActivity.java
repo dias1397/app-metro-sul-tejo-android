@@ -1,14 +1,15 @@
 package com.diasjoao.metrosultejo.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
 import androidx.cardview.widget.CardView;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.ui.activities.InfoActivity;
 import com.diasjoao.metrosultejo.ui.activities.LiveActivityOld;
 import com.diasjoao.metrosultejo.ui.activities.MapActivity;
 import com.diasjoao.metrosultejo.ui.activities.ScheduleActivity;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.MaterialToolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void setUpHomeActivityToolbar() {
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        MaterialToolbar toolbar = findViewById(R.id.materialToolbar);
         setSupportActionBar(toolbar);
     }
 
@@ -64,6 +65,8 @@ public class HomeActivity extends AppCompatActivity {
         pricesCardView.setOnClickListener(view -> {
             Toast.makeText(HomeActivity.this, "Tarifas", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getBaseContext(), LiveActivity.class);
+            intent.putExtra("line", 0);
+            intent.putExtra("station", 0);
             startActivity(intent);
         });
     }

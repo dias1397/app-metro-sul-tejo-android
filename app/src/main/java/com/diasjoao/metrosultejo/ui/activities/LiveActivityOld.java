@@ -141,7 +141,7 @@ public class LiveActivityOld extends AppCompatActivity {
                 rightNow.add(Calendar.HOUR, -3);
 
                 try {
-                    JSONObject obj = new JSONObject(JsonHandler.loadJSONFromAsset(getResources().openRawResource(R.raw.data)));
+                    JSONObject obj = new JSONObject(JsonHandler.loadJSONFromAsset(getResources().openRawResource(R.raw.dataold)));
 
                     // get station Id in Json file
                     stationId = JsonHandler.getStationId(obj, (String) adapterView.getItemAtPosition(i));
@@ -150,7 +150,7 @@ public class LiveActivityOld extends AppCompatActivity {
                     // get station position in the metro line
                     stationNumber = JsonHandler.getStationNumber(obj, lineId, stationId, inverse);
                     // get station offset to the beginning of the metro line
-                    stationOffset = JsonHandler.getStationOffset(obj, lineId, stationNumber, inverse);
+                    stationOffset = JsonHandler.getStationOffsetOld(obj, lineId, stationNumber, inverse);
 
                     // get all times for specific station
                     stationTimes = getStationTimes(obj, stationOffset);
