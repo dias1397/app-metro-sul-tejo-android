@@ -36,17 +36,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="14dp"
                 android:text="Bom dia"
-                android:textColor="@color/colorBlack"
-                android:textSize="24sp"
-                app:fontFamily="sans-serif-black" />
+                android:textColor="@color/primaryTextColor"
+                android:textSize="24sp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/next_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
@@ -74,8 +73,8 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="Próximo"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="18sp" />
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="20sp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </com.google.android.material.card.MaterialCardView>
 
@@ -83,7 +82,7 @@
                 android:id="@+id/schedule_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
@@ -111,8 +110,8 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="Horários"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="18sp" />
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="20sp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </com.google.android.material.card.MaterialCardView>
 
@@ -120,7 +119,7 @@
                 android:id="@+id/map_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
@@ -148,8 +147,8 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="Mapa"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="18sp" />
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="20sp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </com.google.android.material.card.MaterialCardView>
 
@@ -157,7 +156,7 @@
                 android:id="@+id/prices_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginBottom="18dp"
+                android:layout_marginBottom="14dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
@@ -185,8 +184,8 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="Tarifas"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="18sp" />
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="20sp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </com.google.android.material.card.MaterialCardView>
 
@@ -207,11 +206,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="Estado das linhas"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@color/primaryTextColor"
                         android:textSize="20sp" />
 
                     <androidx.appcompat.widget.LinearLayoutCompat
@@ -223,7 +222,7 @@
                             android:id="@+id/line1_cardview"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
-                            android:layout_marginBottom="2dp"
+                            android:layout_marginBottom="4dp"
                             android:clickable="true"
                             android:focusable="true"
                             android:foreground="?android:attr/selectableItemBackground"
@@ -241,9 +240,9 @@
                                     android:layout_marginStart="8dp"
                                     android:layout_weight="1"
                                     android:gravity="center_vertical"
-                                    android:text="Cacilhas    &lt; - - - - - &gt;    Corroios"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="18sp" />
+                                    android:text="Cacilhas &lt; - - - - - &gt; Corroios"
+                                    android:textColor="@color/secondaryTextColor"
+                                    android:textSize="20sp" />
 
                                 <androidx.appcompat.widget.AppCompatImageView
                                     android:id="@+id/imageView13"
@@ -259,7 +258,7 @@
                             android:id="@+id/line2_cardview"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
-                            android:layout_marginBottom="2dp"
+                            android:layout_marginBottom="4dp"
                             android:clickable="true"
                             android:focusable="true"
                             android:foreground="?android:attr/selectableItemBackground"
@@ -277,9 +276,9 @@
                                     android:layout_marginStart="8dp"
                                     android:layout_weight="1"
                                     android:gravity="center_vertical"
-                                    android:text="Corroios    &lt; - - - - - - &gt;    Pragal"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="18sp" />
+                                    android:text="Corroios &lt; - - - - - - &gt; Pragal"
+                                    android:textColor="@color/secondaryTextColor"
+                                    android:textSize="20sp" />
 
                                 <androidx.appcompat.widget.AppCompatImageView
                                     android:id="@+id/imageView14"
@@ -295,7 +294,7 @@
                             android:id="@+id/line3_cardview"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
-                            android:layout_marginBottom="2dp"
+                            android:layout_marginBottom="4dp"
                             android:clickable="true"
                             android:focusable="true"
                             android:foreground="?android:attr/selectableItemBackground"
@@ -313,9 +312,9 @@
                                     android:layout_marginStart="8dp"
                                     android:layout_weight="1"
                                     android:gravity="center_vertical"
-                                    android:text="Cacilhas    &lt; - &gt;    Universidade"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="18sp" />
+                                    android:text="Cacilhas &lt; - &gt; Universidade"
+                                    android:textColor="@color/secondaryTextColor"
+                                    android:textSize="20sp" />
 
                                 <androidx.appcompat.widget.AppCompatImageView
                                     android:id="@+id/imageView15"
@@ -334,7 +333,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="TextView" />
+                        android:text="Atualizado a " />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </com.google.android.material.card.MaterialCardView>

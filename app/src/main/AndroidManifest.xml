@@ -20,26 +20,26 @@
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"/>
         <activity
             android:name=".ui.activities.IntroActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme1.NoActionBar" />
         <activity
             android:name=".ui.activities.MenuActivityOld"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme1.NoActionBar" >
         </activity>
         <activity
             android:name=".ui.activities.LiveActivityOld"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme1.NoActionBar" />
         <activity
             android:name=".ui.activities.ScheduleActivity"
             android:configChanges="orientation"
             android:noHistory="true"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme1.NoActionBar" />
         <activity
             android:name=".ui.activities.MapActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme1.NoActionBar" />
         <activity
             android:name=".ui.activities.InfoActivity"
             android:screenOrientation="portrait" />
