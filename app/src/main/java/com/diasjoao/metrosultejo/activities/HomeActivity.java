@@ -39,8 +39,7 @@ public class HomeActivity extends AppCompatActivity {
     private void setUpHomeActivityButtons() {
         CardView nextCardView = findViewById(R.id.next_cardview);
         nextCardView.setOnClickListener(view -> {
-            Toast.makeText(HomeActivity.this, "Próximo", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getBaseContext(), LiveActivityOld.class);
+            Intent intent = new Intent(getBaseContext(), LiveActivity.class);
             intent.putExtra("line", 0);
             intent.putExtra("station", 0);
             startActivity(intent);
@@ -64,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
         CardView pricesCardView = findViewById(R.id.prices_cardview);
         pricesCardView.setOnClickListener(view -> {
             Toast.makeText(HomeActivity.this, "Tarifas", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getBaseContext(), LiveActivity.class);
+            Intent intent = new Intent(getBaseContext(), LiveActivityOld.class);
             intent.putExtra("line", 0);
             intent.putExtra("station", 0);
             startActivity(intent);

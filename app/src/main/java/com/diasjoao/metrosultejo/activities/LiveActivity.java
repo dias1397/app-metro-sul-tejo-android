@@ -153,8 +153,8 @@ public class LiveActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 Context context = LiveActivity.this;
                 int selectedItem = new ArrayList<>(
-                        Arrays.asList(context.getResources().getStringArray(R.array.linhas))).indexOf(charSequence.toString()
-                );
+                        Arrays.asList(context.getResources().getStringArray(R.array.linhas))
+                ).indexOf(charSequence.toString());
 
                 try {
                     ArrayAdapter<CharSequence> stationAdapter = new ArrayAdapter<>(
@@ -163,15 +163,14 @@ public class LiveActivity extends AppCompatActivity {
                             context.getResources().getStringArray(stationsByLine.get(selectedItem))
                     );
 
-                    stationID = Math.min(stationID, stationAdapter.getCount());
+                    stationID = Math.min(stationID, stationAdapter.getCount() - 1);
+                    lineID = selectedItem;
 
                     station1Spinner.setAdapter(stationAdapter);
                     station1Spinner.setText(context.getResources().getStringArray(stationsByLine.get(selectedItem))[stationID], false);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-                lineID = i;
             }
 
             @Override
