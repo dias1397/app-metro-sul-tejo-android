@@ -231,4 +231,6 @@
         <item>Abril</item>
         <item>Cacilhas</item>
     </string-array>
+    <string name="title_activity_line">LineActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>

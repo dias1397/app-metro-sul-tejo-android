@@ -8,7 +8,6 @@ import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.ui.activities.LiveActivityOld;
 import com.diasjoao.metrosultejo.ui.activities.MapActivity;
 import com.diasjoao.metrosultejo.ui.activities.ScheduleActivity;
-import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import android.content.Intent;
@@ -25,9 +24,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         setUpHomeActivityToolbar();
-
         setUpHomeActivityButtons();
-
         setUpLineStateButtons();
     }
 
@@ -74,16 +71,25 @@ public class HomeActivity extends AppCompatActivity {
         CardView line1CardView = findViewById(R.id.line1_cardview);
         line1CardView.setOnClickListener(view -> {
             Toast.makeText(HomeActivity.this, "Linha 1", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getBaseContext(), LineActivity.class);
+            intent.putExtra("line", 0);
+            startActivity(intent);
         });
 
         CardView line2CardView = findViewById(R.id.line2_cardview);
         line2CardView.setOnClickListener(view -> {
             Toast.makeText(HomeActivity.this, "Linha 2", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getBaseContext(), LineActivity.class);
+            intent.putExtra("line", 1);
+            startActivity(intent);
         });
 
         CardView line3CardView = findViewById(R.id.line3_cardview);
         line3CardView.setOnClickListener(view -> {
             Toast.makeText(HomeActivity.this, "Linha 3", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getBaseContext(), LineActivity.class);
+            intent.putExtra("line", 2);
+            startActivity(intent);
         });
     }
 
