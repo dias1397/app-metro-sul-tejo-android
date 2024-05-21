@@ -2,12 +2,21 @@ package com.diasjoao.metrosultejo.helpers;
 
 import android.content.Context;
 
+import com.diasjoao.metrosultejo.model.Station;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class JsonHelper {
 
@@ -81,5 +90,31 @@ public class JsonHelper {
         }
 
         return null;
+    }
+
+    public static JSONArray getLinesSchedule(JSONArray jsonArray, int season, int day_type) throws JSONException {
+        JSONObject seasonObject = jsonArray.getJSONObject(season);
+        JSONObject dayTypeObject = seasonObject.getJSONArray("dayTypes").getJSONObject(day_type);
+        return dayTypeObject.getJSONArray("line");
+    }
+
+    public static JSONArray getStationTimes(JSONArray jsonArray, int line, int station) throws JSONException {
+        JSONObject lineObject = jsonArray.getJSONObject(line);
+        JSONObject stationObject = lineObject.getJSONArray("stations").getJSONObject(station);
+        return stationObject.getJSONArray("times");
+    }
+
+    public static List<Station> mapStationTimes(JSONArray jsonArray, LocalDateTime localDateTime) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            Long[] stationTimes = mapper.readValue(jsonArray.toString(), Long[].class);
+
+            return Arrays.stream(stationTimes)
+                    .filter(x -> x >= localDateTime.toLocalTime().toSecondOfDay() - 180)
+                    .map(x -> new Station(x, x - localDateTime.toLocalTime().toSecondOfDay()))
+                    .collect(Collectors.toList());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
