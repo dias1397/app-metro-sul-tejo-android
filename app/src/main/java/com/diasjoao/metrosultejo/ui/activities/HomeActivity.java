@@ -1,13 +1,10 @@
-package com.diasjoao.metrosultejo.activities;
+package com.diasjoao.metrosultejo.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.cardview.widget.CardView;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.ui.activities.LiveActivityOld;
-import com.diasjoao.metrosultejo.ui.activities.MapActivity;
-import com.diasjoao.metrosultejo.ui.activities.ScheduleActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import android.content.Intent;

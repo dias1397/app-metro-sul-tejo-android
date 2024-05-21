@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.activities;
+package com.diasjoao.metrosultejo.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;

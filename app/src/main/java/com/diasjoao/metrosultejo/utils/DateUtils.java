@@ -1,19 +1,11 @@
 package com.diasjoao.metrosultejo.utils;
 
-import android.content.Context;
-
-import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.activities.HomeActivity;
-import com.diasjoao.metrosultejo.helpers.DateHelper;
-
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.time.temporal.ChronoField;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
 public class DateUtils {
 
