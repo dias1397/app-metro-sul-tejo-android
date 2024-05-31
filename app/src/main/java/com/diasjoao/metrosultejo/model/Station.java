@@ -1,50 +1,37 @@
 package com.diasjoao.metrosultejo.model;
 
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
 
 public class Station {
 
-    private Long stopTime;
-    private Long timeDifference;
+    private String name;
+    private List<String> times;
 
-    public Station(Long stopTime, Long timeDifference) {
-        this.stopTime = stopTime;
-        this.timeDifference = timeDifference;
+    public Station() {
     }
 
-    public Long getStopTime() {
-        return stopTime;
+    @JsonCreator
+    public Station(@JsonProperty("name") String name, @JsonProperty("times") List<String> times) {
+        this.name = name;
+        this.times = times;
     }
 
-    public void setStopTime(Long stopTime) {
-        this.stopTime = stopTime;
+    public String getName() {
+        return name;
     }
 
-    public Long getTimeDifference() {
-        return timeDifference;
+    public List<String> getTimes() {
+        return times;
     }
 
-    public void setTimeDifference(Long timeDifference) {
-        this.timeDifference = timeDifference;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    /*
-    public String getStopTime() {
-        return stopTime;
+    public void setTimes(List<String> times) {
+        this.times = times;
     }
-
-    public void setStopTime(Long stopTime) {
-        this.stopTime = LocalTime.ofSecondOfDay(stopTime).plus(3, ChronoUnit.HOURS).toString();
-    }
-
-    public String getTimeDifference() {
-        return timeDifference;
-    }
-
-    public void setTimeDifference(Long timeDifference) {
-        System.out.println(timeDifference);
-        if (timeDifference < 3600 )
-            this.timeDifference = String.format("%02d'", (LocalTime.ofSecondOfDay(timeDifference).getMinute()));
-    }*/
 }

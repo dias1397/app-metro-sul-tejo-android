@@ -16,18 +16,20 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".activities.TimetableActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.RealTimingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.HomepageActivity"
-            android:exported="true">
+            android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.RealTimingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.HomepageActivity"
+            android:exported="false">
         </activity>
         <activity
             android:name=".ui.activities.LiveActivity"

@@ -1,24 +1,19 @@
 package com.diasjoao.metrosultejo.adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.model.Station;
+import com.diasjoao.metrosultejo.model.StationOld;
 
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -28,13 +23,13 @@ public class LiveRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     private static final int FOOTER_VIEW = 1;
 
     private Context context;
-    private List<Station> stations;
-    private List<Station> visibleStations;
+    private List<StationOld> stationOlds;
+    private List<StationOld> visibleStationOlds;
 
-    public LiveRecyclerViewAdapter(Context context, List<Station> stations) {
+    public LiveRecyclerViewAdapter(Context context, List<StationOld> stationOlds) {
         this.context = context;
-        this.stations = stations;
-        this.visibleStations = stations.stream()
+        this.stationOlds = stationOlds;
+        this.visibleStationOlds = stationOlds.stream()
                 .filter(x -> x.getTimeDifference() < 3600)
                 .collect(Collectors.toList());
     }
@@ -72,29 +67,29 @@ public class LiveRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public int getItemCount() {
-        if (visibleStations == null) {
+        if (visibleStationOlds == null) {
             return 0;
         }
 
-        if (visibleStations.size() == 0) {
+        if (visibleStationOlds.size() == 0) {
             return 1;
         }
 
-        return visibleStations.size() + 1;
+        return visibleStationOlds.size() + 1;
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (position == visibleStations.size()) {
+        if (position == visibleStationOlds.size()) {
             return FOOTER_VIEW;
         }
 
         return super.getItemViewType(position);
     }
 
-    public void refreshDataSet(List<Station> stationTimes) {
-        this.stations = stationTimes;
-        this.visibleStations = stations.stream()
+    public void refreshDataSet(List<StationOld> stationOldTimes) {
+        this.stationOlds = stationOldTimes;
+        this.visibleStationOlds = stationOlds.stream()
                 .filter(x -> x.getTimeDifference() < 3600)
                 .collect(Collectors.toList());
         notifyDataSetChanged();
@@ -112,12 +107,12 @@ public class LiveRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
             super(itemView);
 
             itemView.setOnClickListener(view -> {
-                if (visibleStations.size() == stations.size()) {
-                    visibleStations = stations.stream()
+                if (visibleStationOlds.size() == stationOlds.size()) {
+                    visibleStationOlds = stationOlds.stream()
                             .filter(x -> x.getTimeDifference() < 3600)
                             .collect(Collectors.toList());
                 } else {
-                    visibleStations = stations;
+                    visibleStationOlds = stationOlds;
                 }
                 notifyDataSetChanged();
             });
@@ -136,10 +131,10 @@ public class LiveRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
 
         public void bindView(int position) {
-            Long stopTime = visibleStations.get(position).getStopTime();
+            Long stopTime = visibleStationOlds.get(position).getStopTime();
             tvStopTime.setText(LocalTime.ofSecondOfDay(stopTime).plus(3, ChronoUnit.HOURS).toString());
 
-            Long timeDifference = visibleStations.get(position).getTimeDifference();
+            Long timeDifference = visibleStationOlds.get(position).getTimeDifference();
             if (timeDifference < 3600) {
                 tvTimeDifference.setText(String.format(Locale.getDefault(), "%02d'", Math.abs(timeDifference) / 60));
                 tvTimeDifference.setBackgroundColor(timeDifference < 0 ? context.getColor(R.color.FireBrick) : context.getColor(R.color.ForestGreen));

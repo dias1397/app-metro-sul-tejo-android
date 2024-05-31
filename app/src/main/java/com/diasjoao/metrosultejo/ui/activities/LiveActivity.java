@@ -14,7 +14,7 @@ import android.widget.AutoCompleteTextView;
 
 import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.helpers.JsonHelper;
-import com.diasjoao.metrosultejo.model.Station;
+import com.diasjoao.metrosultejo.model.StationOld;
 import com.diasjoao.metrosultejo.utils.DateUtils;
 import com.diasjoao.metrosultejo.adapters.LiveRecyclerViewAdapter;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -54,8 +54,8 @@ public class LiveActivity extends AppCompatActivity {
     private final List<Integer> stationsByLine = List.of(R.array.linha_11, R.array.linha_12,
             R.array.linha_21, R.array.linha_22, R.array.linha_31, R.array.linha_32);
 
-    private List<Station> stationTimes = new ArrayList<>();
-    private LiveRecyclerViewAdapter adapter = new LiveRecyclerViewAdapter(this, stationTimes);
+    private List<StationOld> stationOldTimes = new ArrayList<>();
+    private LiveRecyclerViewAdapter adapter = new LiveRecyclerViewAdapter(this, stationOldTimes);
 
 
     @Override
@@ -159,8 +159,8 @@ public class LiveActivity extends AppCompatActivity {
 
                 try {
                     JSONArray jsonStationTimes = JsonHelper.getStationTimes(schedule, lineID, stationID);
-                    stationTimes = JsonHelper.mapStationTimes(jsonStationTimes, currentTime);
-                    adapter.refreshDataSet(stationTimes);
+                    stationOldTimes = JsonHelper.mapStationTimes(jsonStationTimes, currentTime);
+                    adapter.refreshDataSet(stationOldTimes);
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }

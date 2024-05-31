@@ -11,8 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.fragments.MapFragment;
-import com.diasjoao.metrosultejo.fragments.RouteFragment;
 import com.diasjoao.metrosultejo.fragments.TimetableFragment;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -54,5 +52,7 @@ public class TimetableActivity extends AppCompatActivity {
 
             return true;
         });
+
+        navigationBarView.setSelectedItemId(R.id.nav_weekday_fragment);
     }
 }

@@ -1,8 +1,8 @@
 [ {
   "seasonId" : 1,
-  "dayTypes" : [ {
-    "dayTypeId" : 1,
-    "line" : [ {
+  "days" : [ {
+    "dayId" : 1,
+    "lines" : [ {
       "lineId" : 1,
       "stations" : [ {
         "name" : "Corroios",
@@ -226,8 +226,8 @@
       } ]
     } ]
   }, {
-    "dayTypeId" : 2,
-    "line" : [ {
+    "dayId" : 2,
+    "lines" : [ {
       "lineId" : 1,
       "stations" : [ {
         "name" : "Corroios",
@@ -451,8 +451,8 @@
       } ]
     } ]
   }, {
-    "dayTypeId" : 3,
-    "line" : [ {
+    "dayId" : 3,
+    "lines" : [ {
       "lineId" : 1,
       "stations" : [ {
         "name" : "Corroios",
@@ -678,9 +678,9 @@
   } ]
 }, {
   "seasonId" : 2,
-  "dayTypes" : [ {
-    "dayTypeId" : 1,
-    "line" : [ {
+  "days" : [ {
+    "dayId" : 1,
+    "lines" : [ {
       "lineId" : 1,
       "stations" : [ {
         "name" : "Corroios",
@@ -904,8 +904,8 @@
       } ]
     } ]
   }, {
-    "dayTypeId" : 2,
-    "line" : [ {
+    "dayId" : 2,
+    "lines" : [ {
       "lineId" : 1,
       "stations" : [ {
         "name" : "Corroios",
@@ -1129,8 +1129,8 @@
       } ]
     } ]
   }, {
-    "dayTypeId" : 3,
-    "line" : [ {
+    "dayId" : 3,
+    "lines" : [ {
       "lineId" : 1,
       "stations" : [ {
         "name" : "Corroios",

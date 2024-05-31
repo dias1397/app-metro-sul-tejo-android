@@ -2,7 +2,7 @@ package com.diasjoao.metrosultejo.helpers;
 
 import android.content.Context;
 
-import com.diasjoao.metrosultejo.model.Station;
+import com.diasjoao.metrosultejo.model.StationOld;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -104,14 +104,14 @@ public class JsonHelper {
         return stationObject.getJSONArray("times");
     }
 
-    public static List<Station> mapStationTimes(JSONArray jsonArray, LocalDateTime localDateTime) {
+    public static List<StationOld> mapStationTimes(JSONArray jsonArray, LocalDateTime localDateTime) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             Long[] stationTimes = mapper.readValue(jsonArray.toString(), Long[].class);
 
             return Arrays.stream(stationTimes)
                     .filter(x -> x >= localDateTime.toLocalTime().toSecondOfDay() - 180)
-                    .map(x -> new Station(x, x - localDateTime.toLocalTime().toSecondOfDay()))
+                    .map(x -> new StationOld(x, x - localDateTime.toLocalTime().toSecondOfDay()))
                     .collect(Collectors.toList());
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
