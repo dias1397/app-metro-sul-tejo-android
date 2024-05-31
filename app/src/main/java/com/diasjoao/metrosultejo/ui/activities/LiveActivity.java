@@ -114,7 +114,7 @@ public class LiveActivity extends AppCompatActivity {
 
     private void setLineSpinnerInfo() {
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(this,
-                R.layout.support_simple_spinner_dropdown_item,
+                R.layout.activity_map,
                 this.getResources().getStringArray(R.array.linhas)
         );
 
@@ -130,7 +130,7 @@ public class LiveActivity extends AppCompatActivity {
 
                 try {
                     ArrayAdapter<CharSequence> stationsAdapter = new ArrayAdapter<>(context,
-                            R.layout.support_simple_spinner_dropdown_item,
+                            R.layout.activity_map,
                             context.getResources().getStringArray(stationsByLine.get(lineID))
                     );
 

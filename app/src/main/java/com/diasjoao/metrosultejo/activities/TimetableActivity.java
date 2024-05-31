@@ -32,12 +32,19 @@ public class TimetableActivity extends AppCompatActivity {
 
         NavigationBarView navigationBarView = findViewById(R.id.bottom_navigation);
         navigationBarView.setOnItemSelectedListener(item -> {
-            Fragment selectedFragment = switch (item.getItemId()) {
-                case R.id.nav_weekday_fragment -> new TimetableFragment();
-                case R.id.nav_saturday_fragment -> new TimetableFragment();
-                case R.id.nav_sunday_fragment -> new TimetableFragment();
-                default -> null;
-            };
+            Fragment selectedFragment = null;
+
+            if (item.getItemId() == R.id.nav_weekday_fragment) {
+                selectedFragment = new TimetableFragment();
+            }
+
+            if (item.getItemId() == R.id.nav_saturday_fragment) {
+                selectedFragment = new TimetableFragment();
+            }
+
+            if (item.getItemId() == R.id.nav_sunday_fragment) {
+                selectedFragment = new TimetableFragment();
+            }
 
             if (selectedFragment != null) {
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

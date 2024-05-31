@@ -5,6 +5,7 @@ def appProperties = new Properties()
 appProperties.load(new FileInputStream(appPropertiesFile))
 
 android {
+    namespace 'com.diasjoao.metrosultejo'
     defaultConfig {
         applicationId "com.diasjoao.metrosultejo"
         compileSdk 34

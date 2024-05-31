@@ -31,11 +31,15 @@ public class RoutesActivity extends AppCompatActivity {
 
         NavigationBarView navigationBarView = findViewById(R.id.bottom_navigation);
         navigationBarView.setOnItemSelectedListener(item -> {
-            Fragment selectedFragment = switch (item.getItemId()) {
-                case R.id.nav_route_fragment -> new RouteFragment();
-                case R.id.nav_map_fragment -> new MapFragment();
-                default -> null;
-            };
+            Fragment selectedFragment = null;
+
+            if (item.getItemId() == R.id.nav_route_fragment) {
+                selectedFragment = new RouteFragment();
+            }
+
+            if (item.getItemId() == R.id.nav_map_fragment) {
+                selectedFragment = new MapFragment();
+            }
 
             if (selectedFragment != null) {
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
