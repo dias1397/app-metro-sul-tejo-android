@@ -2,15 +2,12 @@ package com.diasjoao.metrosultejo.helpers;
 
 import android.content.Context;
 
-import com.diasjoao.metrosultejo.model.Day;
-import com.diasjoao.metrosultejo.model.Line;
-import com.diasjoao.metrosultejo.model.Season;
-import com.diasjoao.metrosultejo.model.Station;
+import com.diasjoao.metrosultejo.data.model.Season;
+import com.diasjoao.metrosultejo.data.model.Station;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -10,13 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder> {
 
-    private List<String> times;
+    private List<LocalDateTime> times;
 
-    public TimeAdapter(List<String> times) {
+    public TimeAdapter(List<LocalDateTime> times) {
         this.times = times;
     }
 
@@ -39,7 +42,8 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TimeViewHolder holder, int position) {
-        holder.time.setText(times.get(position));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        holder.time.setText(times.get(position).format(formatter));
     }
 
     @Override

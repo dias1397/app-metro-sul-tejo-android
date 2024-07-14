@@ -11,19 +11,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.activities.TimetableActivity;
 import com.diasjoao.metrosultejo.adapters.TimetableAdapter;
+import com.diasjoao.metrosultejo.data.repository.ScheduleRepository;
 import com.diasjoao.metrosultejo.helpers.JsonUtils;
-import com.diasjoao.metrosultejo.model.Station;
+import com.diasjoao.metrosultejo.data.model.Station;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 
 public class TimetableFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    private ScheduleRepository scheduleRepository;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,14 +34,19 @@ public class TimetableFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
-        String jsonFileName = "schedule.json";
+        scheduleRepository = new ScheduleRepository(requireContext());
+
+        List<Station> stations = scheduleRepository.findStationsBySeasonAndDayAndLine(1, 1, 1);
+        recyclerView.setAdapter(new TimetableAdapter(stations));
+
+        /*String jsonFileName = "schedule.json";
         String jsonString = JsonUtils.loadJSONFromAssets(getContext(), jsonFileName);
 
         if (jsonString != null) {
             List<Station> stationList = JsonUtils.parseStationListJson(jsonString, 1, 1, 1);
 
             recyclerView.setAdapter(new TimetableAdapter(stationList));
-        }
+        }*/
 
         return view;
     }

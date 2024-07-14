@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.diasjoao.metrosultejo.model.Station;
+import com.diasjoao.metrosultejo.data.model.Station;
 
 import java.util.HashSet;
 import java.util.List;
@@ -54,7 +54,7 @@ public class TimetableAdapter extends RecyclerView.Adapter<TimetableAdapter.Time
         holder.timesRecyclerView.setHasFixedSize(true);
         holder.timesRecyclerView.setLayoutManager(
                 new LinearLayoutManager(holder.itemView.getContext()));
-        holder.timesRecyclerView.setAdapter(new TimeAdapter(station.getTimes()));
+        holder.timesRecyclerView.setAdapter(new TimeAdapter(station.getConvertedTimes()));
 
         timesRecyclerViews.add(holder.timesRecyclerView);
         holder.timesRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
