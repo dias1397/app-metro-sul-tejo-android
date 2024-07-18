@@ -126,8 +126,8 @@ public class LiveRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvStopTime = itemView.findViewById(R.id.stopTime);
-            tvTimeDifference = itemView.findViewById(R.id.timeDifference);
+            tvStopTime = itemView.findViewById(R.id.textViewArrivalTime);
+            tvTimeDifference = itemView.findViewById(R.id.textViewTimeLeft);
         }
 
         public void bindView(int position) {

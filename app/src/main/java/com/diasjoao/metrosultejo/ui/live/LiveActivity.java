@@ -1,14 +1,23 @@
 package com.diasjoao.metrosultejo.ui.live;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
+import com.diasjoao.metrosultejo.data.model.Station;
+import com.diasjoao.metrosultejo.data.repository.ScheduleRepository;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class LiveActivity extends AppCompatActivity {
 
@@ -23,5 +32,17 @@ public class LiveActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        ScheduleRepository scheduleRepository = new ScheduleRepository(this);
+
+        Station station = scheduleRepository.findStationBySeasonAndDayAndLineAndName(1, 1, 1, "Corroios");
+
+        List<LocalDateTime> times = station.getConvertedTimes().stream()
+                .filter(time -> time.isAfter(LocalDateTime.now().minusMinutes(10)))
+                .collect(Collectors.toList());
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new LiveAdapter(this, times));
     }
 }
