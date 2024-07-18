@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.fragments;
+package com.diasjoao.metrosultejo.ui.routes;
 
 import android.os.Bundle;
 
@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 
 import com.diasjoao.metrosultejo.R;
 
-public class MapFragment extends Fragment {
+public class RoutesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false);
+        return inflater.inflate(R.layout.fragment_route, container, false);
     }
 }

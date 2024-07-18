@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.activities;
+package com.diasjoao.metrosultejo.ui.routes;
 
 import android.os.Bundle;
 
@@ -11,16 +11,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.fragments.TimetableFragment;
+import com.diasjoao.metrosultejo.ui.map.MapFragment;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class TimetableActivity extends AppCompatActivity {
+public class RoutesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_timetable);
+        setContentView(R.layout.activity_routes);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -32,16 +32,12 @@ public class TimetableActivity extends AppCompatActivity {
         navigationBarView.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
 
-            if (item.getItemId() == R.id.nav_weekday_fragment) {
-                selectedFragment = new TimetableFragment();
+            if (item.getItemId() == R.id.nav_route_fragment) {
+                selectedFragment = new RoutesFragment();
             }
 
-            if (item.getItemId() == R.id.nav_saturday_fragment) {
-                selectedFragment = new TimetableFragment();
-            }
-
-            if (item.getItemId() == R.id.nav_sunday_fragment) {
-                selectedFragment = new TimetableFragment();
+            if (item.getItemId() == R.id.nav_map_fragment) {
+                selectedFragment = new MapFragment();
             }
 
             if (selectedFragment != null) {
@@ -52,7 +48,5 @@ public class TimetableActivity extends AppCompatActivity {
 
             return true;
         });
-
-        navigationBarView.setSelectedItemId(R.id.nav_weekday_fragment);
     }
 }

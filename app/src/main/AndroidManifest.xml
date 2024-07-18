@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activities.TimetableActivity"
+            android:name=".ui.schedule.ScheduleActivity"
             android:exported="true" >
 
             <intent-filter>
@@ -25,10 +25,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.RealTimingActivity"
+            android:name=".ui.live.LiveActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.HomepageActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="false">
         </activity>
         <activity

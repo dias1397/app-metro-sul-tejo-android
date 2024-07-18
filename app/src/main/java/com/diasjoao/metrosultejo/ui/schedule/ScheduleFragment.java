@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.fragments;
+package com.diasjoao.metrosultejo.ui.schedule;
 
 import android.os.Bundle;
 
@@ -13,14 +13,12 @@ import android.view.ViewGroup;
 import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.adapters.TimetableAdapter;
 import com.diasjoao.metrosultejo.data.repository.ScheduleRepository;
-import com.diasjoao.metrosultejo.helpers.JsonUtils;
 import com.diasjoao.metrosultejo.data.model.Station;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class TimetableFragment extends Fragment {
+public class ScheduleFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ScheduleRepository scheduleRepository;

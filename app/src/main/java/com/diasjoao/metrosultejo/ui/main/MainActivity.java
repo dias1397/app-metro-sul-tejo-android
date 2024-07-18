@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.activities;
+package com.diasjoao.metrosultejo.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +10,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.diasjoao.metrosultejo.R;
+import com.diasjoao.metrosultejo.ui.routes.RoutesActivity;
+import com.diasjoao.metrosultejo.ui.live.LiveActivity;
 import com.google.android.material.card.MaterialCardView;
 
-public class HomepageActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,25 +30,25 @@ public class HomepageActivity extends AppCompatActivity {
 
         MaterialCardView searchCardView = findViewById(R.id.search_card);
         searchCardView.setOnClickListener(view -> {
-            Intent intent = new Intent(HomepageActivity.this, RealTimingActivity.class);
+            Intent intent = new Intent(MainActivity.this, LiveActivity.class);
             startActivity(intent);
         });
 
         MaterialCardView line1CardView = findViewById(R.id.line_card_1);
         line1CardView.setOnClickListener(view -> {
-            Intent intent = new Intent(HomepageActivity.this, RoutesActivity.class);
+            Intent intent = new Intent(MainActivity.this, RoutesActivity.class);
             startActivity(intent);
         });
 
         MaterialCardView line2CardView = findViewById(R.id.line_card_2);
         line2CardView.setOnClickListener(view -> {
-            Intent intent = new Intent(HomepageActivity.this, RoutesActivity.class);
+            Intent intent = new Intent(MainActivity.this, RoutesActivity.class);
             startActivity(intent);
         });
 
         MaterialCardView line3CardView = findViewById(R.id.line_card_3);
         line3CardView.setOnClickListener(view -> {
-            Intent intent = new Intent(HomepageActivity.this, RoutesActivity.class);
+            Intent intent = new Intent(MainActivity.this, RoutesActivity.class);
             startActivity(intent);
         });
 
