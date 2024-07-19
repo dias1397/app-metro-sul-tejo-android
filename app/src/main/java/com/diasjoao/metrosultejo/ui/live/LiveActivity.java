@@ -38,8 +38,15 @@ public class LiveActivity extends AppCompatActivity {
 
         Station station = scheduleRepository.findStationBySeasonAndDayAndLineAndName(1, 1, 1, "Corroios");
 
+        LocalDateTime startBound = LocalDateTime.now();
+        LocalDateTime endBound = LocalDateTime.now().withHour(3).withMinute(0);
+
+        if (startBound.getHour() >= 3) {
+            endBound.plusDays(1);
+        }
+
         List<LocalDateTime> times = station.getConvertedTimes().stream()
-                .filter(time -> time.isAfter(LocalDateTime.now().minusMinutes(10)))
+                .filter(time -> time.isAfter(startBound.minusMinutes(10)) && time.isBefore(endBound))
                 .collect(Collectors.toList());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
