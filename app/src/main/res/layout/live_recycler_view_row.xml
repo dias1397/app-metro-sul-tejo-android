@@ -10,9 +10,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="5dp"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="4dp"
+        android:layout_marginVertical="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,19 +20,20 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/textViewArrivalTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="sans-serif"
                 android:text="hh:mm"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView40"
+                app:layout_constraintBottom_toTopOf="@+id/textViewDestination"
                 app:layout_constraintEnd_toStartOf="@+id/materialCardView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -40,36 +41,39 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_margin="6dp"
-                android:background="#4CAF50"
-                app:cardCornerRadius="4dp"
-                app:layout_constraintBottom_toTopOf="@+id/textView40"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/Green"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/textViewTimeLeft"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#4CAF50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:paddingHorizontal="12dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
                     android:text="m'"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:textColor="#FFFFFF"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="@color/White"
                     android:textStyle="bold" />
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
-                android:id="@+id/textView40"
+                android:id="@+id/textViewDestination"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:background="@color/GhostWhite"
-                android:gravity="center_horizontal"
                 android:text="Destino: Cacilhas"
                 android:textAlignment="center"
                 android:textColor="@color/Black"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                app:layout_constraintTop_toBottomOf="@id/textViewArrivalTime"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
