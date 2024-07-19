@@ -20,7 +20,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/White">
 
             <TextView
                 android:id="@+id/textViewArrivalTime"
@@ -31,6 +32,7 @@
                 android:layout_marginEnd="8dp"
                 android:fontFamily="sans-serif"
                 android:text="hh:mm"
+                android:textColor="@color/Black"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textViewDestination"
@@ -68,7 +70,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@color/GhostWhite"
+                android:background="@color/LightGrey"
                 android:text="Destino: Cacilhas"
                 android:textAlignment="center"
                 android:textColor="@color/Black"
