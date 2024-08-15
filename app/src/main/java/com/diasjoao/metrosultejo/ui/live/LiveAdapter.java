@@ -31,11 +31,13 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.LiveViewHolder
     public static class LiveViewHolder extends RecyclerView.ViewHolder {
         TextView textViewArrivalTime;
         TextView textViewTimeLeft;
+        TextView textViewHeader;
 
         public LiveViewHolder(View itemView) {
             super(itemView);
             textViewArrivalTime = itemView.findViewById(R.id.textViewArrivalTime);
             textViewTimeLeft = itemView.findViewById(R.id.textViewTimeLeft);
+            textViewHeader = itemView.findViewById(R.id.textViewHeader);
         }
     }
 
@@ -50,6 +52,17 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.LiveViewHolder
     @Override
     public void onBindViewHolder(@NonNull LiveViewHolder holder, int position) {
         LocalDateTime currentTime = times.get(position);
+
+        if (position == 0 || position == 1) {
+            if (position == 0) {
+                holder.textViewHeader.setText("Última partida");
+            }
+            if (position == 1) {
+                holder.textViewHeader.setText("Próxima partida");
+            }
+        } else {
+            holder.textViewHeader.setVisibility(View.GONE);
+        }
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         holder.textViewArrivalTime.setText(currentTime.format(formatter));

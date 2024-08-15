@@ -6,6 +6,19 @@
     android:layout_height="wrap_content"
     android:backgroundTint="@color/DimGray">
 
+    <TextView
+        android:id="@+id/textViewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginStart="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/Black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -16,7 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textViewHeader">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,13 +40,13 @@
                 android:id="@+id/textViewArrivalTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="sans-serif"
                 android:text="hh:mm"
-                android:textColor="@color/Black"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@color/Black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textViewDestination"
                 app:layout_constraintEnd_toStartOf="@+id/materialCardView"
@@ -70,15 +83,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@color/LightGrey"
+                android:background="@color/GhostWhite"
                 android:text="Destino: Cacilhas"
                 android:textAlignment="center"
-                android:textColor="@color/Black"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                app:layout_constraintTop_toBottomOf="@id/textViewArrivalTime"
+                android:textColor="@color/colorDarkGrey"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewArrivalTime" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
