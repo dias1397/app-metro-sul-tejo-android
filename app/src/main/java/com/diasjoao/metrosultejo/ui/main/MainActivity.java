@@ -8,8 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.diasjoao.metrosultejo.R;
+import com.diasjoao.metrosultejo.SearchFragment;
 import com.diasjoao.metrosultejo.ui.routes.RoutesActivity;
 import com.diasjoao.metrosultejo.ui.live.LiveActivity;
 import com.google.android.material.card.MaterialCardView;
@@ -27,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Add the SearchFragment to the activity
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, new SearchFragment());
+        transaction.commit();
 
         MaterialCardView searchCardView = findViewById(R.id.search_card);
         searchCardView.setOnClickListener(view -> {
