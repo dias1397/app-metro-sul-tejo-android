@@ -50,10 +50,15 @@ public class TimetableAdapter extends RecyclerView.Adapter<TimetableAdapter.Time
     public void onBindViewHolder(@NonNull TimetableViewHolder holder, int position) {
         Station station = stationList.get(position);
         holder.stopName.setText(station.getName());
+        if (position % 2 == 0) {
+            holder.stopName.setBackgroundColor(holder.itemView.getContext().getColor(R.color.colorLightGrey));
+        } else {
+            holder.stopName.setBackgroundColor(holder.itemView.getContext().getColor(R.color.GhostWhite));
+        }
 
         holder.timesRecyclerView.setHasFixedSize(true);
         holder.timesRecyclerView.setLayoutManager(
-                new LinearLayoutManager(holder.itemView.getContext()));
+                new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         holder.timesRecyclerView.setAdapter(new TimeAdapter(station.getConvertedTimes()));
 
         timesRecyclerViews.add(holder.timesRecyclerView);
@@ -71,6 +76,11 @@ public class TimetableAdapter extends RecyclerView.Adapter<TimetableAdapter.Time
                 isSyncing = false;
             }
         });
+        if (position % 2 == 0) {
+            holder.timesRecyclerView.setBackgroundColor(holder.itemView.getContext().getColor(R.color.colorLightGrey));
+        } else {
+            holder.timesRecyclerView.setBackgroundColor(holder.itemView.getContext().getColor(R.color.GhostWhite));
+        }
     }
 
     @Override

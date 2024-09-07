@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="4dp"
+    android:layout_height="match_parent"
     android:text="Time"
-    android:id="@+id/time">
+    android:textSize="16sp"
+    android:id="@+id/time"
+    android:paddingStart="8dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:gravity="center">
 
 </TextView>
