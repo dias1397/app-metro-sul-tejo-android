@@ -28,6 +28,9 @@
             android:name=".ui.live.LiveActivity"
             android:exported="true" />
         <activity
+            android:name=".ui.routes.RoutesActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.schedule.ScheduleActivity"
             android:exported="true" />
 

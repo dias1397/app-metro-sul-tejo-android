@@ -326,4 +326,8 @@
         <item>25 de Abril</item>
         <item>Cacilhas</item>
     </string-array>
+
+    <string name="line_1_name">Cacilhas ⟷ Corroios</string>
+    <string name="line_2_name">Corroios ↔ Pragal</string>
+    <string name="line_3_name">Cacilhas ↔ Universidade</string>
 </resources>

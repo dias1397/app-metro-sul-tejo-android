@@ -7,12 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.ui.map.MapFragment;
-import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.Objects;
 
 public class RoutesActivity extends AppCompatActivity {
 
@@ -28,25 +28,47 @@ public class RoutesActivity extends AppCompatActivity {
             return insets;
         });
 
-        NavigationBarView navigationBarView = findViewById(R.id.bottom_navigation);
-        navigationBarView.setOnItemSelectedListener(item -> {
-            Fragment selectedFragment = null;
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
 
-            if (item.getItemId() == R.id.nav_route_fragment) {
-                selectedFragment = new RoutesFragment();
+        RoutesPagerAdapter adapter = new RoutesPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
+
+        tabLayout.setupWithViewPager(viewPager);
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            Objects.requireNonNull(tabLayout.getTabAt(i)).setIcon(R.drawable.baseline_directions_bus_24);
+        }
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
 
-            if (item.getItemId() == R.id.nav_map_fragment) {
-                selectedFragment = new MapFragment();
+            @Override
+            public void onPageSelected(int position) {
+                // Change tab indicator color dynamically
+                switch (position) {
+                    case 0:
+                        tabLayout.setSelectedTabIndicatorColor(
+                                getResources().getColor(R.color.linha1, null)
+                        ); // Accent color for Tab 1
+                        break;
+                    case 1:
+                        tabLayout.setSelectedTabIndicatorColor(
+                                getResources().getColor(R.color.linha2, null)
+                        ); // Accent color for Tab 2
+                        break;
+                    case 2:
+                        tabLayout.setSelectedTabIndicatorColor(
+                                getResources().getColor(R.color.linha3, null)
+                        ); // Accent color for Tab 3
+                        break;
+                }
             }
 
-            if (selectedFragment != null) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, selectedFragment);
-                transaction.commit();
+            @Override
+            public void onPageScrollStateChanged(int state) {
             }
-
-            return true;
         });
     }
 }
