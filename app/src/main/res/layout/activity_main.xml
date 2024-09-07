@@ -5,23 +5,25 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/android:windowBackground"
     tools:context=".ui.main.MainActivity">
 
-    <include
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="?attr/colorOnPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        layout="@layout/toolbar_main" />
+        app:title="Metro Sul Tejo" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/search_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@color/Aqua"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,10 +53,13 @@
             android:layout_marginEnd="6dp"
             android:layout_weight="1"
             android:drawableTop="@drawable/baseline_directions_bus_24"
+            android:drawableTint="?attr/colorOnPrimary"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Linhas"
-            android:textSize="11sp" />
+            android:textSize="11sp"
+            android:textColor="?attr/colorOnPrimary"
+            android:backgroundTint="?attr/colorPrimary"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/schedule_button"
@@ -63,6 +68,7 @@
             android:layout_marginEnd="6dp"
             android:layout_weight="1"
             android:drawableTop="@drawable/baseline_schedule_24"
+            android:drawableTint="?attr/colorOnPrimary"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Horário"
@@ -75,6 +81,7 @@
             android:layout_marginEnd="6dp"
             android:layout_weight="1"
             android:drawableTop="@drawable/baseline_map_24"
+            android:drawableTint="?attr/colorOnPrimary"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Mapa"
@@ -86,6 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/baseline_info_24"
+            android:drawableTint="?attr/colorOnPrimary"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Info"
@@ -108,7 +116,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Estado das Linhas" />
+            android:text="Estado das Linhas"
+            android:textColor="?attr/colorOnBackground" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -127,7 +136,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Noticias" />
+            android:text="Noticias"
+            android:textColor="?attr/colorOnBackground" />
     </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
