@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class Season {
-
+    // seasonId = 1 Verão, 2 Inverno
     private int seasonId;
     private List<Day> days;
 

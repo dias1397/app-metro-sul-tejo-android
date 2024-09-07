@@ -48,7 +48,7 @@ public class ScheduleRepository {
         return null;
     }
 
-    public Station findStationBySeasonAndDayAndLineAndName(int seasonId, int dayId, int lineId, String stationName) {
+    public Station findStationBySeasonAndDayAndLineAndName(int seasonId, int dayId, int lineId, int stationId) {
         try (InputStreamReader reader = getJsonReader()) {
             JsonElement element = JsonParser.parseReader(reader);
             Season[] seasons = new Gson().fromJson(element, Season[].class);
@@ -60,7 +60,7 @@ public class ScheduleRepository {
                     .flatMap(day -> day.getLines().stream())
                     .filter(line -> line.getLineId() == lineId)
                     .flatMap(line -> line.getStations().stream())
-                    .filter(station -> stationName.equals(station.getName()))
+                    .skip(stationId)
                     .findFirst().orElse(null);
         } catch (IOException exception) {
             exception.printStackTrace();

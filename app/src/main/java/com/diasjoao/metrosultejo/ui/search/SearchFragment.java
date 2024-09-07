@@ -49,11 +49,7 @@ public class SearchFragment extends Fragment {
         setupLineSpinner();
 
         // Set up the Search button click listener
-        buttonSearch.setOnClickListener(v -> {
-            String selectedLine = spinnerLine.getSelectedItem().toString();
-            String selectedStation = spinnerStation.getSelectedItem().toString();
-            performSearch(selectedLine, selectedStation);
-        });
+        buttonSearch.setOnClickListener(v -> performSearch());
 
         Bundle args = getArguments();
         if (args != null) {
@@ -120,12 +116,11 @@ public class SearchFragment extends Fragment {
         spinnerStation.setAdapter(stationAdapter);
     }
 
-    private void performSearch(String line, String station) {
-        Toast.makeText(getContext(), "Searching for " + line + " at " + station, Toast.LENGTH_SHORT).show();
-
+    private void performSearch() {
         Intent intent = new Intent(requireActivity(), LiveActivity.class);
         intent.putExtra("lineId", spinnerLine.getSelectedItemPosition());
         intent.putExtra("stationId", spinnerStation.getSelectedItemPosition());
+        intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
     }
 }

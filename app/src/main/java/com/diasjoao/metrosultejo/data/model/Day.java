@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class Day {
-
+    // dayId = 1 Uteis, 2 Sábado, 3 Domingo
     private int dayId;
     private List<Line> lines;
 

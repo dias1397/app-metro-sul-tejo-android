@@ -37,9 +37,12 @@ public class LiveActivity extends AppCompatActivity {
         Intent intent = getIntent();
         SearchFragment searchFragment = new SearchFragment();
 
+        int lineId = intent.getIntExtra("lineId", 0);
+        int stationId = intent.getIntExtra("stationId", 0);
+
         Bundle bundle = new Bundle();
-        bundle.putInt("lineId", intent.getIntExtra("lineId", 0));
-        bundle.putInt("stationId", intent.getIntExtra("stationId", 0));
+        bundle.putInt("lineId", lineId);
+        bundle.putInt("stationId", stationId);
 
         searchFragment.setArguments(bundle);
 
@@ -50,7 +53,7 @@ public class LiveActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         ScheduleRepository scheduleRepository = new ScheduleRepository(this);
 
-        Station station = scheduleRepository.findStationBySeasonAndDayAndLineAndName(1, 1, 1, "Corroios");
+        Station station = scheduleRepository.findStationBySeasonAndDayAndLineAndName(1, 2, lineId + 1, stationId);
 
         LocalDateTime startBound = LocalDateTime.now();
         LocalDateTime endBound = LocalDateTime.now()
