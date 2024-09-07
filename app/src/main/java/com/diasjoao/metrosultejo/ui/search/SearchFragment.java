@@ -1,5 +1,7 @@
-package com.diasjoao.metrosultejo;
+package com.diasjoao.metrosultejo.ui.search;
 
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,8 +15,12 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.diasjoao.metrosultejo.R;
+import com.diasjoao.metrosultejo.ui.live.LiveActivity;
+
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,35 +49,33 @@ public class SearchFragment extends Fragment {
         setupLineSpinner();
 
         // Set up the Search button click listener
-        buttonSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String selectedLine = spinnerLine.getSelectedItem().toString();
-                String selectedStation = spinnerStation.getSelectedItem().toString();
-                performSearch(selectedLine, selectedStation);
-            }
+        buttonSearch.setOnClickListener(v -> {
+            String selectedLine = spinnerLine.getSelectedItem().toString();
+            String selectedStation = spinnerStation.getSelectedItem().toString();
+            performSearch(selectedLine, selectedStation);
         });
+
+        Bundle args = getArguments();
+        if (args != null) {
+            spinnerLine.setSelection(args.getInt("lineId"));
+        }
 
         return view;
     }
 
     private void setupData() {
-        lineStationMap = new HashMap<>();
-        lineStationMap.put("Line 1", new ArrayList<String>() {{
-            add("Station A1");
-            add("Station A2");
-            add("Station A3");
-        }});
-        lineStationMap.put("Line 2", new ArrayList<String>() {{
-            add("Station B1");
-            add("Station B2");
-            add("Station B3");
-        }});
-        lineStationMap.put("Line 3", new ArrayList<String>() {{
-            add("Station C1");
-            add("Station C2");
-            add("Station C3");
-        }});
+        Resources res = requireContext().getResources();
+        String[] lines = {"line_11", "line_12", "line_21", "line_22", "line_31", "line_32"};
+
+        lineStationMap = new LinkedHashMap<>();
+        for (String line : lines) {
+            String[] stations = res.getStringArray(res.getIdentifier(line + "_stations", "array", requireContext().getPackageName()));
+
+            List<String> stationList = Arrays.asList(stations);
+
+            String lineName = res.getString(res.getIdentifier(line + "_name", "string", requireContext().getPackageName()));
+            lineStationMap.put(lineName, stationList);
+        }
     }
 
     private void setupLineSpinner() {
@@ -87,6 +91,11 @@ public class SearchFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedLine = lines.get(position);
                 updateStationSpinner(selectedLine);
+
+                if (getArguments() != null) {
+                    spinnerStation.setSelection(getArguments().getInt("stationId"));
+                    getArguments().clear();
+                }
             }
 
             @Override
@@ -112,7 +121,11 @@ public class SearchFragment extends Fragment {
     }
 
     private void performSearch(String line, String station) {
-        // Handle the search logic
         Toast.makeText(getContext(), "Searching for " + line + " at " + station, Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(requireActivity(), LiveActivity.class);
+        intent.putExtra("lineId", spinnerLine.getSelectedItemPosition());
+        intent.putExtra("stationId", spinnerStation.getSelectedItemPosition());
+        startActivity(intent);
     }
 }

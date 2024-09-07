@@ -234,4 +234,96 @@
     <string name="title_activity_line">LineActivity</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_homepage">HomepageActivity</string>
+
+    <string name="line_11_name">LINHA 1 - Corroios/Cacilhas</string>
+    <string-array name="line_11_stations">
+        <item>Corroios</item>
+        <item>Casa do Povo</item>
+        <item>Santo Amaro</item>
+        <item>Laranjeiro</item>
+        <item>António Gedeão</item>
+        <item>Parque da Paz</item>
+        <item>Cova da Piedade</item>
+        <item>Bento Gonçalves</item>
+        <item>Almada</item>
+        <item>São João Batista</item>
+        <item>Gil Vicente</item>
+        <item>25 de Abril</item>
+        <item>Cacilhas</item>
+    </string-array>
+
+    <string name="line_12_name">LINHA 1 - Cacilhas/Corroios</string>
+    <string-array name="line_12_stations">
+        <item>Cacilhas</item>
+        <item>25 de Abril</item>
+        <item>Gil Vicente</item>
+        <item>São João Batista</item>
+        <item>Almada</item>
+        <item>Bento Gonçalves</item>
+        <item>Cova da Piedade</item>
+        <item>Parque da Paz</item>
+        <item>António Gedeão</item>
+        <item>Laranjeiro</item>
+        <item>Santo Amaro</item>
+        <item>Casa do Povo</item>
+        <item>Corroios</item>
+    </string-array>
+
+    <string name="line_21_name">LINHA 2 - Corroios/Pragal</string>
+    <string-array name="line_21_stations">
+        <item>Corroios</item>
+        <item>Casa do Povo</item>
+        <item>Santo Amaro</item>
+        <item>Laranjeiro</item>
+        <item>António Gedeão</item>
+        <item>Parque da Paz</item>
+        <item>Cova da Piedade</item>
+        <item>Ramalha</item>
+        <item>Pragal</item>
+    </string-array>
+
+    <string name="line_22_name">LINHA 2 - Pragal/Corroios</string>
+    <string-array name="line_22_stations">
+        <item>Pragal</item>
+        <item>Ramalha</item>
+        <item>Cova da Piedade</item>
+        <item>Parque da Paz</item>
+        <item>António Gedeão</item>
+        <item>Laranjeiro</item>
+        <item>Santo Amaro</item>
+        <item>Casa do Povo</item>
+        <item>Corroios</item>
+    </string-array>
+
+    <string name="line_31_name">LINHA 3 - Cacilhas/Universidade</string>
+    <string-array name="line_31_stations">
+        <item>Cacilhas</item>
+        <item>25 de Abril</item>
+        <item>Gil Vicente</item>
+        <item>São João Batista</item>
+        <item>Almada</item>
+        <item>Bento Gonçalves</item>
+        <item>Ramalha</item>
+        <item>Pragal</item>
+        <item>Boa Esperança</item>
+        <item>Fomega</item>
+        <item>Monte da Caparica</item>
+        <item>Universidade</item>
+    </string-array>
+
+    <string name="line_32_name">LINHA 3 - Universidade/Cacilhas</string>
+    <string-array name="line_32_stations">
+        <item>Universidade</item>
+        <item>Monte da Caparica</item>
+        <item>Fomega</item>
+        <item>Boa Esperança</item>
+        <item>Pragal</item>
+        <item>Ramalha</item>
+        <item>Bento Gonçalves</item>
+        <item>Almada</item>
+        <item>São João Batista</item>
+        <item>Gil Vicente</item>
+        <item>25 de Abril</item>
+        <item>Cacilhas</item>
+    </string-array>
 </resources>

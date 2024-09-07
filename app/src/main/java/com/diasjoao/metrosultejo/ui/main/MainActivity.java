@@ -8,12 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.SearchFragment;
+import com.diasjoao.metrosultejo.ui.search.SearchFragment;
 import com.diasjoao.metrosultejo.ui.routes.RoutesActivity;
-import com.diasjoao.metrosultejo.ui.live.LiveActivity;
 import com.google.android.material.card.MaterialCardView;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,27 +28,23 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Add the SearchFragment to the activity
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, new SearchFragment());
-        transaction.commit();
+        SearchFragment searchFragment = new SearchFragment();
 
-        MaterialCardView searchCardView = findViewById(R.id.search_card);
-        searchCardView.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, LiveActivity.class);
-            startActivity(intent);
-        });
+        // Add the SearchFragment to the activity
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, searchFragment)
+                .commit();
 
         MaterialCardView line2CardView = findViewById(R.id.line_card_2);
         line2CardView.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, RoutesActivity.class);
-            startActivity(intent);
+            Intent intent1 = new Intent(MainActivity.this, RoutesActivity.class);
+            startActivity(intent1);
         });
 
         MaterialCardView line3CardView = findViewById(R.id.line_card_3);
         line3CardView.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, RoutesActivity.class);
-            startActivity(intent);
+            Intent intent2 = new Intent(MainActivity.this, RoutesActivity.class);
+            startActivity(intent2);
         });
 
     }

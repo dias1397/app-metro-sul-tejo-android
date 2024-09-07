@@ -1,7 +1,7 @@
 package com.diasjoao.metrosultejo.ui.live;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.data.model.Station;
 import com.diasjoao.metrosultejo.data.repository.ScheduleRepository;
+import com.diasjoao.metrosultejo.ui.search.SearchFragment;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -32,6 +33,19 @@ public class LiveActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Intent intent = getIntent();
+        SearchFragment searchFragment = new SearchFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("lineId", intent.getIntExtra("lineId", 0));
+        bundle.putInt("stationId", intent.getIntExtra("stationId", 0));
+
+        searchFragment.setArguments(bundle);
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, searchFragment)
+                .commit();
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         ScheduleRepository scheduleRepository = new ScheduleRepository(this);
