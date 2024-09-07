@@ -41,12 +41,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        MaterialCardView line1CardView = findViewById(R.id.line_card_1);
-        line1CardView.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, RoutesActivity.class);
-            startActivity(intent);
-        });
-
         MaterialCardView line2CardView = findViewById(R.id.line_card_2);
         line2CardView.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, RoutesActivity.class);
