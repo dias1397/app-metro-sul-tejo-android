@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         Button scheduleButton = findViewById(R.id.schedule_button);
         scheduleButton.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, ScheduleActivity.class);
+            intent.putExtra("seasonId", 2);
             startActivity(intent);
         });
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Primary colors (based on #039be5) -->
-    <color name="colorPrimary">#0000CD</color> <!-- Main primary color -->
-    <color name="colorPrimaryVariant">#0000FF</color> <!-- Darker variant of primary -->
+    <color name="colorPrimary">#0C4DA2</color> <!-- Main primary color -->
+    <color name="colorPrimaryVariant">#218FCE</color> <!-- Darker variant of primary -->
     <color name="colorOnPrimary">#FFFFFF</color> <!-- Text/icon color on primary -->
 
     <!-- Secondary colors (based on #ed7b00) -->
-    <color name="colorSecondary">#ed7b00</color> <!-- Main secondary color -->
-    <color name="colorSecondaryVariant">#c65c00</color> <!-- Darker variant of secondary -->
+    <color name="colorSecondary">#ED7B00</color> <!-- Main secondary color -->
+    <color name="colorSecondaryVariant">#C65C00</color> <!-- Darker variant of secondary -->
     <color name="colorOnSecondary">#FFFFFF</color> <!-- Text/icon color on secondary -->
 
     <!-- Background colors for light and dark themes -->

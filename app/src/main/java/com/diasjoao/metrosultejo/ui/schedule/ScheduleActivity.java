@@ -1,9 +1,14 @@
 package com.diasjoao.metrosultejo.ui.schedule;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
@@ -14,12 +19,18 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.diasjoao.metrosultejo.R;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.Arrays;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ScheduleActivity extends AppCompatActivity {
 
-    private int dayId, lineId = 1;
+    private ExecutorService executorService;
+    private Handler handler;
+
+    private int dayId, lineId, seasonId = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +44,16 @@ public class ScheduleActivity extends AppCompatActivity {
             return insets;
         });
 
+        Intent intent = getIntent();
+        seasonId = intent.getIntExtra("seasonId", 1);
+
+        ProgressBar progressBar = findViewById(R.id.progress_bar);
         Spinner lineSpinner = findViewById(R.id.spinner_line);
+        SwitchMaterial seasonSwitch = findViewById(R.id.switch_season);
+        seasonSwitch.setChecked(seasonId == 2);
+
+        executorService = Executors.newSingleThreadExecutor();
+        handler = new Handler(Looper.getMainLooper());
 
         String line1 = getResources().getString(R.string.line_1_name);
         String line2 = getResources().getString(R.string.line_2_name);
@@ -47,9 +67,14 @@ public class ScheduleActivity extends AppCompatActivity {
         lineSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                lineId = position + 1;
+                progressBar.setVisibility(View.VISIBLE);
 
-                updateFragment(dayId, lineId);
+                executorService.execute(() -> {
+                    lineId = position + 1;
+                    updateFragment(seasonId, dayId, lineId);
+
+                    handler.post(() -> progressBar.setVisibility(View.GONE));
+                });
             }
 
             @Override
@@ -58,21 +83,41 @@ public class ScheduleActivity extends AppCompatActivity {
             }
         });
 
+        seasonSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                progressBar.setVisibility(View.VISIBLE);
+
+                executorService.execute(() -> {
+                    seasonId = isChecked ? 2 : 1;
+                    updateFragment(seasonId, dayId, lineId);
+
+                    handler.post(() -> progressBar.setVisibility(View.GONE));
+                });
+            }
+        });
+
         NavigationBarView navigationBarView = findViewById(R.id.bottom_navigation);
         navigationBarView.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.nav_weekday_fragment) {
-                dayId = 1;
-            }
+            progressBar.setVisibility(View.VISIBLE);
 
-            if (item.getItemId() == R.id.nav_saturday_fragment) {
-                dayId = 2;
-            }
+            executorService.execute(() -> {
+                if (item.getItemId() == R.id.nav_weekday_fragment) {
+                    dayId = 1;
+                }
 
-            if (item.getItemId() == R.id.nav_sunday_fragment) {
-                dayId = 3;
-            }
+                if (item.getItemId() == R.id.nav_saturday_fragment) {
+                    dayId = 2;
+                }
 
-            updateFragment(dayId, lineId);
+                if (item.getItemId() == R.id.nav_sunday_fragment) {
+                    dayId = 3;
+                }
+
+                updateFragment(seasonId, dayId, lineId);
+
+                handler.post(() -> progressBar.setVisibility(View.GONE));
+            });
 
             return true;
         });
@@ -80,10 +125,11 @@ public class ScheduleActivity extends AppCompatActivity {
         navigationBarView.setSelectedItemId(R.id.nav_weekday_fragment);
     }
 
-    private void updateFragment(int dayId, int lineId) {
+    private void updateFragment(int seasonId, int dayId, int lineId) {
         ScheduleFragment scheduleFragment = new ScheduleFragment();
 
         Bundle bundle = new Bundle();
+        bundle.putInt("seasonId", seasonId);
         bundle.putInt("dayId", dayId);
         bundle.putInt("lineId", lineId);
 

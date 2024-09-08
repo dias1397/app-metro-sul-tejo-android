@@ -15,7 +15,6 @@ import com.diasjoao.metrosultejo.adapters.TimetableAdapter;
 import com.diasjoao.metrosultejo.data.repository.ScheduleRepository;
 import com.diasjoao.metrosultejo.data.model.Station;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ScheduleFragment extends Fragment {
@@ -23,7 +22,7 @@ public class ScheduleFragment extends Fragment {
     private RecyclerView recyclerView;
     private ScheduleRepository scheduleRepository;
 
-    private int dayId, lineId = 1;
+    private int seasonId, dayId, lineId = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,6 +30,7 @@ public class ScheduleFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
 
         if (getArguments() != null) {
+            seasonId = getArguments().getInt("seasonId", 1);
             dayId = getArguments().getInt("dayId", 1);
             lineId = getArguments().getInt("lineId", 1);
         }
@@ -41,7 +41,7 @@ public class ScheduleFragment extends Fragment {
 
         scheduleRepository = new ScheduleRepository(requireContext());
 
-        List<Station> stations = scheduleRepository.findStationsBySeasonAndDayAndLine(2, dayId, lineId);
+        List<Station> stations = scheduleRepository.findStationsBySeasonAndDayAndLine(seasonId, dayId, lineId + lineId - 1);
         recyclerView.setAdapter(new TimetableAdapter(stations));
 
         return view;
