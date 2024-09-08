@@ -23,12 +23,17 @@ public class ScheduleFragment extends Fragment {
     private RecyclerView recyclerView;
     private ScheduleRepository scheduleRepository;
 
+    private int dayId, lineId = 1;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
 
-        int dayId = getArguments().getInt("dayId", 1);
+        if (getArguments() != null) {
+            dayId = getArguments().getInt("dayId", 1);
+            lineId = getArguments().getInt("lineId", 1);
+        }
 
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -36,7 +41,7 @@ public class ScheduleFragment extends Fragment {
 
         scheduleRepository = new ScheduleRepository(requireContext());
 
-        List<Station> stations = scheduleRepository.findStationsBySeasonAndDayAndLine(2, dayId, 1);
+        List<Station> stations = scheduleRepository.findStationsBySeasonAndDayAndLine(2, dayId, lineId);
         recyclerView.setAdapter(new TimetableAdapter(stations));
 
         return view;
