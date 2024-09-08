@@ -2,12 +2,12 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:text="Time"
+    android:text="HH:mm"
     android:textSize="16sp"
     android:id="@+id/time"
-    android:paddingStart="8dp"
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
-    android:gravity="center">
+    android:gravity="center_vertical"
+    android:includeFontPadding="false">
 
 </TextView>

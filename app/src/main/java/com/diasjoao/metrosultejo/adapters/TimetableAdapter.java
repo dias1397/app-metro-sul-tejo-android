@@ -1,5 +1,6 @@
 package com.diasjoao.metrosultejo.adapters;
 
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,10 @@ public class TimetableAdapter extends RecyclerView.Adapter<TimetableAdapter.Time
     public void onBindViewHolder(@NonNull TimetableViewHolder holder, int position) {
         Station station = stationList.get(position);
         holder.stopName.setText(station.getName());
+
+        int totalWidth = (int) holder.stopName.getPaint().measureText("XXXXXXXXXXXXXXX");
+        holder.stopName.setWidth(totalWidth);
+
         if (position % 2 == 0) {
             holder.stopName.setBackgroundColor(holder.itemView.getContext().getColor(R.color.colorLightGrey));
         } else {

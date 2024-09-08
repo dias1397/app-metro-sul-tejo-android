@@ -1,5 +1,6 @@
 package com.diasjoao.metrosultejo.adapters;
 
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,9 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder
     public void onBindViewHolder(@NonNull TimeViewHolder holder, int position) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         holder.time.setText(times.get(position).format(formatter));
+
+        int totalWidth = (int) holder.time.getPaint().measureText("HH:mm");
+        holder.time.setWidth(totalWidth);
     }
 
     @Override
