@@ -5,12 +5,14 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="Selecione a Linha"
         android:textSize="16sp"
-        android:layout_marginBottom="8dp" />
+        android:textStyle="bold"
+        android:textColor="?attr/colorSecondary" />
 
     <Spinner
         android:id="@+id/spinner_line"
@@ -18,12 +20,14 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="Selecione a Estação"
         android:textSize="16sp"
-        android:layout_marginBottom="8dp" />
+        android:textStyle="bold"
+        android:textColor="?attr/colorSecondary"/>
 
     <Spinner
         android:id="@+id/spinner_station"

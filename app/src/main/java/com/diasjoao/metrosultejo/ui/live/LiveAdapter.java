@@ -53,17 +53,6 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.LiveViewHolder
     public void onBindViewHolder(@NonNull LiveViewHolder holder, int position) {
         LocalDateTime currentTime = times.get(position);
 
-        if (position == 0 || position == 1) {
-            if (position == 0) {
-                holder.textViewHeader.setText("Última partida");
-            }
-            if (position == 1) {
-                holder.textViewHeader.setText("Próxima partida");
-            }
-        } else {
-            holder.textViewHeader.setVisibility(View.GONE);
-        }
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         holder.textViewArrivalTime.setText(currentTime.format(formatter));
 
@@ -72,12 +61,19 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.LiveViewHolder
             holder.textViewTimeLeft.setText(String.format(Locale.getDefault(), "%02d'", Math.abs(timeLeft)));
             holder.textViewTimeLeft.setBackgroundColor(context.getColor(R.color.FireBrick));
             holder.textViewTimeLeft.setVisibility(View.VISIBLE);
+            holder.textViewHeader.setVisibility(View.GONE);
         } else if (timeLeft < 60) {
+            if (position == 1) {
+                holder.textViewHeader.setText("Próximas partidas");
+            } else {
+                holder.textViewHeader.setVisibility(View.GONE);
+            }
             holder.textViewTimeLeft.setText(String.format(Locale.getDefault(), "%02d'", timeLeft));
             holder.textViewTimeLeft.setBackgroundColor(context.getColor(R.color.ForestGreen));
             holder.textViewTimeLeft.setVisibility(View.VISIBLE);
         } else {
             holder.textViewTimeLeft.setVisibility(View.GONE);
+            holder.textViewHeader.setVisibility(View.GONE);
         }
     }
 

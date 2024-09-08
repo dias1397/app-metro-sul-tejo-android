@@ -13,8 +13,10 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="8dp"
         android:layout_marginStart="16dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/Black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorSecondary"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
