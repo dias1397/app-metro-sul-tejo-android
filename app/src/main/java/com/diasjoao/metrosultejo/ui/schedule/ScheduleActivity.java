@@ -30,6 +30,7 @@ public class ScheduleActivity extends AppCompatActivity {
         NavigationBarView navigationBarView = findViewById(R.id.bottom_navigation);
         navigationBarView.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
+            int dayId = 1;
 
             if (item.getItemId() == R.id.nav_weekday_fragment) {
                 selectedFragment = new ScheduleFragment();
@@ -37,16 +38,23 @@ public class ScheduleActivity extends AppCompatActivity {
 
             if (item.getItemId() == R.id.nav_saturday_fragment) {
                 selectedFragment = new ScheduleFragment();
+                dayId = 2;
             }
 
             if (item.getItemId() == R.id.nav_sunday_fragment) {
                 selectedFragment = new ScheduleFragment();
+                dayId = 3;
             }
 
             if (selectedFragment != null) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, selectedFragment);
-                transaction.commit();
+                Bundle bundle = new Bundle();
+                bundle.putInt("dayId", dayId);
+
+                selectedFragment.setArguments(bundle);
+
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, selectedFragment)
+                        .commit();
             }
 
             return true;

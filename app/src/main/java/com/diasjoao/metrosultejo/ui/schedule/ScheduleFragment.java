@@ -28,32 +28,17 @@ public class ScheduleFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
 
+        int dayId = getArguments().getInt("dayId", 1);
+
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
         scheduleRepository = new ScheduleRepository(requireContext());
 
-        List<Station> stations = scheduleRepository.findStationsBySeasonAndDayAndLine(1, 1, 1);
+        List<Station> stations = scheduleRepository.findStationsBySeasonAndDayAndLine(2, dayId, 1);
         recyclerView.setAdapter(new TimetableAdapter(stations));
 
-        /*String jsonFileName = "schedule.json";
-        String jsonString = JsonUtils.loadJSONFromAssets(getContext(), jsonFileName);
-
-        if (jsonString != null) {
-            List<Station> stationList = JsonUtils.parseStationListJson(jsonString, 1, 1, 1);
-
-            recyclerView.setAdapter(new TimetableAdapter(stationList));
-        }*/
-
         return view;
-    }
-
-    private List<String> generateTimes(String hour) {
-        List<String> times = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            times.add(hour + ":" + String.format("%02d", i));
-        }
-        return times;
     }
 }
