@@ -64,7 +64,12 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.LiveViewHolder
             holder.textViewHeader.setVisibility(View.GONE);
         } else if (timeLeft < 60) {
             if (position == 1) {
-                holder.textViewHeader.setText("Próximas partidas");
+                long tempTimeLeft = Duration.between(LocalDateTime.now(), times.get(0)).toMinutes();
+                if (tempTimeLeft < 0) {
+                    holder.textViewHeader.setText("Próximas partidas");
+                } else {
+                    holder.textViewHeader.setVisibility(View.GONE);
+                }
             } else {
                 holder.textViewHeader.setVisibility(View.GONE);
             }
