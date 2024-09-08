@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Primary colors (based on #039be5) -->
-    <color name="colorPrimary">#039be5</color> <!-- Main primary color -->
-    <color name="colorPrimaryVariant">#0277bd</color> <!-- Darker variant of primary -->
+    <color name="colorPrimary">#00008B</color> <!-- Main primary color -->
+    <color name="colorPrimaryVariant">#0000CD</color> <!-- Darker variant of primary -->
     <color name="colorOnPrimary">#FFFFFF</color> <!-- Text/icon color on primary -->
 
     <!-- Secondary colors (based on #ed7b00) -->
