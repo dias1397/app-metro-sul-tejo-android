@@ -14,13 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.data.model.Station;
 import com.diasjoao.metrosultejo.data.repository.ScheduleRepository;
+import com.diasjoao.metrosultejo.helpers.DateHelper;
 import com.diasjoao.metrosultejo.ui.search.SearchFragment;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.chrono.ChronoPeriod;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class LiveActivity extends AppCompatActivity {
+
+    private int dayId, lineId, stationId = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +41,16 @@ public class LiveActivity extends AppCompatActivity {
             return insets;
         });
 
+        // get initialization info
         Intent intent = getIntent();
+        lineId = intent.getIntExtra("lineId", 1);
+        stationId = intent.getIntExtra("stationId", 0);
+
+        // updates search fragment
         SearchFragment searchFragment = new SearchFragment();
 
-        int lineId = intent.getIntExtra("lineId", 0);
-        int stationId = intent.getIntExtra("stationId", 0);
-
         Bundle bundle = new Bundle();
-        bundle.putInt("lineId", lineId);
+        bundle.putInt("lineId", lineId - 1);
         bundle.putInt("stationId", stationId);
 
         searchFragment.setArguments(bundle);
@@ -53,7 +62,16 @@ public class LiveActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         ScheduleRepository scheduleRepository = new ScheduleRepository(this);
 
-        Station station = scheduleRepository.findStationBySeasonAndDayAndLineAndName(1, 2, lineId + 1, stationId);
+        LocalDate today = LocalDate.from(LocalDateTime.now().minusHours(3));
+        if (DateHelper.isHoliday(this, today) || today.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            dayId = 3;
+        } else if (today.getDayOfWeek() == DayOfWeek.SATURDAY) {
+            dayId = 2;
+        } else {
+            dayId = 1;
+        }
+
+        Station station = scheduleRepository.findStationBySeasonAndDayAndLineAndName(1, dayId, lineId, stationId);
 
         LocalDateTime startBound = LocalDateTime.now();
         LocalDateTime endBound = LocalDateTime.now()
