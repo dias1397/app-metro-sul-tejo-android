@@ -23,7 +23,7 @@
         android:id="@+id/search_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="16dp"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
         android:id="@+id/linear_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="16dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,14 +52,14 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:layout_weight="1"
-            android:drawableTop="@drawable/baseline_directions_bus_24"
-            android:drawableTint="?attr/colorOnPrimary"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Linhas"
-            android:textSize="11sp"
-            android:textColor="?attr/colorOnPrimary"
-            android:backgroundTint="?attr/colorPrimary"/>
+            android:textSize="12sp"
+            app:elevation="4dp"
+            app:icon="@drawable/baseline_directions_bus_24"
+            app:iconGravity="textTop"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/schedule_button"
@@ -67,12 +67,14 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:layout_weight="1"
-            android:drawableTop="@drawable/baseline_schedule_24"
-            android:drawableTint="?attr/colorOnPrimary"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Horário"
-            android:textSize="11sp" />
+            android:textSize="12sp"
+            app:elevation="4dp"
+            app:icon="@drawable/baseline_schedule_24"
+            app:iconGravity="textTop"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/map_button"
@@ -80,31 +82,35 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:layout_weight="1"
-            android:drawableTop="@drawable/baseline_map_24"
-            android:drawableTint="?attr/colorOnPrimary"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Mapa"
-            android:textSize="11sp" />
+            android:textSize="12sp"
+            app:elevation="4dp"
+            app:icon="@drawable/baseline_map_24"
+            app:iconGravity="textTop"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/info_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableTop="@drawable/baseline_info_24"
-            android:drawableTint="?attr/colorOnPrimary"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Info"
-            android:textSize="11sp" />
+            android:textSize="12sp"
+            app:elevation="4dp"
+            app:icon="@drawable/baseline_info_24"
+            app:iconGravity="textTop"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon" />
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/line_card_2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="16dp"
         android:background="@color/GreenYellow"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
@@ -124,7 +130,7 @@
         android:id="@+id/line_card_3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="16dp"
         android:background="@color/Bisque"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
@@ -139,5 +145,15 @@
             android:text="Noticias"
             android:textColor="?attr/colorOnBackground" />
     </com.google.android.material.card.MaterialCardView>
+
+    <Switch
+        android:id="@+id/daynight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Switch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_card_3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

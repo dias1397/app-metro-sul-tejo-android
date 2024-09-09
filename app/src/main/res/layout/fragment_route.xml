@@ -15,7 +15,6 @@
             android:id="@+id/title_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
             app:cardCornerRadius="4dp"
             app:cardElevation="4dp">
 
@@ -27,6 +26,7 @@
                 android:text="Line Name"
                 android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
                 android:textStyle="bold"
+                android:textColor="?attr/colorOnPrimary"
                 android:gravity="center" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -34,9 +34,8 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
             android:scrollbars="horizontal" />
     </LinearLayout>
 </FrameLayout>
