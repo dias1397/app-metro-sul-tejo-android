@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary and secondary colors can remain the same or slightly darker -->
+    <color name="colorPrimary">#0C4DA2</color>
+    <color name="colorPrimaryDark">#083374</color>
+    <color name="colorSecondary">#ED7B00</color>
+
+    <!-- Dark mode specific background and surface colors -->
+    <color name="colorBackground">#121212</color>
+    <color name="colorSurface">#1E1E1E</color>
+
+    <!-- Text and icons on primary and secondary colors for dark mode -->
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorOnSurface">#FFFFFF</color>
+</resources>

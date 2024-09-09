@@ -1,33 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary colors (based on #039be5) -->
-    <color name="colorPrimary">#0C4DA2</color> <!-- Main primary color -->
-    <color name="colorPrimaryVariant">#218FCE</color> <!-- Darker variant of primary -->
-    <color name="colorOnPrimary">#FFFFFF</color> <!-- Text/icon color on primary -->
+    <!-- Primary color and variants -->
+    <color name="colorPrimary">#0C4DA2</color>
+    <color name="colorPrimaryDark">#083374</color> <!-- Darker version of primary color -->
+    <color name="colorPrimaryVariant">#083374</color>
 
-    <!-- Secondary colors (based on #ed7b00) -->
-    <color name="colorSecondary">#ED7B00</color> <!-- Main secondary color -->
-    <color name="colorSecondaryVariant">#C65C00</color> <!-- Darker variant of secondary -->
-    <color name="colorOnSecondary">#FFFFFF</color> <!-- Text/icon color on secondary -->
+    <!-- Secondary color and variant -->
+    <color name="colorSecondary">#ED7B00</color>
+    <color name="colorSecondaryVariant">#BA5F00</color> <!-- Darker version of secondary color -->
 
-    <!-- Background colors for light and dark themes -->
-    <color name="colorBackgroundLight">#FFFFFF</color> <!-- Light background -->
-    <color name="colorBackgroundDark">#121212</color> <!-- Dark background -->
-
-    <!-- Surface colors for components like cards, sheets, dialogs -->
-    <color name="colorSurfaceLight">#FFFFFF</color> <!-- Surface color for light mode -->
-    <color name="colorSurfaceDark">#1E1E1E</color> <!-- Surface color for dark mode -->
-
-    <!-- Text color for dark and light themes -->
-    <color name="colorOnBackgroundLight">#000000</color> <!-- Text color on light background -->
-    <color name="colorOnBackgroundDark">#FFFFFF</color> <!-- Text color on dark background -->
-
-    <!-- Error color -->
+    <!-- Additional colors -->
+    <color name="colorBackground">#FFFFFF</color> <!-- Light mode background -->
+    <color name="colorSurface">#FFFFFF</color>
     <color name="colorError">#B00020</color>
-    <color name="colorOnError">#FFFFFF</color> <!-- Text/icon color on error background -->
+
+    <!-- Text and icons on primary and secondary colors -->
+    <color name="colorOnPrimary">#FFFFFF</color> <!-- Text color on primary surfaces -->
+    <color name="colorOnSecondary">#FFFFFF</color> <!-- Text color on secondary surfaces -->
+    <color name="colorOnSurface">#000000</color> <!-- Text color on surfaces like cards -->
 
     <!--color name="colorPrimary">#218fce</color-->
-    <color name="colorPrimaryDark">#2f80ed</color>
+    <!--color name="colorPrimaryDark">#2f80ed</color-->
     <color name="colorAccent">#ed7b00</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
