@@ -15,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.diasjoao.metrosultejo.R;
+import com.diasjoao.metrosultejo.ui.map.MapActivity;
 import com.diasjoao.metrosultejo.ui.schedule.ScheduleActivity;
 import com.diasjoao.metrosultejo.ui.search.SearchFragment;
 import com.diasjoao.metrosultejo.ui.routes.RoutesActivity;
@@ -70,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button mapButton = findViewById(R.id.map_button);
         mapButton.setOnClickListener(view -> {
-            // mapActivity
+            Intent intent = new Intent(MainActivity.this, MapActivity.class);
+            startActivity(intent);
         });
 
         Button infoButton = findViewById(R.id.info_button);

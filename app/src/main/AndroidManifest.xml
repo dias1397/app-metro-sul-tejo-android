@@ -31,9 +31,11 @@
             android:name=".ui.routes.RoutesActivity"
             android:exported="true" />
         <activity
+            android:name=".ui.map.MapActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.schedule.ScheduleActivity"
             android:exported="true" />
-
         <activity
             android:name=".ui.activities.LiveActivity"
             android:exported="false" />
