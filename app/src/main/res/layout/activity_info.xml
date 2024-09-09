@@ -28,7 +28,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="Tarifários"
                 android:textAllCaps="true"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimaryVariant"
                 android:textSize="24sp"
                 android:typeface="serif" />
 
@@ -281,7 +281,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="Pontos de Venda Assitida"
                 android:textAllCaps="true"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimaryVariant"
                 android:textSize="24sp"
                 android:typeface="serif" />
 
@@ -321,7 +321,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="Contactos"
                 android:textAllCaps="true"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimaryVariant"
                 android:textSize="24sp"
                 android:typeface="serif" />
 
@@ -344,7 +344,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="App suporte"
                 android:textAllCaps="true"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimaryVariant"
                 android:textSize="24sp"
                 android:typeface="serif"/>
 

@@ -56,9 +56,9 @@ public class TimetableAdapter extends RecyclerView.Adapter<TimetableAdapter.Time
         holder.stopName.setWidth(totalWidth);
 
         if (position % 2 == 0) {
-            holder.stopName.setBackgroundColor(holder.itemView.getContext().getColor(R.color.colorSecondary));
+            holder.stopName.setBackgroundColor(holder.itemView.getContext().getColor(R.color.rowPrimary));
         } else {
-            holder.stopName.setBackgroundColor(holder.itemView.getContext().getColor(R.color.colorSurface));
+            holder.stopName.setBackgroundColor(holder.itemView.getContext().getColor(R.color.rowAlternate));
         }
 
         holder.timesRecyclerView.setHasFixedSize(true);
@@ -82,9 +82,9 @@ public class TimetableAdapter extends RecyclerView.Adapter<TimetableAdapter.Time
             }
         });
         if (position % 2 == 0) {
-            holder.timesRecyclerView.setBackgroundColor(holder.itemView.getContext().getColor(R.color.colorSecondary));
+            holder.timesRecyclerView.setBackgroundColor(holder.itemView.getContext().getColor(R.color.rowPrimary));
         } else {
-            holder.timesRecyclerView.setBackgroundColor(holder.itemView.getContext().getColor(R.color.colorSurface));
+            holder.timesRecyclerView.setBackgroundColor(holder.itemView.getContext().getColor(R.color.rowAlternate));
         }
     }
 

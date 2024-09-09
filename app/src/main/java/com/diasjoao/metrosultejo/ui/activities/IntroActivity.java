@@ -15,11 +15,11 @@ public class IntroActivity extends AppIntro2 {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addSlide(AppIntroFragment.newInstance("Olá", getResources().getString(R.string.intro_1), R.drawable.intro_1, getResources().getColor(R.color.colorPrimaryDark)));
-        addSlide(AppIntroFragment.newInstance("Próximo", getResources().getString(R.string.intro_2), R.drawable.intro_2, getResources().getColor(R.color.colorPrimaryDark)));
-        addSlide(AppIntroFragment.newInstance("Horários", getResources().getString(R.string.intro_3), R.drawable.intro_3, getResources().getColor(R.color.colorPrimaryDark)));
-        addSlide(AppIntroFragment.newInstance("Mapa", getResources().getString(R.string.intro_4), R.drawable.intro_4, getResources().getColor(R.color.colorPrimaryDark)));
-        addSlide(AppIntroFragment.newInstance("Informação", getResources().getString(R.string.intro_5), R.drawable.intro_5, getResources().getColor(R.color.colorPrimaryDark)));
+        addSlide(AppIntroFragment.newInstance("Olá", getResources().getString(R.string.intro_1), R.drawable.intro_1, getResources().getColor(R.color.colorPrimaryVariant)));
+        addSlide(AppIntroFragment.newInstance("Próximo", getResources().getString(R.string.intro_2), R.drawable.intro_2, getResources().getColor(R.color.colorPrimaryVariant)));
+        addSlide(AppIntroFragment.newInstance("Horários", getResources().getString(R.string.intro_3), R.drawable.intro_3, getResources().getColor(R.color.colorPrimaryVariant)));
+        addSlide(AppIntroFragment.newInstance("Mapa", getResources().getString(R.string.intro_4), R.drawable.intro_4, getResources().getColor(R.color.colorPrimaryVariant)));
+        addSlide(AppIntroFragment.newInstance("Informação", getResources().getString(R.string.intro_5), R.drawable.intro_5, getResources().getColor(R.color.colorPrimaryVariant)));
 
         showSkipButton(true);
     }
