@@ -1,16 +1,56 @@
 {
   "lines": [
-    [
-      { "lat": 38.6635900, "lon": -9.2073900 },
-      { "lat": 38.6645500, "lon": -9.2002900 },
-      { "lat": 38.6655768, "lon": -9.1940031 },
-      { "lat": 38.6640017, "lon": -9.1903444 }
-    ],
-    [
-
-    ],
-    [
-
-    ]
+    {
+      "id": 1,
+      "color": "linha1",
+      "stations": [
+        { "id": 1, "name": "Corroios", "lat": 38.6370504, "lon": -9.1510884 },
+        { "id": 2, "name": "Casa do Povo", "lat": 38.6424629, "lon": -9.1518338 },
+        { "id": 3, "name": "Stº Amaro", "lat": 38.6485410, "lon": -9.1531887 },
+        { "id": 4, "name": "Laranjeiro", "lat": 38.6559950, "lon": -9.1545403 },
+        { "id": 5, "name": "António Gedeão", "lat": 38.6605044, "lon": -9.1573571 },
+        { "id": 6, "name": "Parque da Paz", "lat": 38.6645600, "lon": -9.1599900 },
+        { "id": 7, "name": "Cova da Piedade", "lat": 38.6678100, "lon": -9.1647400 },
+        { "id": 8, "name": "Bento Gonçalves", "lat": 38.6733862, "lon": -9.1664010 },
+        { "id": 9, "name": "Almada", "lat": 38.6765482, "lon": -9.1641909 },
+        { "id": 10, "name": "S. João Baptista", "lat": 38.6795200, "lon": -9.1576000 },
+        { "id": 11, "name": "Gil Vicente", "lat": 38.6824931, "lon": -9.1522778 },
+        { "id": 12, "name": "25 de Abril", "lat": 38.6842368, "lon": -9.1498625 },
+        { "id": 13, "name": "Cacilhas", "lat": 38.6878414, "lon": -9.1474198 }
+      ]
+    },
+    {
+      "id": 2,
+      "color": "linha2",
+      "stations": [
+        { "id": 1, "name": "Pragal", "lat": 38.6662430, "lon": -9.1799545 },
+        { "id": 2, "name": "Ramalha", "lat": 38.6689219, "lon": -9.1701407 },
+        { "id": 3, "name": "Cova da Piedade", "lat": 38.6678100, "lon": -9.1647400 },
+        { "id": 4, "name": "Parque da Paz", "lat": 38.6645600, "lon": -9.1599900 },
+        { "id": 5, "name": "António Gedeão", "lat": 38.6605044, "lon": -9.1573571 },
+        { "id": 6, "name": "Laranjeiro", "lat": 38.6559950, "lon": -9.1545403 },
+        { "id": 7, "name": "Stº Amaro", "lat": 38.6485410, "lon": -9.1531887 },
+        { "id": 8, "name": "Casa do Povo", "lat": 38.6424629, "lon": -9.1518338 },
+        { "id": 9, "name": "Corroios", "lat": 38.6370504, "lon": -9.1510884 }
+      ]
+    },
+    {
+      "id": 3,
+      "color": "linha3",
+      "stations": [
+        { "id": 1, "name": "Universidade", "lat": 38.6635900, "lon": -9.2073900 },
+        { "id": 2, "name": "Monte de Caparica", "lat": 38.6645500, "lon": -9.2002900 },
+        { "id": 3, "name": "Fomega", "lat": 38.6655768, "lon": -9.1940031 },
+        { "id": 4, "name": "Boa Esperança", "lat": 38.6640017, "lon": -9.1903444 },
+        { "id": 5, "name": "Pragal", "lat": 38.6662430, "lon": -9.1799545 },
+        { "id": 6, "name": "Ramalha", "lat": 38.6689219, "lon": -9.1701407 },
+        { "id": 7, "name": "Bento Gonçalves", "lat": 38.6733862, "lon": -9.1664010 },
+        { "id": 8, "name": "Almada", "lat": 38.6765482, "lon": -9.1641909 },
+        { "id": 9, "name": "S. João Baptista", "lat": 38.6795200, "lon": -9.1576000 },
+        { "id": 10, "name": "Gil Vicente", "lat": 38.6824931, "lon": -9.1522778 },
+        { "id": 11, "name": "25 de Abril", "lat": 38.6842368, "lon": -9.1498625 },
+        { "id": 12, "name": "Cacilhas", "lat": 38.6878414, "lon": -9.1474198 }
+      ]
+    }
   ]
 }

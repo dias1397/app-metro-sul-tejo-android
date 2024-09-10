@@ -18,6 +18,7 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.Polyline;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MapActivity extends AppCompatActivity {
@@ -41,9 +42,9 @@ public class MapActivity extends AppCompatActivity {
 
         mapView = findViewById(R.id.mapView);
         mapView.setMultiTouchControls(true);
-        mapView.getController().setZoom(15.0);
+        mapView.getController().setZoom(14.5);
 
-        GeoPoint startPoint = new GeoPoint(38.6635900, -9.2073900);
+        GeoPoint startPoint = new GeoPoint(38.6662430, -9.1779545);
         mapView.getController().setCenter(startPoint);
 
         drawable = getResources().getDrawable(R.drawable.custom_marker, null);
@@ -54,25 +55,36 @@ public class MapActivity extends AppCompatActivity {
     }
 
     private void addPolylinesAndMarkers() {
-        for (List<GeoPoint> line : dataManager.getLines()) { // Assuming 3 lines
+        for (DataManager.Line line : dataManager.getLines()) { // Assuming 3 lines
             addPolylines(line);
             addMarkers(line);
         }
     }
 
-    private void addPolylines(List<GeoPoint> points) {
+    private void addPolylines(DataManager.Line line) {
         Polyline polyline = new Polyline();
-        polyline.setPoints(points);
-        //polyline.setColor(); // Or use setColor if available
-        polyline.setWidth(5.0f);
+
+        polyline.setColor(
+                getColor(getResources().getIdentifier(line.getColor(), "color", this.getPackageName()))
+        );
+
+        List<GeoPoint> geoPoints = new ArrayList<>();
+        for (DataManager.Station station : line.getStations()) {
+            geoPoints.add(station.getGeoPoint());
+        }
+        polyline.setPoints(geoPoints);
+
+        polyline.setWidth(15.0f);
+
         mapView.getOverlays().add(polyline);
     }
 
-    private void addMarkers(List<GeoPoint> points) {
-        for (GeoPoint point : points) {
+    private void addMarkers(DataManager.Line line) {
+        for (DataManager.Station station : line.getStations()) {
             Marker marker = new Marker(mapView);
-            marker.setPosition(point);
-            //marker.setTitle();
+
+            marker.setPosition(station.getGeoPoint());
+            marker.setTitle(station.getName());
 
             marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
             marker.setIcon(drawable);

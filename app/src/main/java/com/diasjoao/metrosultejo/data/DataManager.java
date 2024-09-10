@@ -12,7 +12,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataManager {
-    private List<List<GeoPoint>> lines = new ArrayList<>();
+
+    // Line class to store line metadata and its stations
+    public class Line {
+        int id;
+        String color;
+        List<Station> stations;
+
+        public Line(int id, String color, List<Station> stations) {
+            this.id = id;
+            this.color = color;
+            this.stations = stations;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        public List<Station> getStations() {
+            return stations;
+        }
+    }
+
+    // Station class to store station metadata
+    public class Station {
+        int id;
+        String name;
+        GeoPoint geoPoint;
+
+        public Station(int id, String name, GeoPoint geoPoint) {
+            this.id = id;
+            this.name = name;
+            this.geoPoint = geoPoint;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public GeoPoint getGeoPoint() {
+            return geoPoint;
+        }
+    }
+
+    // Stores all parsed lines with metadata
+    private List<Line> lines = new ArrayList<>();
 
     public DataManager(Context context) {
         loadData(context);
@@ -28,31 +72,64 @@ public class DataManager {
             reader.beginArray();
 
             while (reader.hasNext()) {
-                List<GeoPoint> line = new ArrayList<>();
-                reader.beginArray();
+                List<Station> stations = new ArrayList<>();
+                String color = null;
+                int lineId = 0;
+
+                reader.beginObject(); // Start line object
 
                 while (reader.hasNext()) {
-                    reader.beginObject();
-                    double lat = 0.0;
-                    double lon = 0.0;
+                    String linePropertyName = reader.nextName();
+                    if (linePropertyName.equals("id")) {
+                        lineId = reader.nextInt();
+                    } else if (linePropertyName.equals("color")) {
+                        color = reader.nextString();
+                    } else if (linePropertyName.equals("stations")) {
+                        reader.beginArray(); // Begin stations array
 
-                    while (reader.hasNext()) {
-                        String name = reader.nextName();
-                        if (name.equals("lat")) {
-                            lat = reader.nextDouble();
-                        } else if (name.equals("lon")) {
-                            lon = reader.nextDouble();
-                        } else {
-                            reader.skipValue();
+                        while (reader.hasNext()) {
+                            int stationId = 0;
+                            String stationName = null;
+                            double lat = 0.0;
+                            double lon = 0.0;
+
+                            reader.beginObject();
+                            while (reader.hasNext()) {
+                                String stationPropertyName = reader.nextName();
+                                switch (stationPropertyName) {
+                                    case "id":
+                                        stationId = reader.nextInt();
+                                        break;
+                                    case "name":
+                                        stationName = reader.nextString();
+                                        break;
+                                    case "lat":
+                                        lat = reader.nextDouble();
+                                        break;
+                                    case "lon":
+                                        lon = reader.nextDouble();
+                                        break;
+                                    default:
+                                        reader.skipValue(); // Skip unexpected values
+                                        break;
+                                }
+                            }
+                            reader.endObject();
+
+                            // Create and add station
+                            stations.add(new Station(stationId, stationName, new GeoPoint(lat, lon)));
                         }
-                    }
 
-                    reader.endObject();
-                    line.add(new GeoPoint(lat, lon));
+                        reader.endArray(); // End stations array
+                    } else {
+                        reader.skipValue(); // Skip other line properties if any
+                    }
                 }
 
-                reader.endArray();
-                lines.add(line);
+                reader.endObject(); // End line object
+
+                // Add the parsed line with its stations
+                lines.add(new Line(lineId, color, stations));
             }
 
             reader.endArray();
@@ -63,8 +140,8 @@ public class DataManager {
         }
     }
 
-    public List<List<GeoPoint>> getLines() {
+    // Getter for lines with metadata
+    public List<Line> getLines() {
         return lines;
     }
 }
-
