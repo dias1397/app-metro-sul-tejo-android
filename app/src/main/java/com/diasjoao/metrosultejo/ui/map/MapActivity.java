@@ -70,11 +70,28 @@ public class MapActivity extends AppCompatActivity {
 
         List<GeoPoint> geoPoints = new ArrayList<>();
         for (DataManager.Station station : line.getStations()) {
-            geoPoints.add(station.getGeoPoint());
+            GeoPoint temp = station.getGeoPoint().clone();
+
+            if (line.getColor().equals("linha1")) {
+                //temp.setLatitude(temp.getLatitude() + 0.0002);
+                temp.setLongitude(temp.getLongitude() + 0.0002);
+            }
+
+            if (line.getColor().equals("linha2")) {
+                temp.setLatitude(temp.getLatitude() - 0.0002);
+                temp.setLongitude(temp.getLongitude() - 0.0002);
+            }
+
+            if (line.getColor().equals("linha3")) {
+                temp.setLatitude(temp.getLatitude() + 0.0002);
+                temp.setLongitude(temp.getLongitude() - 0.0002);
+            }
+
+            geoPoints.add(temp);
         }
         polyline.setPoints(geoPoints);
 
-        polyline.setWidth(15.0f);
+        polyline.setWidth(10.0f);
 
         mapView.getOverlays().add(polyline);
     }
