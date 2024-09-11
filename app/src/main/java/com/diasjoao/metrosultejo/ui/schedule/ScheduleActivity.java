@@ -44,6 +44,8 @@ public class ScheduleActivity extends AppCompatActivity {
             return insets;
         });
 
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
+
         Intent intent = getIntent();
         seasonId = intent.getIntExtra("seasonId", 1);
 

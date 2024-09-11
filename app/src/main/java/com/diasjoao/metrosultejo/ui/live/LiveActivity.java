@@ -41,6 +41,8 @@ public class LiveActivity extends AppCompatActivity {
             return insets;
         });
 
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
+
         // get initialization info
         Intent intent = getIntent();
         lineId = intent.getIntExtra("lineId", 1);

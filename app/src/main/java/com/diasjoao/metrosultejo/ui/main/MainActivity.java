@@ -1,8 +1,10 @@
 package com.diasjoao.metrosultejo.ui.main;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
 
         dayNightSwitch = findViewById(R.id.daynight);
         dayNightSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
