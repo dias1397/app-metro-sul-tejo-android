@@ -17,6 +17,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.diasjoao.metrosultejo.R;
+import com.diasjoao.metrosultejo.ui.info.InfoActivity;
 import com.diasjoao.metrosultejo.ui.map.MapActivity;
 import com.diasjoao.metrosultejo.ui.schedule.ScheduleActivity;
 import com.diasjoao.metrosultejo.ui.search.SearchFragment;
@@ -81,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button infoButton = findViewById(R.id.info_button);
         infoButton.setOnClickListener(view -> {
-            // infoActivity
+            Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+            startActivity(intent);
         });
 
         MaterialCardView line2CardView = findViewById(R.id.line_card_2);

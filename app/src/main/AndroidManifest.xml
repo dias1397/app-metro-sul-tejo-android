@@ -14,16 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.live.LiveActivity"
             android:exported="true" />
@@ -35,6 +34,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.schedule.ScheduleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.info.InfoActivity"
             android:exported="true" />
         <activity
             android:name=".ui.activities.LiveActivity"
