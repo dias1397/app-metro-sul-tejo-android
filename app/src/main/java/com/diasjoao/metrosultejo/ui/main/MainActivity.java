@@ -13,7 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.ui.info.InfoActivity;
+import com.diasjoao.metrosultejo.ui.tariffs.TariffsActivity;
 import com.diasjoao.metrosultejo.ui.map.MapActivity;
 import com.diasjoao.metrosultejo.ui.schedule.ScheduleActivity;
 import com.diasjoao.metrosultejo.ui.search.SearchFragment;
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
         FloatingActionButton infoButton = findViewById(R.id.info_button);
         infoButton.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+            Intent intent = new Intent(MainActivity.this, TariffsActivity.class);
             startActivity(intent);
         });
 

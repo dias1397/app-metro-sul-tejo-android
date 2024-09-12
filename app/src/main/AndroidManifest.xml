@@ -36,7 +36,7 @@
             android:name=".ui.schedule.ScheduleActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.info.InfoActivity"
+            android:name=".ui.tariffs.TariffsActivity"
             android:exported="true" />
         <activity
             android:name=".ui.activities.LiveActivity"
