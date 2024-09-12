@@ -35,75 +35,128 @@
             android:layout_height="wrap_content" />
     </com.google.android.material.card.MaterialCardView>
 
-    <LinearLayout
-        android:id="@+id/linear_layout"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/buttons_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:orientation="horizontal"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_card">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/lines_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="Linhas"
-            android:textSize="12sp"
-            app:elevation="4dp"
-            app:icon="@drawable/baseline_directions_bus_24"
-            app:iconGravity="textTop"
-            style="@style/Widget.MaterialComponents.Button.Icon" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/schedule_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="Horário"
-            android:textSize="12sp"
-            app:elevation="4dp"
-            app:icon="@drawable/baseline_schedule_24"
-            app:iconGravity="textTop"
-            style="@style/Widget.MaterialComponents.Button.Icon"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/map_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="Mapa"
-            android:textSize="12sp"
-            app:elevation="4dp"
-            app:icon="@drawable/baseline_map_24"
-            app:iconGravity="textTop"
-            style="@style/Widget.MaterialComponents.Button.Icon" />
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/lines_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:contentDescription="TODO"
+                        app:tint="?attr/colorOnPrimary"
+                        app:backgroundTint="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorSecondary"
+                        app:srcCompat="@drawable/baseline_directions_bus_24" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/info_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="Info"
-            android:textSize="12sp"
-            app:elevation="4dp"
-            app:icon="@drawable/baseline_info_24"
-            app:iconGravity="textTop"
-            style="@style/Widget.MaterialComponents.Button.Icon" />
-    </LinearLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="LINHAS"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/schedule_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:contentDescription="TODO"
+                        app:tint="?attr/colorOnPrimary"
+                        app:backgroundTint="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorSecondary"
+                        app:srcCompat="@drawable/baseline_schedule_24" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="HORÁRIOS"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/map_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:contentDescription="TODO"
+                        app:tint="?attr/colorOnPrimary"
+                        app:backgroundTint="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorSecondary"
+                        app:srcCompat="@drawable/baseline_map_24" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="MAPA"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/info_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:contentDescription="TODO"
+                        app:tint="?attr/colorOnPrimary"
+                        app:backgroundTint="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorSecondary"
+                        app:srcCompat="@drawable/baseline_info_24" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="TARIFAS"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+                </LinearLayout>
+            </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/line_card_2"
@@ -115,7 +168,7 @@
         app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear_layout">
+        app:layout_constraintTop_toBottomOf="@+id/buttons_card">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"

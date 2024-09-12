@@ -1,11 +1,7 @@
 package com.diasjoao.metrosultejo.ui.main;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
@@ -23,6 +19,7 @@ import com.diasjoao.metrosultejo.ui.schedule.ScheduleActivity;
 import com.diasjoao.metrosultejo.ui.search.SearchFragment;
 import com.diasjoao.metrosultejo.ui.routes.RoutesActivity;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,26 +58,26 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.fragment_container, searchFragment)
                 .commit();
 
-        Button linesButton = findViewById(R.id.lines_button);
+        FloatingActionButton linesButton = findViewById(R.id.lines_button);
         linesButton.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, RoutesActivity.class);
             startActivity(intent);
         });
 
-        Button scheduleButton = findViewById(R.id.schedule_button);
+        FloatingActionButton scheduleButton = findViewById(R.id.schedule_button);
         scheduleButton.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, ScheduleActivity.class);
             intent.putExtra("seasonId", 2);
             startActivity(intent);
         });
 
-        Button mapButton = findViewById(R.id.map_button);
+        FloatingActionButton mapButton = findViewById(R.id.map_button);
         mapButton.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, MapActivity.class);
             startActivity(intent);
         });
 
-        Button infoButton = findViewById(R.id.info_button);
+        FloatingActionButton infoButton = findViewById(R.id.info_button);
         infoButton.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, InfoActivity.class);
             startActivity(intent);
