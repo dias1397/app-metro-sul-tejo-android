@@ -2,6 +2,8 @@ package com.diasjoao.metrosultejo.ui.tariffs;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,5 +39,8 @@ public class TariffsDetailsActivity extends AppCompatActivity {
         });
 
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
+
+        TextView tariffTextView = findViewById(R.id.tariffText);
+        tariffTextView.setText(getResources().getString(R.string.tariff));
     }
 }

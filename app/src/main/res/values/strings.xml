@@ -386,4 +386,15 @@
         <item>80 €</item>
         <item>60 €</item>
     </string-array>
+
+    <string name="tariff">
+        <b>Definição</b>
+        \nTitulo disponibilizado a quem antecipadamente possua um passe válido para um ou mais Operadores de Transporte e, para uma zona que faça conexão com algum ponto da rede do metro. Também disponível para o passe intermodal.
+        \n\n<b>Validade</b>
+        \nPermite viajar em toda a rede do metro pelo período de validade do passe antecipadamente existente. É obrigatório a validação no inicio de cada viagem.
+        \n\n<b>Aquisição</b>
+        \nPode ser adquirido/carregado nas máquinas automáticas de venda, na bilheteira ou em agentes autorizados MTS.
+        \n\n<b>Suporte</b>
+        \nCartão Lisboa Viva/ Navegante, previamente adquirido.
+    </string>
 </resources>
