@@ -1,6 +1,7 @@
 package com.diasjoao.metrosultejo.ui.tariffs;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,10 @@ public class TariffRecyclerViewAdapter extends RecyclerView.Adapter<TariffRecycl
         holder.ticketPrice.setText("Preço: " + tariff.getPrice());
 
         holder.itemView.setOnClickListener(v -> {
-            
+            Intent intent = new Intent(context, TariffsDetailsActivity.class);
+            intent.putExtra("TARIFF_NAME", tariff.getName());
+            intent.putExtra("TARIFF_ID", position);
+            context.startActivity(intent);
         });
     }
 
