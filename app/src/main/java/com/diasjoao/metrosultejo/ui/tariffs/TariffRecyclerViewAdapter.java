@@ -36,7 +36,7 @@ public class TariffRecyclerViewAdapter extends RecyclerView.Adapter<TariffRecycl
     public void onBindViewHolder(@NonNull TariffViewHolder holder, int position) {
         Tariff tariff = tariffList.get(position);
         holder.ticketName.setText(tariff.getName());
-        holder.ticketPrice.setText(tariff.getPrice());
+        holder.ticketPrice.setText("Preço: " + tariff.getPrice());
 
         holder.itemView.setOnClickListener(v -> {
             

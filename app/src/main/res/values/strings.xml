@@ -330,4 +330,60 @@
     <string name="line_1_name">Cacilhas ⟷ Corroios</string>
     <string name="line_2_name">Corroios ↔ Pragal</string>
     <string name="line_3_name">Cacilhas ↔ Universidade</string>
+
+    <!-- Array for Tariff Names -->
+    <string-array name="tariff_names">
+        <item>Bilhete Simples</item>
+        <item>Zapping</item>
+        <item>Pré-Comprado (10 Bilhetes)</item>
+        <item>Passe MTS</item>
+        <item>Passe MTS 4_18@escola.tp</item>
+        <item>Passe MTS Sub23@superior.tp</item>
+        <item>Passe MTS 3ª Idade</item>
+        <item>Passe MTS Reformado/Pensionista</item>
+        <item>Complemento MTS</item>
+        <item>Complemento MTS 4_18@escola.tp</item>
+        <item>Complemento MTS Sub23@superior.tp</item>
+        <item>Complemento MTS 3ª Idade</item>
+        <item>Complemento MTS Reformado/Pensionista</item>
+        <item>Navegante Metropolitano</item>
+        <item>Navegante Municipal</item>
+        <item>Navegante 12</item>
+        <item>Navegante +65</item>
+        <item>Navegante Metropolitano 4_18 e sub23</item>
+        <item>Navegante Metropolitano Social + (A)</item>
+        <item>Navegante Municipal Social + (A)</item>
+        <item>Navegante Metropolitano Social</item>
+        <item>Navegante Municipal Social + (B)</item>
+        <item>Navegante Metropolitano Família</item>
+        <item>Navegante Municipal Família</item>
+    </string-array>
+
+    <!-- Array for Tariff Prices -->
+    <string-array name="tariff_prices">
+        <item>0,85 €</item>
+        <item>0,85 €</item>
+        <item>0,75 €</item>
+        <item>16,75 €</item>
+        <item>Gratuito</item>
+        <item>Gratuito</item>
+        <item>9,20 €</item>
+        <item>9,20 €</item>
+        <item>9 €</item>
+        <item>Gratuito</item>
+        <item>Gratuito</item>
+        <item>4,95 €</item>
+        <item>4,95 €</item>
+        <item>40 €</item>
+        <item>30 €</item>
+        <item>Gratuito</item>
+        <item>20 €</item>
+        <item>Gratuito</item>
+        <item>20 €</item>
+        <item>15 €</item>
+        <item>30 €</item>
+        <item>22,50 €</item>
+        <item>80 €</item>
+        <item>60 €</item>
+    </string-array>
 </resources>
