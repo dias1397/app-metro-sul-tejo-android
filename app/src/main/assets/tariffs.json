@@ -1,0 +1,169 @@
+{
+  "tarifarios": [
+    {
+      "title": "Bilhete Simples",
+      "price": "0,85 €",
+      "validade": "Permite viajar em toda a rede do metro durante 1h após a primeira validação. É obrigatória a validação no inicio de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas máquinas automáticas de venda, na bilheteira ou em agentes autorizados MTS.",
+      "suporte": "Cartão Viva Viagem/Navegante Ocasional, já adquirido ou comprado em simultâneo com o título pelo preço de 0,50 cêntimos."
+    },
+    {
+      "title": "Zapping",
+      "price": "0,85 €",
+      "validade": "Permite viajar em toda a rede do metro durante 1h após a primeira validação. É obrigatória a validação no inicio de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas máquinas automáticas de venda, na bilheteira MTS, agentes autorizados MTS e qualquer outro operador aderente ao Zapping. Os carregamentos de zapping são de acordo com os seguintes montantes: 3€, 5€, 10€, 15€, 20€, 25€, 30€, 35€ e 40€, até um saldo máximo de 40€.",
+      "suporte": "Cartão Viva Viagem/Navegante Ocasional, já adquirido ou comprado em simultâneo com o título pelo preço de 0,50 cêntimos."
+    },
+    {
+      "title": "Pré-Comprado (10 Bilhetes)",
+      "price": "0.75 €",
+      "validade": "Cada bilhete permite viajar em toda a rede do metro durante 1h após a primeira validação. È obrigatória a validação no inicio de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas máquinas automáticas de venda, na bilheteira ou em agentes autorizados MTS.",
+      "suporte": "Cartão Viva Viagem/Navegante Ocasional, já adquirido ou comprado em simultâneo com o título pelo preço de 0,50 cêntimos."
+    },
+    {
+      "title": "Passe MTS",
+      "price": "16.75 €",
+      "validade": "Permite viajar em toda a rede do metro por um período de 30 dias. É obrigatório a validação no inicio de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas máquinas automáticas de venda, na bilheteira ou em agentes autorizados MTS.",
+      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido"
+    },
+    {
+      "title": "Passe MTS 4_18@escola.tp",
+      "price": "Gratuito",
+      "descrição": "Para estudantes dos 4 aos 18 anos, (inclusive), que possuam cartão com perfil 4_18.",
+      "validade": "Permite viajar em toda a rede do metro por um período de 30 dias. É obrigatório a validação no início de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas bilheteiras MTS ou em agentes autorizados MTS.",
+      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido"
+    },
+    {
+      "title": "Passe MTS Sub23@superior.tp",
+      "price": "Gratuito",
+      "descrição": "Para estudantes até aos 23 anos (inclusive), que frequentam o ensino superior e que possuam cartão com perfil sub23.",
+      "validade": "Permite viajar em toda a rede do metro por um período de 30 dias. É obrigatório a validação no início de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas bilheteiras MTS ou em agentes autorizados MTS.",
+      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
+    },
+    {
+      "title": "Passe MTS 3ª Idade",
+      "price": "9,20 €",
+      "descrição": "Para pessoas com pelo menos 65 anos, que possuam Cartão Lisboa Viva de 3ª Idade.",
+      "validade": "Permite viajar em toda a rede do metro por um período de 30 dias. É obrigatório a validação no início de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas máquinas automáticas de venda, na bilheteira ou em agentes autorizados MTS.",
+      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
+    },
+    {
+      "title": "Passe MTS Reformado/Pensionista",
+      "price": "9,20 €",
+      "descrição": "Para pessoas cujo rendimento do seu agregado familiar seja igual ou inferior ao salário mínimo nacional, que possuam Cartão Lisboa Viva de reformado/pensionista.",
+      "validade": "Permite viajar em toda a rede do metro por um período de 30 dias. É obrigatório a validação no início de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas máquinas automáticas de venda, na bilheteira ou em agentes autorizados MTS.",
+      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
+    },
+    {
+      "title": "Complemento MTS",
+      "price": "9 €",
+      "definição": "Titulo disponibilizado a quem antecipadamente possua um passe válido para um ou mais Operadores de Transporte e, para uma zona que faça conexão com algum ponto da rede do metro. Também disponível para o passe intermodal.",
+      "validade": "Permite viajar em toda a rede do metro pelo período de validade do passe antecipadamente existente. É obrigatório a validação no inicio de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas máquinas automáticas de venda, na bilheteira ou em agentes autorizados MTS.",
+      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
+    },
+    {
+      "title": "Complemento MTS 4_18@escola.tp",
+      "price": "Gratuito",
+      "descrição": "Para estudantes dos 4 aos 18 anos, (inclusive), que possuam cartão com perfil 4_18.\n\nO complemento será disponibilizado a quem antecipadamente possua um passe 4_18@escola.tp, válido para um ou mais Operadores de Transporte, para uma zona que faça conexão com algum ponto da rede do metro.",
+      "validade": "Permite viajar em toda a rede do metro pelo período de validade do passe antecipadamente existente. É obrigatório a validação no inicio de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas bilheteiras MTS ou em agentes autorizados MTS.",
+      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
+    },
+    {
+      "title": "Complemento MTS Sub23@superior.tp",
+      "price": "Gratuito",
+      "descrição": "Para estudantes até aos 23 anos (inclusive), que frequentam o ensino superior e que possuam cartão com perfil sub23.\n\nO complemento será disponibilizado a quem antecipadamente possua um passe sub23@superior.tp, válido para um ou mais Operadores de Transporte, para uma zona que faça conexão com algum ponto da rede do metro.",
+      "validade": "Permite viajar em toda a rede do metro pelo período de validade do passe antecipadamente existente. É obrigatório a validação no inicio de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas bilheteiras MTS ou em agentes autorizados MTS.",
+      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
+    },
+    {
+      "title": "Complemento MTS 3ª Idade",
+      "price": "4,95 €",
+      "descrição": "Para pessoas com pelo menos 65 anos, que possuam Cartão Lisboa Viva de 3ª Idade. O complemento será disponibilizado desde que o passe já existente seja de 3ª Idade.",
+      "definição": "Titulo disponibilizado a quem antecipadamente possua um passe válido para um ou mais Operadores de Transporte e, para uma zona que faça conexão com algum ponto da rede do metro. Também disponível para o passe intermodal.",
+      "validade": "Permite viajar em toda a rede do metro pelo período de validade do passe antecipadamente existente. É obrigatório a validação no inicio de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas máquinas automáticas de venda, na bilheteira ou em agentes autorizados MTS.",
+      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
+    },
+    {
+      "title": "Complemento MTS Reformado/Pensionista",
+      "price": "4,95 €",
+      "descrição": "Para pessoas cujo rendimento do seu agregado familiar seja igual ou inferior ao salário mínimo nacional, que possuam Cartão Lisboa Viva de reformado/pensionista. O complemento será disponibilizado desde que o passe já existente seja de reformado/pensionista.",
+      "definição": "Titulo disponibilizado a quem antecipadamente possua um passe válido para um ou mais Operadores de Transporte e, para uma zona que faça conexão com algum ponto da rede do metro. Também disponível para o passe intermodal.",
+      "validade": "Permite viajar em toda a rede do metro pelo período de validade do passe antecipadamente existente. É obrigatório a validação no inicio de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas máquinas automáticas de venda, na bilheteira ou em agentes autorizados MTS.",
+      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
+    },
+    {
+      "title": "Navegante Metropolitano",
+      "price": "40 €",
+      "validade": "Permite viajar em toda a rede do metro e em todos os serviços de transporte público regular de passageiros, dos 18 municípios da área metropolitana de Lisboa. Tem uma validade de mês fixo que vai desde o primeiro ao último dia do mês. É obrigatória a validação no inicio de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas máquinas automáticas de venda, na bilheteira ou em agentes autorizados MTS.",
+      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
+    },
+    {
+      "title": "Navegante Municipal",
+      "price": "30 €",
+      "validade": "Permite viajar em todos os serviços de transporte público regular de passageiros, dentro do limite geográfico do município selecionado. Tem uma validade de mês fixo que vai desde o primeiro ao último dia do mês. É obrigatória a validação no inicio de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas máquinas automáticas de venda, na bilheteira ou em agentes autorizados MTS.",
+      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
+    },
+    {
+      "title": "Navegante 12",
+      "price": "Gratuito",
+      "validade": "Permite viajar em toda a rede do metro e em todos os serviços de transporte público regular de passageiros, dos 18 municípios da área metropolitana de Lisboa. Tem a validade até último dia do mês em que a criança faz 13 anos, possa utilizar todos os serviços de transporte público regular de passageiros, em todos os 18 municípios da área metropolitana de Lisboa.",
+      "aquisição": "Para usufruir do passe Navegante 12 é necessário que a criança seja possuidora de um cartão Lisboa VIVA com perfil Navegante12 actualizado.",
+      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
+    },
+    {
+      "title": "Navegante +65",
+      "price": "20 €",
+      "validade": "Permite viajar em toda a rede do metro e em todos os serviços de transporte público regular de passageiros, dos 18 municípios da área metropolitana de Lisboa. Tem uma validade de mês fixo que vai desde o primeiro ao último dia do mês. É obrigatória a validação no inicio de cada viagem.",
+      "aquisição": "Pode ser adquirido/carregado nas máquinas automáticas de venda, na bilheteira ou em agentes autorizados MTS.",
+      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
+    },
+    {
+      "title": "Navegante Metropolitano 4_18 e sub23",
+      "price": "Gratuito",
+      "descrição": "O tarifário 4_18 é destinado a estudantes dos 4 aos 18 anos, (inclusive), que possuam o cartão com perfil 4_18.\n\nO tarifário sub23 é destinado a estudantes até aos 23 anos, (inclusive), que possuam o cartão com perfil sub23."
+    },
+    {
+      "title": "Navegante Metropolitano Social + (A)",
+      "price": "20 €",
+      "descrição": "O tarifário Social + A é destinado a beneficiários do complemento solidário para idosos e a beneficiários do rendimento social de inserção, que possuam o cartão Lisboa Viva com perfil Social + A."
+    },
+    {
+      "title": "Navegante Municipal Social + (A)",
+      "price": "15 €",
+      "descrição": "O tarifário Social + A é destinado a beneficiários do complemento solidário para idosos e a beneficiários do rendimento social de inserção, que possuam o cartão Lisboa Viva com perfil Social + A"
+    },
+    {
+      "title": "Navegante Metropolitano Social",
+      "price": "30 €",
+      "descrição": "O tarifário Social é destinado Reformados e Pensionistas com reforma mensal igual ou inferior a 1,2 vezes o valor do IAS (Indexante de Apoios Sociais); beneficiários do Subsídio de Desemprego de montante mensal igual ou inferior a 1,2 vezes o valor do IAS; clientes que integrem agregados familiares cujo rendimento médio mensal equivalente seja igual ou inferior a 1,2 vezes o valor do IAS, que possuam o cartão Lisboa Viva com perfil Social."
+    },
+    {
+      "title": "Navegante Municipal Social + (B)",
+      "price": "22,50 €",
+      "descrição": "O tarifário Social + B é destinado Reformados e Pensionistas com reforma mensal igual ou inferior a 1,2 vezes o valor do IAS (Indexante de Apoios Sociais); beneficiários do Subsídio de Desemprego de montante mensal igual ou inferior a 1,2 vezes o valor do IAS; clientes que integrem agregados familiares cujo rendimento médio mensal equivalente seja igual ou inferior a 1,2 vezes o valor do IAS, que possuam o cartão Lisboa Viva com perfil Social + B."
+    },
+    {
+      "title": "Navegante Metropolitano Família",
+      "price": "80 €",
+      "descrição": "Este passe permite que cada agregado familiar pague no máximo o valor de 2 passes Navegante Metropolitano, independentemente do número de elementos do agregado familiar. É válido em todas as empresas de serviço público de transporte de Passageiros, em todos os 18 municípios da Área Metropolitana de Lisboa. Tem as mesmas características do Navegante Metropolitano. Este título é exclusivo para agregados familiares registados no mesmo domicílio fiscal, (na autoridade tributária ou segurança social), residentes num dos 18 municípios da Área Metropolitana de Lisboa (AML).\n\nTerá uma validade mensal, para todos os membros do agregado familiar que o carreguem."
+    },
+    {
+      "title": "Navegante Municipal Família",
+      "price": "60 €",
+      "descrição": "Este passe permite que cada agregado familiar pague no máximo o valor de 2 passes Navegante Municipal independentemente do número de elementos do agregado familiar. É válido em todas as empresas de serviço público de transporte de passageiros nos limites geográficos do município escolhido de entre os 18 municípios da Área Metropolitana de Lisboa. Tem as mesmas características do Navegante Municipal. Este título é exclusivo para agregados familiares registados no mesmo domicílio fiscal, (na autoridade tributária ou segurança social), residentes num dos 18 municípios da Área Metropolitana de Lisboa (AML).\n\nTem uma validade mensal, para todos os membros do agregado familiar que o carreguem."
+    }
+  ]
+}
