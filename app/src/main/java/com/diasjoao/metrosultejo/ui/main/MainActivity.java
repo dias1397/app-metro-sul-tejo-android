@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 
 import androidx.activity.EdgeToEdge;
@@ -99,10 +100,25 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        MaterialCardView line2CardView = findViewById(R.id.line_card_2);
-        line2CardView.setOnClickListener(view -> {
-            Intent intent1 = new Intent(MainActivity.this, RoutesActivity.class);
-            startActivity(intent1);
+        LinearLayout line1_layout = findViewById(R.id.line1_layout);
+        line1_layout.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, RoutesActivity.class);
+            intent.putExtra("lineId", 0);
+            startActivity(intent);
+        });
+
+        LinearLayout line2_layout = findViewById(R.id.line2_layout);
+        line2_layout.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, RoutesActivity.class);
+            intent.putExtra("lineId", 1);
+            startActivity(intent);
+        });
+
+        LinearLayout line3_layout = findViewById(R.id.line3_layout);
+        line3_layout.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, RoutesActivity.class);
+            intent.putExtra("lineId", 2);
+            startActivity(intent);
         });
 
         MaterialCardView line3CardView = findViewById(R.id.line_card_3);

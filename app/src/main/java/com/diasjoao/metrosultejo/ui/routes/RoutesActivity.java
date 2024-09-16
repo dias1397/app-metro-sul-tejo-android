@@ -1,5 +1,6 @@
 package com.diasjoao.metrosultejo.ui.routes;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -35,6 +36,9 @@ public class RoutesActivity extends AppCompatActivity {
 
         RoutesPagerAdapter adapter = new RoutesPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
+
+        Intent intent = getIntent();
+        int lineId = intent.getIntExtra("lineId", 0);
 
         tabLayout.setupWithViewPager(viewPager);
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
@@ -72,5 +76,6 @@ public class RoutesActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
+        viewPager.setCurrentItem(lineId);
     }
 }
