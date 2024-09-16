@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.data.DataManager;
+import com.google.android.material.appbar.MaterialToolbar;
 
 import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
@@ -39,8 +40,13 @@ public class MapActivity extends AppCompatActivity {
             return insets;
         });
 
-        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(v -> {
+            getOnBackPressedDispatcher().onBackPressed();
+        });
 
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
 
         Configuration.getInstance().setUserAgentValue(getPackageName());
 

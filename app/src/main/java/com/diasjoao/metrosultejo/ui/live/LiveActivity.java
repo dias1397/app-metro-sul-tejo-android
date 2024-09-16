@@ -16,6 +16,7 @@ import com.diasjoao.metrosultejo.data.model.Station;
 import com.diasjoao.metrosultejo.data.repository.ScheduleRepository;
 import com.diasjoao.metrosultejo.helpers.DateHelper;
 import com.diasjoao.metrosultejo.ui.search.SearchFragment;
+import com.google.android.material.appbar.MaterialToolbar;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -39,6 +40,12 @@ public class LiveActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(v -> {
+            getOnBackPressedDispatcher().onBackPressed();
         });
 
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
