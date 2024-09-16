@@ -208,7 +208,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/line_1_name"
+                        android:text="@string/line11_name"
                         android:textSize="12sp"
                         android:textColor="?attr/colorOnPrimary"/>
                 </LinearLayout>
@@ -270,7 +270,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/line_2_name"
+                        android:text="@string/line21_name"
                         android:textSize="12sp"
                         android:textColor="?attr/colorOnPrimary"/>
                 </LinearLayout>
@@ -332,7 +332,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/line_3_name"
+                        android:text="@string/line31_name"
                         android:textSize="12sp"
                         android:textColor="?attr/colorOnPrimary"/>
                 </LinearLayout>

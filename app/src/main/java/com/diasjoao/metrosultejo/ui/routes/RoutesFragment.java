@@ -67,11 +67,11 @@ public class RoutesFragment extends Fragment {
     private String getLineName(String lineName) {
         switch (lineName) {
             case "LINHA 1":
-                return getResources().getString(R.string.line_1_name);
+                return getResources().getString(R.string.line11_name);
             case "LINHA 2":
-                return getResources().getString(R.string.line_2_name);
+                return getResources().getString(R.string.line21_name);
             case "LINHA 3":
-                return getResources().getString(R.string.line_3_name);
+                return getResources().getString(R.string.line31_name);
             default:
                 return null;
         }

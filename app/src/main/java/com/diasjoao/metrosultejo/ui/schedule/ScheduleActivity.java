@@ -64,12 +64,15 @@ public class ScheduleActivity extends AppCompatActivity {
         executorService = Executors.newSingleThreadExecutor();
         handler = new Handler(Looper.getMainLooper());
 
-        String line1 = getResources().getString(R.string.line_1_name);
-        String line2 = getResources().getString(R.string.line_2_name);
-        String line3 = getResources().getString(R.string.line_3_name);
+        String line11 = getResources().getString(R.string.line11_name);
+        String line12 = getResources().getString(R.string.line12_name);
+        String line21 = getResources().getString(R.string.line21_name);
+        String line22 = getResources().getString(R.string.line22_name);
+        String line31 = getResources().getString(R.string.line31_name);
+        String line32 = getResources().getString(R.string.line32_name);
 
         ArrayAdapter<String> lineAdapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, Arrays.asList(line1, line2, line3));
+                this, android.R.layout.simple_spinner_item, Arrays.asList(line11, line12, line21, line22, line31, line32));
         lineAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         lineSpinner.setAdapter(lineAdapter);
 

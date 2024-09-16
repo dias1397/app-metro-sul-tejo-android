@@ -327,9 +327,12 @@
         <item>Cacilhas</item>
     </string-array>
 
-    <string name="line_1_name">Cacilhas ⟷ Corroios</string>
-    <string name="line_2_name">Corroios ⟷ Pragal</string>
-    <string name="line_3_name">Cacilhas ⟷ Universidade</string>
+    <string name="line11_name">Cacilhas ⟷ Corroios</string>
+    <string name="line12_name">Corroios ⟷ Cacilhas</string>
+    <string name="line21_name">Corroios ⟷ Pragal</string>
+    <string name="line22_name">Pragal ⟷ Corroios</string>
+    <string name="line31_name">Cacilhas ⟷ Universidade</string>
+    <string name="line32_name">Universidade ⟷ Cacilhas</string>
 
     <!-- Array for Tariff Names -->
     <string-array name="tariff_names">

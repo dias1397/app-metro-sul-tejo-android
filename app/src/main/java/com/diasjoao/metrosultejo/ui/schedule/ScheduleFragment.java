@@ -41,7 +41,7 @@ public class ScheduleFragment extends Fragment {
 
         scheduleRepository = new ScheduleRepository(requireContext());
 
-        List<Station> stations = scheduleRepository.findStationsBySeasonAndDayAndLine(seasonId, dayId, lineId + lineId - 1);
+        List<Station> stations = scheduleRepository.findStationsBySeasonAndDayAndLine(seasonId, dayId, lineId);
         recyclerView.setAdapter(new TimetableAdapter(stations));
 
         return view;
