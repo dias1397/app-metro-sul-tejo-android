@@ -16,6 +16,7 @@ import com.diasjoao.metrosultejo.data.model.Station;
 import com.diasjoao.metrosultejo.data.repository.ScheduleRepository;
 import com.diasjoao.metrosultejo.helpers.DateHelper;
 import com.diasjoao.metrosultejo.ui.search.SearchFragment;
+import com.diasjoao.metrosultejo.utils.DateUtils;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.time.DayOfWeek;
@@ -80,7 +81,8 @@ public class LiveActivity extends AppCompatActivity {
             dayId = 1;
         }
 
-        Station station = scheduleRepository.findStationBySeasonAndDayAndLineAndName(1, dayId, lineId, stationId);
+        int seasonId = DateUtils.getSeasonId(LocalDateTime.now().minusHours(3));
+        Station station = scheduleRepository.findStationBySeasonAndDayAndLineAndName(seasonId + 1, dayId, lineId, stationId);
 
         LocalDateTime startBound = LocalDateTime.now();
         LocalDateTime endBound = LocalDateTime.now()
