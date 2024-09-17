@@ -14,8 +14,13 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
+import com.diasjoao.metrosultejo.adapters.NewsAdapter;
+import com.diasjoao.metrosultejo.data.model.News;
+import com.diasjoao.metrosultejo.ui.live.LiveAdapter;
 import com.diasjoao.metrosultejo.ui.tariffs.TariffsActivity;
 import com.diasjoao.metrosultejo.ui.map.MapActivity;
 import com.diasjoao.metrosultejo.ui.schedule.ScheduleActivity;
@@ -34,6 +39,8 @@ import org.jsoup.select.Elements;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -41,6 +48,9 @@ import java.util.concurrent.Executors;
 public class MainActivity extends AppCompatActivity {
 
     private Switch dayNightSwitch;
+    private RecyclerView newsRecyclerView;
+
+    private List<News> newsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        newsRecyclerView = findViewById(R.id.news_recycler_view);
+        newsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         SearchFragment searchFragment = new SearchFragment();
 
@@ -128,6 +141,38 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Executors.newSingleThreadExecutor().execute(this::parse);
+        Executors.newSingleThreadExecutor().execute(this::getNews);
+    }
+
+    private void getNews() {
+        try {
+            Document doc = Jsoup.connect("https://www.mts.pt/category/noticias/").get();
+
+            Element main = doc.getElementById("main");
+
+            Elements newsElements = main.select("div > section > ul").first().children();
+
+            for (Element news : newsElements) {
+                String title = news.select("a > h4.pages-news__title").text();
+                String date = news.select("h6.pages-news__date").text();
+                String imageUrl = news.selectFirst("figure.pages-news__figure")
+                        .attr("style")
+                        .replaceAll(".*url\\(['\"]?(.*?)['\"]?\\).*", "$1");
+
+                News oneNews = new News();
+                oneNews.setTitle(title);
+                oneNews.setDate(date);
+                oneNews.setImageUrl(imageUrl);
+
+                newsList.add(oneNews);
+            }
+
+            new Handler(Looper.getMainLooper()).post(() -> {
+                newsRecyclerView.setAdapter(new NewsAdapter(this, newsList));
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void parse() {

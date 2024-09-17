@@ -164,6 +164,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@color/GreenYellow"
+        android:visibility="gone"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -392,12 +393,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line_status_card">
 
-        <com.google.android.material.textview.MaterialTextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Noticias"
-            android:textColor="?attr/colorOnBackground" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="4dp"
+                android:gravity="center"
+                android:text="Notícias"
+                android:textSize="16sp"
+                android:textColor="?attr/colorSecondary" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/news_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <Switch
