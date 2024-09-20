@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 
 import androidx.activity.EdgeToEdge;
@@ -37,19 +39,16 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
     private SwitchMaterial dayNightSwitch;
     private RecyclerView newsRecyclerView;
+    private ProgressBar newsProgressBar;
 
     private List<News> newsList = new ArrayList<>();
 
@@ -81,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
 
         newsRecyclerView = findViewById(R.id.news_recycler_view);
         newsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        newsProgressBar = findViewById(R.id.news_progress_bar);
 
         SearchFragment searchFragment = new SearchFragment();
 
@@ -135,12 +136,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        MaterialCardView line3CardView = findViewById(R.id.news_card);
-        line3CardView.setOnClickListener(view -> {
-            Intent intent2 = new Intent(MainActivity.this, RoutesActivity.class);
-            startActivity(intent2);
-        });
-
         //Executors.newSingleThreadExecutor().execute(this::parse);
         Executors.newSingleThreadExecutor().execute(this::getNews);
     }
@@ -153,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
             Elements newsElements = main.select("div > section > ul").first().children();
 
-            for (Element news : newsElements) {
+            for (Element news : newsElements.subList(0, Math.min(newsElements.size(), 15))) {
                 String title = news.select("a > h4.pages-news__title").text();
                 String date = news.select("h6.pages-news__date").text();
                 String imageUrl = news.selectFirst("figure.pages-news__figure")
@@ -170,6 +165,9 @@ public class MainActivity extends AppCompatActivity {
 
             new Handler(Looper.getMainLooper()).post(() -> {
                 newsRecyclerView.setAdapter(new NewsAdapter(this, newsList));
+                newsRecyclerView.setVisibility(View.VISIBLE);
+
+                newsProgressBar.setVisibility(View.GONE);
             });
         } catch (IOException e) {
             e.printStackTrace();

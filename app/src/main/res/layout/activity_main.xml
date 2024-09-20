@@ -411,7 +411,14 @@
                 android:id="@+id/news_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"/>
+
+            <ProgressBar
+                android:id="@+id/news_progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
