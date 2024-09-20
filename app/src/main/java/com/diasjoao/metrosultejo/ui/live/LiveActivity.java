@@ -22,14 +22,17 @@ import com.google.android.material.appbar.MaterialToolbar;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.chrono.ChronoPeriod;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class LiveActivity extends AppCompatActivity {
 
     private int dayId, lineId, stationId = 1;
+    private final Map<Integer, String> destinationByLineId = Map.of(
+            1, "Destino: Cacilhas", 2, "Destino: Corroios",
+            3, "Destino: Pragal", 4, "Destino: Corroios",
+            5, "Destino: Universidade", 6, "Destino: Cacilhas");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,10 +94,10 @@ public class LiveActivity extends AppCompatActivity {
                 .withMinute(0);
 
         List<LocalDateTime> times = station.getConvertedTimes().stream()
-                .filter(time -> time.isAfter(startBound.minusMinutes(10)) && time.isBefore(endBound))
+                .filter(time -> time.isAfter(startBound.minusMinutes(9)) && time.isBefore(endBound))
                 .collect(Collectors.toList());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new LiveAdapter(this, times));
+        recyclerView.setAdapter(new LiveAdapter(this, times, destinationByLineId.get(lineId)));
     }
 }

@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
+import com.google.android.material.card.MaterialCardView;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -21,22 +22,28 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.LiveViewHolder
 
     private Context context;
     private List<LocalDateTime> times;
+    private String destination;
 
-    public LiveAdapter(Context context, List<LocalDateTime> times) {
+    public LiveAdapter(Context context, List<LocalDateTime> times, String destination) {
         this.context = context;
         this.times = times;
+        this.destination = destination;
     }
 
     public static class LiveViewHolder extends RecyclerView.ViewHolder {
         TextView textViewArrivalTime;
         TextView textViewTimeLeft;
         TextView textViewHeader;
+        TextView textViewDestination;
+        MaterialCardView cardViewTimeLeft;
 
         public LiveViewHolder(View itemView) {
             super(itemView);
             textViewArrivalTime = itemView.findViewById(R.id.textViewArrivalTime);
             textViewTimeLeft = itemView.findViewById(R.id.textViewTimeLeft);
             textViewHeader = itemView.findViewById(R.id.textViewHeader);
+            textViewDestination = itemView.findViewById(R.id.textViewDestination);
+            cardViewTimeLeft = itemView.findViewById(R.id.cardViewTimeLeft);
         }
     }
 
@@ -51,31 +58,27 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.LiveViewHolder
     @Override
     public void onBindViewHolder(@NonNull LiveViewHolder holder, int position) {
         LocalDateTime currentTime = times.get(position);
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        holder.textViewArrivalTime.setText(currentTime.format(formatter));
-
         long timeLeft = Duration.between(LocalDateTime.now(), currentTime).toMinutes();
+
+        holder.textViewArrivalTime.setText(currentTime.format(DateTimeFormatter.ofPattern("HH:mm")));
+        holder.textViewDestination.setText(destination);
+
         if (timeLeft < 0) {
-            holder.textViewTimeLeft.setText(String.format(Locale.getDefault(), "%02d'", Math.abs(timeLeft)));
-            holder.textViewTimeLeft.setBackgroundColor(context.getColor(R.color.FireBrick));
-            holder.textViewTimeLeft.setVisibility(View.VISIBLE);
-            holder.textViewHeader.setVisibility(View.GONE);
+            setTimeLeftUI(holder, Math.abs(timeLeft), R.color.FireBrick);
         } else if (timeLeft < 60) {
-            if (position == 1) {
-                long tempTimeLeft = Duration.between(LocalDateTime.now(), times.get(0)).toMinutes();
-                if (tempTimeLeft < 0) {
-                    holder.textViewHeader.setVisibility(View.VISIBLE);
-                }
+            if (position > 0 && Duration.between(LocalDateTime.now(), times.get(position - 1)).toMinutes() < 0) {
+                holder.textViewHeader.setVisibility(View.VISIBLE);
             }
 
-            holder.textViewTimeLeft.setText(String.format(Locale.getDefault(), "%02d'", timeLeft));
-            holder.textViewTimeLeft.setBackgroundColor(context.getColor(R.color.ForestGreen));
-            holder.textViewTimeLeft.setVisibility(View.VISIBLE);
+            setTimeLeftUI(holder, timeLeft, R.color.ForestGreen);
         } else {
-            holder.textViewTimeLeft.setVisibility(View.GONE);
-            holder.textViewHeader.setVisibility(View.GONE);
+            holder.cardViewTimeLeft.setVisibility(View.GONE);
         }
+    }
+
+    private void setTimeLeftUI(LiveViewHolder holder, long timeLeft, int colorRes) {
+        holder.textViewTimeLeft.setText(String.format(Locale.getDefault(), "%02d'", timeLeft));
+        holder.textViewTimeLeft.setBackgroundColor(context.getColor(colorRes));
     }
 
     @Override
