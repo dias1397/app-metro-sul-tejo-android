@@ -46,7 +46,7 @@ public class LiveRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
 
         view = LayoutInflater.from(context)
-                .inflate(R.layout.live_recycler_view_row, parent, false);
+                .inflate(R.layout.item_live_arrival, parent, false);
         return new NormalViewHolder(view);
     }
 

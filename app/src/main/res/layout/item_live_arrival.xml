@@ -2,19 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:backgroundTint="@color/DimGray">
+    android:layout_height="wrap_content">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewHeader"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginVertical="8dp"
-        android:layout_marginHorizontal="16dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:text="Próximas Partidas"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         android:textColor="?attr/colorSecondary"
         android:gravity="center"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +22,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
-        android:layout_marginHorizontal="16dp"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,21 +31,17 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/White">
+            android:layout_height="wrap_content">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textViewArrivalTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:fontFamily="sans-serif"
-                android:text="hh:mm"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textColor="@color/Black"
-                android:textStyle="bold"
+                android:text="HH:MM"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                 app:layout_constraintBottom_toTopOf="@+id/textViewDestination"
                 app:layout_constraintEnd_toStartOf="@+id/materialCardView"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,15 +51,16 @@
                 android:id="@+id/materialCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginVertical="8dp"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/Green"
                 app:cardCornerRadius="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textViewTimeLeft"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -73,21 +68,19 @@
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="8dp"
                     android:text="m'"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                    android:textColor="@color/White"
-                    android:textStyle="bold" />
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:textColor="@color/White"/>
             </com.google.android.material.card.MaterialCardView>
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textViewDestination"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@color/GhostWhite"
                 android:text="Destino: Cacilhas"
                 android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="@color/colorDarkGrey"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:background="?attr/colorSurface"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -95,5 +88,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

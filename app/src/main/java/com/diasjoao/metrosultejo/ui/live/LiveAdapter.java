@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.adapters.TimeAdapter;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -45,7 +44,7 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.LiveViewHolder
     @Override
     public LiveViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.live_recycler_view_row, parent, false);
+                .inflate(R.layout.item_live_arrival, parent, false);
         return new LiveViewHolder(view);
     }
 
@@ -66,13 +65,10 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.LiveViewHolder
             if (position == 1) {
                 long tempTimeLeft = Duration.between(LocalDateTime.now(), times.get(0)).toMinutes();
                 if (tempTimeLeft < 0) {
-                    holder.textViewHeader.setText("Próximas partidas");
-                } else {
-                    holder.textViewHeader.setVisibility(View.GONE);
+                    holder.textViewHeader.setVisibility(View.VISIBLE);
                 }
-            } else {
-                holder.textViewHeader.setVisibility(View.GONE);
             }
+
             holder.textViewTimeLeft.setText(String.format(Locale.getDefault(), "%02d'", timeLeft));
             holder.textViewTimeLeft.setBackgroundColor(context.getColor(R.color.ForestGreen));
             holder.textViewTimeLeft.setVisibility(View.VISIBLE);
