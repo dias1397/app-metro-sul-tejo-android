@@ -20,7 +20,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/search_card"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:cardCornerRadius="4dp"
@@ -47,7 +47,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_card">
 
-            <LinearLayout
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -76,7 +76,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="LINHAS"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -102,7 +102,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="HORÁRIOS"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"  />
                 </LinearLayout>
 
                 <LinearLayout
@@ -128,7 +128,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="MAPA"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"  />
                 </LinearLayout>
 
                 <LinearLayout
@@ -154,7 +154,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="TARIFAS"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"  />
                 </LinearLayout>
             </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -164,7 +164,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:background="@color/GreenYellow"
         android:visibility="gone"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
@@ -383,11 +382,10 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/line_card_3"
+        android:id="@+id/news_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        android:background="@color/Bisque"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
         app:layout_constraintBottom_toTopOf="@+id/daynight"
@@ -407,19 +405,22 @@
                 android:gravity="center"
                 android:text="Notícias"
                 android:textColor="?attr/colorSecondary"
-                android:textSize="16sp" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"  />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/news_recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <Switch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/daynight"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="Switch"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Selecione a Linha"
-        android:textSize="16sp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         android:textColor="?attr/colorSecondary" />
 
     <Spinner
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Selecione a Estação"
-        android:textSize="16sp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         android:textColor="?attr/colorSecondary"/>
 
     <Spinner
@@ -38,5 +38,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Próximas partidas"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         app:rippleColor="?attr/colorSecondary"/>
 </LinearLayout>

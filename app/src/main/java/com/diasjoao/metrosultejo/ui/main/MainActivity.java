@@ -28,6 +28,7 @@ import com.diasjoao.metrosultejo.ui.search.SearchFragment;
 import com.diasjoao.metrosultejo.ui.routes.RoutesActivity;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -47,7 +48,7 @@ import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Switch dayNightSwitch;
+    private SwitchMaterial dayNightSwitch;
     private RecyclerView newsRecyclerView;
 
     private List<News> newsList = new ArrayList<>();
@@ -134,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        MaterialCardView line3CardView = findViewById(R.id.line_card_3);
+        MaterialCardView line3CardView = findViewById(R.id.news_card);
         line3CardView.setOnClickListener(view -> {
             Intent intent2 = new Intent(MainActivity.this, RoutesActivity.class);
             startActivity(intent2);

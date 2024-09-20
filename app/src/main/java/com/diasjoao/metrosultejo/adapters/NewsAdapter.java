@@ -54,7 +54,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         holder.textViewNewsTitle.setText(news.getTitle());
         holder.textViewNewsDate.setText(news.getDate());
 
-        Picasso.get().load(news.getImageUrl()).into(holder.imageViewNews);
+        if (news.getImageUrl() != null && !news.getImageUrl().isEmpty()) {
+            Picasso.get().load(news.getImageUrl()).into(holder.imageViewNews);
+        }
     }
 
     @Override
