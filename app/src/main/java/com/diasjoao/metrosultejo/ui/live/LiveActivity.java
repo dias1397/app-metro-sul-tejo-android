@@ -30,9 +30,9 @@ public class LiveActivity extends AppCompatActivity {
 
     private int dayId, lineId, stationId = 1;
     private final Map<Integer, String> destinationByLineId = Map.of(
-            1, "Destino: Cacilhas", 2, "Destino: Corroios",
-            3, "Destino: Pragal", 4, "Destino: Corroios",
-            5, "Destino: Universidade", 6, "Destino: Cacilhas");
+            1, "Cacilhas", 2, "Corroios",
+            3, "Pragal", 4, "Corroios",
+            5, "Universidade", 6, "Cacilhas");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +58,7 @@ public class LiveActivity extends AppCompatActivity {
         Intent intent = getIntent();
         lineId = intent.getIntExtra("lineId", 1);
         stationId = intent.getIntExtra("stationId", 0);
+        String stationName = intent.getStringExtra("stationName");
 
         // updates search fragment
         SearchFragment searchFragment = new SearchFragment();
@@ -98,6 +99,6 @@ public class LiveActivity extends AppCompatActivity {
                 .collect(Collectors.toList());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new LiveAdapter(this, times, destinationByLineId.get(lineId)));
+        recyclerView.setAdapter(new LiveAdapter(this, times, stationName + " → " + destinationByLineId.get(lineId)));
     }
 }

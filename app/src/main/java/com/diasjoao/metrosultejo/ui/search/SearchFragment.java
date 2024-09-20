@@ -120,6 +120,7 @@ public class SearchFragment extends Fragment {
         Intent intent = new Intent(requireActivity(), LiveActivity.class);
         intent.putExtra("lineId", spinnerLine.getSelectedItemPosition() + 1);
         intent.putExtra("stationId", spinnerStation.getSelectedItemPosition());
+        intent.putExtra("stationName", spinnerStation.getSelectedItem().toString());
         intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
     }
