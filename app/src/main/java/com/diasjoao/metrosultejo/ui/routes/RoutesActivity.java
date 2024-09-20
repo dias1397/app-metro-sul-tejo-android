@@ -1,10 +1,14 @@
 package com.diasjoao.metrosultejo.ui.routes;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -18,6 +22,9 @@ import java.util.Objects;
 
 public class RoutesActivity extends AppCompatActivity {
 
+    private ViewPager view_pager;
+    private TabLayout tab_layout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,51 +37,37 @@ public class RoutesActivity extends AppCompatActivity {
             return insets;
         });
 
-        MaterialToolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(v -> {
-            getOnBackPressedDispatcher().onBackPressed();
-        });
-
-        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
-
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-
-        RoutesPagerAdapter adapter = new RoutesPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
+        initToolbar();
+        initComponent();
 
         Intent intent = getIntent();
         int lineId = intent.getIntExtra("lineId", 0);
 
-        tabLayout.setupWithViewPager(viewPager);
-        for (int i = 0; i < tabLayout.getTabCount(); i++) {
-            Objects.requireNonNull(tabLayout.getTabAt(i)).setIcon(R.drawable.baseline_directions_bus_24);
+        for (int i = 0; i < tab_layout.getTabCount(); i++) {
+            Objects.requireNonNull(tab_layout.getTabAt(i)).setIcon(R.drawable.baseline_directions_bus_24);
         }
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        view_pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
 
             @Override
             public void onPageSelected(int position) {
-                // Change tab indicator color dynamically
+                System.out.println("================================>");
+
                 switch (position) {
                     case 0:
-                        tabLayout.setSelectedTabIndicatorColor(
-                                getResources().getColor(R.color.linha1, null)
-                        ); // Accent color for Tab 1
+                        tab_layout.setSelectedTabIndicatorColor(getResources().getColor(R.color.linha1, null));
+                        tab_layout.getTabAt(0).getIcon().setTint(getResources().getColor(R.color.linha1));
                         break;
                     case 1:
-                        tabLayout.setSelectedTabIndicatorColor(
-                                getResources().getColor(R.color.linha2, null)
-                        ); // Accent color for Tab 2
+                        tab_layout.setSelectedTabIndicatorColor(getResources().getColor(R.color.linha2, null));
+                        tab_layout.getTabAt(1).getIcon().setTint(getResources().getColor(R.color.linha2));
                         break;
                     case 2:
-                        tabLayout.setSelectedTabIndicatorColor(
-                                getResources().getColor(R.color.linha3, null)
-                        ); // Accent color for Tab 3
+                        tab_layout.setSelectedTabIndicatorColor(getResources().getColor(R.color.linha3, null));
+                        tab_layout.getTabAt(2).getIcon().setTint(getResources().getColor(R.color.linha3));
                         break;
                 }
             }
@@ -83,6 +76,35 @@ public class RoutesActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
-        viewPager.setCurrentItem(lineId);
+
+        view_pager.setCurrentItem(lineId + 1);
+        view_pager.setCurrentItem(lineId);
+    }
+
+    private void initToolbar() {
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(v -> {
+            getOnBackPressedDispatcher().onBackPressed();
+        });
+
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
+    }
+
+
+    private void initComponent() {
+        view_pager = (ViewPager) findViewById(R.id.view_pager);
+        setupViewPager(view_pager);
+
+        tab_layout = (TabLayout) findViewById(R.id.tab_layout);
+        tab_layout.setupWithViewPager(view_pager);
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        RoutesPagerAdapter adapter = new RoutesPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(RoutesFragment.newInstance("LINHA 1"), "LINHA 1");
+        adapter.addFragment(RoutesFragment.newInstance("LINHA 2"), "LINHA 2");
+        adapter.addFragment(RoutesFragment.newInstance("LINHA 3"), "LINHA 3");
+        viewPager.setAdapter(adapter);
     }
 }
