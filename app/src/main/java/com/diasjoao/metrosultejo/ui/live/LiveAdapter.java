@@ -60,24 +60,26 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.LiveViewHolder
         LocalDateTime currentTime = times.get(position);
         long timeLeft = Duration.between(LocalDateTime.now(), currentTime).toMinutes();
 
+        holder.textViewHeader.setVisibility(View.GONE);
         holder.textViewArrivalTime.setText(currentTime.format(DateTimeFormatter.ofPattern("HH:mm")));
         holder.textViewDestination.setText(destination);
 
         if (timeLeft < 0) {
-            setTimeLeftUI(holder, Math.abs(timeLeft), R.color.FireBrick);
+            setTimeLeftUI(holder, "+%02d min", Math.abs(timeLeft), R.color.FireBrick);
         } else if (timeLeft < 60) {
             if (position > 0 && Duration.between(LocalDateTime.now(), times.get(position - 1)).toMinutes() < 0) {
                 holder.textViewHeader.setVisibility(View.VISIBLE);
             }
 
-            setTimeLeftUI(holder, timeLeft, R.color.ForestGreen);
+            setTimeLeftUI(holder,"%02d min", timeLeft, R.color.ForestGreen);
         } else {
             holder.cardViewTimeLeft.setVisibility(View.GONE);
         }
     }
 
-    private void setTimeLeftUI(LiveViewHolder holder, long timeLeft, int colorRes) {
-        holder.textViewTimeLeft.setText(String.format(Locale.getDefault(), "%02d'", timeLeft));
+    private void setTimeLeftUI(LiveViewHolder holder, String timeFormat, long timeLeft, int colorRes) {
+        holder.cardViewTimeLeft.setVisibility(View.VISIBLE);
+        holder.textViewTimeLeft.setText(String.format(Locale.getDefault(), timeFormat, timeLeft));
         holder.textViewTimeLeft.setBackgroundColor(context.getColor(colorRes));
     }
 

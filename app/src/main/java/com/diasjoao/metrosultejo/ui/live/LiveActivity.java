@@ -2,6 +2,7 @@ package com.diasjoao.metrosultejo.ui.live;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,8 @@ public class LiveActivity extends AppCompatActivity {
             1, "Cacilhas", 2, "Corroios",
             3, "Pragal", 4, "Corroios",
             5, "Universidade", 6, "Cacilhas");
+    private LiveAdapter liveAdapter;
+    private CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +101,41 @@ public class LiveActivity extends AppCompatActivity {
                 .filter(time -> time.isAfter(startBound.minusMinutes(9)) && time.isBefore(endBound))
                 .collect(Collectors.toList());
 
+        liveAdapter = new LiveAdapter(this, times, stationName + " → " + destinationByLineId.get(lineId));
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new LiveAdapter(this, times, stationName + " → " + destinationByLineId.get(lineId)));
+        recyclerView.setAdapter(liveAdapter);
+
+        startCountdown();
+    }
+
+    private void startCountdown() {
+        countDownTimer = new CountDownTimer(60000, 1000) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                //int secondsRemaining = (int) (millisUntilFinished / 1000);
+
+                //String timeFormatted = String.format("%02d:%02d", secondsRemaining / 60, secondsRemaining % 60);
+                //System.out.println(timeFormatted);
+            }
+
+            @Override
+            public void onFinish() {
+                liveAdapter.notifyDataSetChanged();
+                startCountdown();
+            }
+        };
+
+        countDownTimer.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
     }
 }

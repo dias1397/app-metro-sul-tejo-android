@@ -51,12 +51,12 @@
                 android:id="@+id/cardViewTimeLeft"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginVertical="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 app:cardCornerRadius="4dp"
                 app:elevation="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewArrivalTime"
+                app:layout_constraintDimensionRatio="2.2:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -66,8 +66,8 @@
                     android:layout_height="match_parent"
                     android:background="@color/Green"
                     android:gravity="center"
-                    android:text="00'"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:text="+55 min"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                     android:textColor="@color/White" />
             </com.google.android.material.card.MaterialCardView>
 
