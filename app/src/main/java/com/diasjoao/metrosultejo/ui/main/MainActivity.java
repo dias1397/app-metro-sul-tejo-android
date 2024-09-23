@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
             for (Element news : newsElements.subList(0, Math.min(newsElements.size(), 15))) {
                 String title = news.select("a > h4.pages-news__title").text();
+                String details = news.select("p").text();
                 String date = news.select("h6.pages-news__date").text();
                 String imageUrl = news.selectFirst("figure.pages-news__figure")
                         .attr("style")
@@ -157,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
                 News oneNews = new News();
                 oneNews.setTitle(title);
+                oneNews.setDetails(details);
                 oneNews.setDate(date);
                 oneNews.setImageUrl(imageUrl);
 

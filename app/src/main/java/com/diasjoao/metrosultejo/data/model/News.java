@@ -4,6 +4,7 @@ public class News {
 
     private int id;
     private String title;
+    private String details;
     private String url;
     private String imageUrl;
     private String date;
@@ -25,6 +26,14 @@ public class News {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
     }
 
     public String getUrl() {
