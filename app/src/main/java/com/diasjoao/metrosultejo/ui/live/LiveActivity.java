@@ -20,6 +20,10 @@ import com.diasjoao.metrosultejo.data.repository.ScheduleRepository;
 import com.diasjoao.metrosultejo.helpers.DateHelper;
 import com.diasjoao.metrosultejo.ui.search.SearchFragment;
 import com.diasjoao.metrosultejo.utils.DateUtils;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.time.DayOfWeek;
@@ -38,12 +42,20 @@ public class LiveActivity extends AppCompatActivity {
             5, "Universidade", 6, "Cacilhas");
     private LiveAdapter liveAdapter;
     private CountDownTimer countDownTimer;
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_live);
+
+        MobileAds.initialize(this, initializationStatus -> {});
+
+        AdView adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        adView.loadAd(adRequest);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
