@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary color (dark blue) -->
-    <color name="colorPrimary">#005DAA</color>         <!-- A brighter blue for better contrast -->
-    <color name="colorPrimaryVariant">#004DAA</color>
+    <!-- Updated Primary Color -->
+    <color name="colorPrimary">#005DAA</color>  <!-- Retained dark blue for brand consistency -->
+    <color name="colorPrimaryVariant">#004DAA</color>  <!-- Darker variant of primary -->
 
-    <!-- Secondary color (orange from navbar) -->
-    <color name="colorSecondary">#FF7F32</color>
-    <color name="colorSecondaryVariant">#E66D2C</color>
+    <!-- Secondary Color -->
+    <color name="colorSecondary">#FF8C00</color>  <!-- Bright orange for higher visibility -->
+    <color name="colorSecondaryVariant">#E66D2C</color>  <!-- Retained darker variant -->
 
     <!-- Background and surface colors -->
-    <color name="colorBackground">#F1F1F1</color> <!-- Light gray background -->
-    <color name="colorSurface">#FFFFFF</color> <!-- White surface -->
-    <color name="colorError">#B00020</color>
+    <color name="colorBackground">#F7F9FC</color>  <!-- Light gray for a clean look -->
+    <color name="colorSurface">#FFFFFF</color>  <!-- White surface -->
+    <color name="colorError">#B00020</color>  <!-- Red for errors -->
 
     <!-- Text and icons on primary and secondary -->
-    <color name="colorOnPrimary">#FFFFFF</color> <!-- White text on primary -->
-    <color name="colorOnSecondary">#002855</color> <!-- Dark blue text on secondary -->
-    <color name="colorOnBackground">#002855</color>
-    <color name="colorOnSurface">#002855</color>
+    <color name="colorOnPrimary">#FFFFFF</color>  <!-- White text on primary -->
+    <color name="colorOnSecondary">#002855</color>  <!-- Dark blue text on secondary -->
+    <color name="colorOnBackground">#002855</color>  <!-- Dark blue text on background -->
+    <color name="colorOnSurface">#002855</color>  <!-- Dark blue text on surface -->
+
+    <!-- Error text color -->
+    <color name="colorOnError">#FFFFFF</color>  <!-- White text on error -->
 
     <color name="rowPrimary">#FFFFFF</color>
     <color name="rowAlternate">#F1F1F1</color>
