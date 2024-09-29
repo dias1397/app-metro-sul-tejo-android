@@ -18,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.adapters.NewsAdapter;
 import com.diasjoao.metrosultejo.data.model.News;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.squareup.picasso.Picasso;
 
@@ -31,7 +32,7 @@ import java.util.concurrent.Executors;
 
 public class NewsActivity extends AppCompatActivity {
 
-    private ImageView newsImageView;
+    private PhotoView newsImageView;
     private TextView newsTitleTextView;
     private TextView newsDetailsTextView;
     private TextView newsDateTextView;
