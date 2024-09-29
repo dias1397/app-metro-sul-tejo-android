@@ -3,6 +3,8 @@ package com.diasjoao.metrosultejo.ui.live;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -76,6 +78,7 @@ public class LiveActivity extends AppCompatActivity {
                 .replace(R.id.fragment_container, searchFragment)
                 .commit();
 
+        LinearLayout noTimesLayout = findViewById(R.id.no_times_layout);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         ScheduleRepository scheduleRepository = new ScheduleRepository(this);
 
@@ -101,12 +104,20 @@ public class LiveActivity extends AppCompatActivity {
                 .filter(time -> time.isAfter(startBound.minusMinutes(9)) && time.isBefore(endBound))
                 .collect(Collectors.toList());
 
-        liveAdapter = new LiveAdapter(this, times, stationName + " → " + destinationByLineId.get(lineId));
+        if (times.isEmpty()) {
+            recyclerView.setVisibility(View.GONE);
+            noTimesLayout.setVisibility(View.VISIBLE);
+        } else {
+            recyclerView.setVisibility(View.VISIBLE);
+            noTimesLayout.setVisibility(View.GONE);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(liveAdapter);
+            liveAdapter = new LiveAdapter(this, times, stationName + " → " + destinationByLineId.get(lineId));
 
-        startCountdown();
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setAdapter(liveAdapter);
+
+            startCountdown();
+        }
     }
 
     private void startCountdown() {
