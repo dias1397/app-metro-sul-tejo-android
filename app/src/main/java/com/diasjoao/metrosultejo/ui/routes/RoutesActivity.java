@@ -47,36 +47,6 @@ public class RoutesActivity extends AppCompatActivity {
             Objects.requireNonNull(tab_layout.getTabAt(i)).setIcon(R.drawable.baseline_directions_bus_24);
         }
 
-        view_pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                System.out.println("================================>");
-
-                switch (position) {
-                    case 0:
-                        tab_layout.setSelectedTabIndicatorColor(getResources().getColor(R.color.linha1, null));
-                        tab_layout.getTabAt(0).getIcon().setTint(getResources().getColor(R.color.linha1));
-                        break;
-                    case 1:
-                        tab_layout.setSelectedTabIndicatorColor(getResources().getColor(R.color.linha2, null));
-                        tab_layout.getTabAt(1).getIcon().setTint(getResources().getColor(R.color.linha2));
-                        break;
-                    case 2:
-                        tab_layout.setSelectedTabIndicatorColor(getResources().getColor(R.color.linha3, null));
-                        tab_layout.getTabAt(2).getIcon().setTint(getResources().getColor(R.color.linha3));
-                        break;
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
-
         view_pager.setCurrentItem(lineId + 1);
         view_pager.setCurrentItem(lineId);
     }
