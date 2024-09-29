@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Primary color (dark blue) -->
-    <color name="colorPrimary">#002855</color>
-    <color name="colorPrimaryVariant">#001F3F</color>
+    <color name="colorPrimary">#005DAA</color>         <!-- A brighter blue for better contrast -->
+    <color name="colorPrimaryVariant">#004DAA</color>
 
     <!-- Secondary color (orange from navbar) -->
     <color name="colorSecondary">#FF7F32</color>
