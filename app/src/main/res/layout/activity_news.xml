@@ -20,58 +20,63 @@
         app:navigationIcon="@drawable/baseline_arrow_back_24"
         app:navigationIconTint="?attr/colorOnPrimary"/>
 
-    <ImageView
-        android:id="@+id/newsImageView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
-    </ImageView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/newsTitleCardView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newsImageView">
-
-
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/newsTitleCardView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/newsTitleTextView"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Titulo da Notícia"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-                android:textColor="?attr/colorSecondary" />
+                android:orientation="vertical">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/newsDetailsTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Detalhe da Notícia"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/newsTitleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:justificationMode="inter_word"
+                    android:text="Titulo da Notícia"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:textColor="?attr/colorSecondary" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/newsDateTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Data da Notícia"
-                android:textSize="10sp"
-                android:gravity="right"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/newsImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/newsDetailsTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Detalhe da Notícia"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:justificationMode="inter_word"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/newsDateTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="right"
+                    android:text="Data da Notícia"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
