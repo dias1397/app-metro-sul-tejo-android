@@ -42,7 +42,6 @@ public class LiveActivity extends AppCompatActivity {
             5, "Universidade", 6, "Cacilhas");
     private LiveAdapter liveAdapter;
     private CountDownTimer countDownTimer;
-    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

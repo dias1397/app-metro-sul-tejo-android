@@ -28,6 +28,9 @@ import com.diasjoao.metrosultejo.ui.map.MapActivity;
 import com.diasjoao.metrosultejo.ui.schedule.ScheduleActivity;
 import com.diasjoao.metrosultejo.ui.search.SearchFragment;
 import com.diasjoao.metrosultejo.ui.routes.RoutesActivity;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
@@ -57,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        MobileAds.initialize(this, initializationStatus -> {});
+
+        AdView adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        adView.loadAd(adRequest);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
