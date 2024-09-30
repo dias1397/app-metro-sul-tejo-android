@@ -5,14 +5,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Switch;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -49,7 +46,6 @@ import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
-    private SwitchMaterial dayNightSwitch;
     private RecyclerView newsRecyclerView;
     private ProgressBar newsProgressBar;
 
@@ -75,18 +71,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
-
-        dayNightSwitch = findViewById(R.id.daynight);
-        dayNightSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                }
-            }
-        });
 
         newsRecyclerView = findViewById(R.id.news_recycler_view);
         newsRecyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -42,7 +42,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@string/selecione_a_linha"
-                android:textSize="16sp" />
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textColor="?attr/colorSecondary" />
 
             <Spinner
                 android:id="@+id/spinner_line"
@@ -59,7 +61,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/estacao_do_ano"
-                    android:textSize="16sp" />
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:textColor="?attr/colorSecondary" />
 
                 <View
                     android:layout_width="0dp"

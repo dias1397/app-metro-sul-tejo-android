@@ -405,6 +405,7 @@
     <string name="map_icon_description">Map icon</string>
     <string name="euro_icon_description">Euro icon</string>
     <string name="warning_icon_description">Warning icon</string>
+    <string name="station_dot_icon_description">Station dot icon</string>
 
     <string name="linhas">Linhas</string>
     <string name="horarios">Horários</string>
@@ -425,7 +426,9 @@
 
     <string name="mensagem_zero_horarios">Sem mais horários.\nVolte amanhã!</string>
     <string name="selecione_a_linha">Selecione a Linha</string>
+    <string name="selecione_a_estacao">Selecione a Estação</string>
     <string name="estacao_do_ano">Estação do ano</string>
     <string name="verao">Verão</string>
     <string name="inverno">Inverno</string>
+    <string name="placeholder_text">Placeholder text</string>
 </resources>

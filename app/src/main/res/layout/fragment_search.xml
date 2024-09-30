@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Selecione a Linha"
+        android:text="@string/selecione_a_linha"
+        android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         android:textColor="?attr/colorSecondary" />
 
@@ -23,9 +24,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Selecione a Estação"
+        android:text="@string/selecione_a_estacao"
+        android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-        android:textColor="?attr/colorSecondary"/>
+        android:textColor="?attr/colorSecondary" />
 
     <Spinner
         android:id="@+id/spinner_station"
@@ -39,5 +41,5 @@
         android:layout_height="wrap_content"
         android:text="Próximas partidas"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-        app:rippleColor="?attr/colorSecondary"/>
+        app:rippleColor="?attr/colorSecondary" />
 </LinearLayout>

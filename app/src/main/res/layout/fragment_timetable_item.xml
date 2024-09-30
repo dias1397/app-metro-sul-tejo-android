@@ -8,15 +8,14 @@
         android:id="@+id/stopName"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="Stop Name"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:gravity="center_vertical"
         android:padding="8dp"
-        android:gravity="center_vertical" />
+        android:text="@string/placeholder_text"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/timesRecyclerView"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
-
+        android:layout_height="match_parent" />
 </LinearLayout>

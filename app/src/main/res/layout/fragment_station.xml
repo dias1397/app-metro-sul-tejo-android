@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/path_station_root_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -26,7 +25,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
         </FrameLayout>
 
         <FrameLayout
@@ -37,13 +35,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline6">
-
         </FrameLayout>
 
         <ImageView
             android:id="@+id/station_dot"
             android:layout_width="15dp"
             android:layout_height="15dp"
+            android:contentDescription="@string/station_dot_icon_description"
             app:layout_constraintBottom_toTopOf="@+id/guideline6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,13 +50,13 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/stationName"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="12dp"
         android:gravity="center_vertical"
-        android:text="Placeholder"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        android:text="@string/placeholder_text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 </LinearLayout>
