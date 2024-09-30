@@ -12,13 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        app:titleTextColor="?attr/colorOnPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Notícias"
         app:navigationIcon="@drawable/baseline_arrow_back_24"
-        app:navigationIconTint="?attr/colorOnPrimary"/>
+        app:navigationIconTint="?attr/colorOnPrimary"
+        app:title="@string/noticias"
+        app:titleTextColor="?attr/colorOnPrimary" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -45,7 +45,6 @@
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="16dp"
                     android:justificationMode="inter_word"
-                    android:text="Titulo da Notícia"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                     android:textColor="?attr/colorSecondary" />
 
@@ -63,7 +62,6 @@
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginBottom="8dp"
                     android:justificationMode="inter_word"
-                    android:text="Detalhe da Notícia"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -72,10 +70,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginBottom="16dp"
-                    android:gravity="right"
-                    android:text="Data da Notícia"
+                    android:gravity="end"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </ScrollView>
@@ -84,9 +81,9 @@
         android:id="@+id/adView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/9214589741"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-3940256099942544/9214589741" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
