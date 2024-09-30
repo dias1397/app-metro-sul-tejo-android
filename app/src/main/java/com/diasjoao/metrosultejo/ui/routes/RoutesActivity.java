@@ -1,14 +1,10 @@
 package com.diasjoao.metrosultejo.ui.routes;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -54,7 +50,7 @@ public class RoutesActivity extends AppCompatActivity {
         int lineId = intent.getIntExtra("lineId", 0);
 
         for (int i = 0; i < tab_layout.getTabCount(); i++) {
-            Objects.requireNonNull(tab_layout.getTabAt(i)).setIcon(R.drawable.baseline_directions_bus_24);
+            Objects.requireNonNull(tab_layout.getTabAt(i)).setIcon(R.drawable.baseline_bus_24);
         }
 
         view_pager.setCurrentItem(lineId + 1);

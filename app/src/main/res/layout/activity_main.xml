@@ -12,11 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        app:titleTextColor="?attr/colorOnPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Metro Sul Tejo" />
+        app:title="@string/app_name"
+        app:titleTextColor="?attr/colorOnPrimary" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/search_card"
@@ -33,7 +33,7 @@
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_search"/>
+            tools:layout="@layout/fragment_search" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -48,115 +48,120 @@
         app:layout_constraintTop_toBottomOf="@+id/search_card">
 
         <LinearLayout
-                android:layout_width="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/lines_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:contentDescription="@string/bus_icon_description"
+                    app:backgroundTint="?attr/colorPrimary"
+                    app:rippleColor="?attr/colorSecondary"
+                    app:srcCompat="@drawable/baseline_bus_24"
+                    app:tint="?attr/colorOnPrimary" />
 
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/lines_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:contentDescription="TODO"
-                        app:tint="?attr/colorOnPrimary"
-                        app:backgroundTint="?attr/colorPrimary"
-                        app:rippleColor="?attr/colorSecondary"
-                        app:srcCompat="@drawable/baseline_directions_bus_24" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="LINHAS"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
-                </LinearLayout>
-
-                <LinearLayout
+                <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/schedule_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:contentDescription="TODO"
-                        app:tint="?attr/colorOnPrimary"
-                        app:backgroundTint="?attr/colorPrimary"
-                        app:rippleColor="?attr/colorSecondary"
-                        app:srcCompat="@drawable/baseline_schedule_24" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="HORÁRIOS"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"  />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/map_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:contentDescription="TODO"
-                        app:tint="?attr/colorOnPrimary"
-                        app:backgroundTint="?attr/colorPrimary"
-                        app:rippleColor="?attr/colorSecondary"
-                        app:srcCompat="@drawable/baseline_map_24" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="MAPA"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"  />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/info_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:contentDescription="TODO"
-                        app:tint="?attr/colorOnPrimary"
-                        app:backgroundTint="?attr/colorPrimary"
-                        app:rippleColor="?attr/colorSecondary"
-                        app:srcCompat="@drawable/baseline_info_24" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="TARIFAS"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"  />
-                </LinearLayout>
+                    android:layout_marginTop="8dp"
+                    android:text="@string/linhas"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/schedule_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:contentDescription="@string/time_icon_description"
+                    app:backgroundTint="?attr/colorPrimary"
+                    app:rippleColor="?attr/colorSecondary"
+                    app:srcCompat="@drawable/baseline_schedule_24"
+                    app:tint="?attr/colorOnPrimary" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/horarios"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/map_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:contentDescription="@string/map_icon_description"
+                    app:backgroundTint="?attr/colorPrimary"
+                    app:rippleColor="?attr/colorSecondary"
+                    app:srcCompat="@drawable/baseline_map_24"
+                    app:tint="?attr/colorOnPrimary" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/mapa"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/info_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:contentDescription="@string/euro_icon_description"
+                    app:backgroundTint="?attr/colorPrimary"
+                    app:rippleColor="?attr/colorSecondary"
+                    app:srcCompat="@drawable/baseline_euro_24"
+                    app:tint="?attr/colorOnPrimary" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/tarifas"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
+            </LinearLayout>
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -181,50 +186,51 @@
                 android:layout_height="match_parent"
                 android:layout_marginVertical="4dp"
                 android:gravity="center"
-                android:text="Estado das Linhas"
-                android:textSize="16sp"
-                android:textColor="?attr/colorSecondary" />
+                android:text="@string/estado_das_linhas"
+                android:textColor="?attr/colorSecondary"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:id="@+id/line1_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/linha1">
+                android:background="@color/linha1"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="4dp"
                     android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="4dp"
                     android:orientation="vertical">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Linha 1"
-                        android:textSize="16sp"
-                        android:textColor="?attr/colorOnPrimary"/>
+                        android:text="@string/linha_1"
+                        android:textColor="?attr/colorOnPrimary"
+                        android:textSize="16sp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/line11_name"
-                        android:textSize="12sp"
-                        android:textColor="?attr/colorOnPrimary"/>
+                        android:textColor="?attr/colorOnPrimary"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <View
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
                 <ImageView
                     android:id="@+id/line1_ok"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
                     android:layout_gravity="center"
+                    android:layout_marginHorizontal="16dp"
+                    android:contentDescription="@string/line_1_ok"
                     android:src="@drawable/ic_check_black_24dp"
                     android:visibility="gone"
                     app:tint="?attr/colorOnPrimary" />
@@ -233,8 +239,9 @@
                     android:id="@+id/line1_nok"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
                     android:layout_gravity="center"
+                    android:layout_marginHorizontal="16dp"
+                    android:contentDescription="@string/line_1_nok"
                     android:src="@drawable/ic_warning_black_24dp"
                     android:visibility="gone"
                     app:tint="?attr/colorOnPrimary" />
@@ -251,42 +258,43 @@
                 android:id="@+id/line2_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/linha2">
+                android:background="@color/linha2"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="4dp"
                     android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="4dp"
                     android:orientation="vertical">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Linha 2"
-                        android:textSize="16sp"
-                        android:textColor="?attr/colorOnPrimary"/>
+                        android:text="@string/linha_2"
+                        android:textColor="?attr/colorOnPrimary"
+                        android:textSize="16sp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/line21_name"
-                        android:textSize="12sp"
-                        android:textColor="?attr/colorOnPrimary"/>
+                        android:textColor="?attr/colorOnPrimary"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <View
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
                 <ImageView
                     android:id="@+id/line2_ok"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
                     android:layout_gravity="center"
+                    android:layout_marginHorizontal="16dp"
+                    android:contentDescription="@string/line_2_ok"
                     android:src="@drawable/ic_check_black_24dp"
                     android:visibility="gone"
                     app:tint="?attr/colorOnPrimary" />
@@ -295,8 +303,9 @@
                     android:id="@+id/line2_nok"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
                     android:layout_gravity="center"
+                    android:layout_marginHorizontal="16dp"
+                    android:contentDescription="@string/line_2_nok"
                     android:src="@drawable/ic_warning_black_24dp"
                     android:visibility="gone"
                     app:tint="?attr/colorOnPrimary" />
@@ -313,42 +322,43 @@
                 android:id="@+id/line3_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/linha3">
+                android:background="@color/linha3"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="4dp"
                     android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="4dp"
                     android:orientation="vertical">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Linha 3"
-                        android:textSize="16sp"
-                        android:textColor="?attr/colorOnPrimary"/>
+                        android:text="@string/linha_3"
+                        android:textColor="?attr/colorOnPrimary"
+                        android:textSize="16sp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/line31_name"
-                        android:textSize="12sp"
-                        android:textColor="?attr/colorOnPrimary"/>
+                        android:textColor="?attr/colorOnPrimary"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <View
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
                 <ImageView
                     android:id="@+id/line3_ok"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
                     android:layout_gravity="center"
+                    android:layout_marginHorizontal="16dp"
+                    android:contentDescription="@string/line_3_ok"
                     android:src="@drawable/ic_check_black_24dp"
                     android:visibility="gone"
                     app:tint="?attr/colorOnPrimary" />
@@ -357,8 +367,9 @@
                     android:id="@+id/line3_nok"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
                     android:layout_gravity="center"
+                    android:layout_marginHorizontal="16dp"
+                    android:contentDescription="@string/line_3_nok"
                     android:src="@drawable/ic_warning_black_24dp"
                     android:visibility="gone"
                     app:tint="?attr/colorOnPrimary" />
@@ -376,8 +387,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginVertical="4dp"
                 android:gravity="center"
-                android:text="Atualizado a: 00:00"
-                android:textSize="12sp"/>
+                android:text="@string/atualizado"
+                android:textSize="12sp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -388,7 +399,7 @@
         android:layout_margin="16dp"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/daynight"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line_status_card">
@@ -403,16 +414,16 @@
                 android:layout_height="match_parent"
                 android:layout_marginVertical="4dp"
                 android:gravity="center"
-                android:text="Notícias"
-                android:textColor="?attr/colorSecondary"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"  />
+                android:text="@string/noticias"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="?attr/colorSecondary" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/news_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <ProgressBar
                 android:id="@+id/news_progress_bar"
@@ -422,25 +433,14 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/daynight"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Switch"
-        app:layout_constraintBottom_toTopOf="@+id/adView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/9214589741"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-3940256099942544/9214589741" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

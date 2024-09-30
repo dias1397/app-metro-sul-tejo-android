@@ -19,7 +19,6 @@
 
     <string name="proximo">Próximo</string>
     <string name="horario">Horários</string>
-    <string name="mapa">Mapa</string>
     <string name="informacao">Informação</string>
 
     <string name="linhas_prompt">Selecione uma linha</string>
@@ -400,4 +399,26 @@
         \n\n<b>Suporte</b>
         \nCartão Lisboa Viva/ Navegante, previamente adquirido.
     </string>
+
+    <string name="bus_icon_description">Bus icon</string>
+    <string name="time_icon_description">Time icon</string>
+    <string name="map_icon_description">Map icon</string>
+    <string name="euro_icon_description">Euro icon</string>
+
+    <string name="linhas">Linhas</string>
+    <string name="horarios">Horários</string>
+    <string name="mapa">Mapa</string>
+    <string name="tarifas">Tarifas</string>
+    <string name="noticias">Notícias</string>
+
+    <string name="linha_1">Linha 1</string>
+    <string name="linha_2">Linha 2</string>
+    <string name="linha_3">Linha 3</string>
+
+    <string name="line_1_nok">Line 1 NOK</string>
+    <string name="line_1_ok">Line 1 OK</string>
+    <string name="line_2_ok">Line 2 OK</string>
+    <string name="line_2_nok">Line 2 NOK</string>
+    <string name="line_3_ok">Line 3 OK</string>
+    <string name="line_3_nok">Line 3 NOk</string>
 </resources>
