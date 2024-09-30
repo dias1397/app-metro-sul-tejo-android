@@ -41,12 +41,12 @@ import java.util.concurrent.Executors;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView newsRecyclerView;
-    private ProgressBar newsProgressBar;
-    private AdView adView;
-    private FloatingActionButton linesButton, scheduleButton, mapButton, tariffButton;
+    private ProgressBar loadingProgressBar;
+    private AdView adBannerView;
+    private FloatingActionButton routeLinesFab, scheduleFab, mapFab, tariffFab;
     private LinearLayout line1Layout, line2Layout, line3Layout;
 
-    private final List<News> newsList = new ArrayList<>();
+    private final List<News> newsItems = new ArrayList<>();
     private NewsAdapter newsAdapter;
 
     @Override
@@ -55,24 +55,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initializeViews();
+        loadAds();
 
         setupUI();
-        setupAds();
-        setupSearchFragment();
-        setupClickListeners();
+        addSearchFragment();
+        setupButtonListeners();
 
-        loadNews();
+        loadNewsContent();
     }
 
     private void initializeViews() {
         newsRecyclerView = findViewById(R.id.news_recycler_view);
-        newsProgressBar = findViewById(R.id.news_progress_bar);
-        adView = findViewById(R.id.adView);
+        loadingProgressBar = findViewById(R.id.news_progress_bar);
+        adBannerView = findViewById(R.id.adView);
 
-        linesButton = findViewById(R.id.lines_button);
-        scheduleButton = findViewById(R.id.schedule_button);
-        mapButton = findViewById(R.id.map_button);
-        tariffButton = findViewById(R.id.info_button);
+        routeLinesFab = findViewById(R.id.lines_button);
+        scheduleFab = findViewById(R.id.schedule_button);
+        mapFab = findViewById(R.id.map_button);
+        tariffFab = findViewById(R.id.info_button);
 
         line1Layout = findViewById(R.id.line1_layout);
         line2Layout = findViewById(R.id.line2_layout);
@@ -91,36 +91,36 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
 
         newsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        newsAdapter = new NewsAdapter(this, newsList);
+        newsAdapter = new NewsAdapter(this, newsItems);
         newsRecyclerView.setAdapter(newsAdapter);
 
         newsRecyclerView.setVisibility(View.GONE);
-        newsProgressBar.setVisibility(View.VISIBLE);
+        loadingProgressBar.setVisibility(View.VISIBLE);
     }
 
-    private void setupAds() {
+    private void loadAds() {
         MobileAds.initialize(this, initializationStatus -> {});
 
         AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+        adBannerView.loadAd(adRequest);
     }
 
-    private void setupSearchFragment() {
+    private void addSearchFragment() {
         SearchFragment searchFragment = new SearchFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, searchFragment)
                 .commit();
     }
 
-    private void setupClickListeners() {
-        linesButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, RoutesActivity.class)));
-        scheduleButton.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, ScheduleActivity.class);
-            intent.putExtra("seasonId", 2);
-            startActivity(intent);
+    private void setupButtonListeners() {
+        routeLinesFab.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, RoutesActivity.class)));
+        scheduleFab.setOnClickListener(view -> {
+            Intent scheduleIntent = new Intent(MainActivity.this, ScheduleActivity.class);
+            scheduleIntent.putExtra("seasonId", 2);
+            startActivity(scheduleIntent);
         });
-        mapButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MapActivity.class)));
-        tariffButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, TariffsActivity.class)));
+        mapFab.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MapActivity.class)));
+        tariffFab.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, TariffsActivity.class)));
 
         line1Layout.setOnClickListener(view -> startRouteActivity(0));
         line2Layout.setOnClickListener(view -> startRouteActivity(1));
@@ -128,58 +128,58 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startRouteActivity(int lineId) {
-        Intent intent = new Intent(MainActivity.this, RoutesActivity.class);
-        intent.putExtra("lineId", lineId);
-        startActivity(intent);
+        Intent routeIntent = new Intent(MainActivity.this, RoutesActivity.class);
+        routeIntent.putExtra("lineId", lineId);
+        startActivity(routeIntent);
     }
 
-    private void loadNews() {
+    private void loadNewsContent() {
         Executors.newSingleThreadExecutor().execute(() -> {
             try {
-                List<News> fetchedNews = fetchNews();
+                List<News> fetchedNews = fetchNewsData();
 
                 runOnUiThread(() -> {
                     if (!fetchedNews.isEmpty()) {
-                        newsList.clear();
-                        newsList.addAll(fetchedNews);
+                        newsItems.clear();
+                        newsItems.addAll(fetchedNews);
                         newsAdapter.notifyDataSetChanged();
                     }
                     newsRecyclerView.setVisibility(View.VISIBLE);
-                    newsProgressBar.setVisibility(View.GONE);
+                    loadingProgressBar.setVisibility(View.GONE);
                 });
             } catch (IOException e) {
                 runOnUiThread(() -> {
-                    newsProgressBar.setVisibility(View.GONE);
+                    loadingProgressBar.setVisibility(View.GONE);
                     e.printStackTrace();
                 });
             }
         });
     }
 
-    private List<News> fetchNews() throws IOException {
+    private List<News> fetchNewsData() throws IOException {
         List<News> fetchedNewsList = new ArrayList<>();
         Document doc = Jsoup.connect("https://www.mts.pt/category/noticias/").get();
 
-        Element main = doc.getElementById("main");
-        Elements newsElements = main.select("div > section > ul").first().children();
+        Element mainElement = doc.getElementById("main");
+        Elements newsElements = mainElement.select("div > section > ul").first().children();
 
-        for (Element news : newsElements.subList(0, Math.min(newsElements.size(), 15))) {
-            String title = news.select("a > h4.pages-news__title").text();
-            String url = news.select("a").attr("href");
-            String details = news.select("p").text();
-            String date = news.select("h6.pages-news__date").text();
-            String imageUrl = Objects.requireNonNull(news.selectFirst("figure.pages-news__figure"))
+        for (Element newsElement : newsElements.subList(0, Math.min(newsElements.size(), 15))) {
+            String title = newsElement.select("a > h4.pages-news__title").text();
+            String url = newsElement.select("a").attr("href");
+            String details = newsElement.select("p").text();
+            String date = newsElement.select("h6.pages-news__date").text();
+            String imageUrl = Objects.requireNonNull(newsElement.selectFirst("figure.pages-news__figure"))
                     .attr("style")
                     .replaceAll(".*url\\(['\"]?(.*?)['\"]?\\).*", "$1");
 
-            News oneNews = new News();
-            oneNews.setTitle(title);
-            oneNews.setUrl(url);
-            oneNews.setDetails(details);
-            oneNews.setDate(date);
-            oneNews.setImageUrl(imageUrl);
+            News newsItem = new News();
+            newsItem.setTitle(title);
+            newsItem.setUrl(url);
+            newsItem.setDetails(details);
+            newsItem.setDate(date);
+            newsItem.setImageUrl(imageUrl);
 
-            fetchedNewsList.add(oneNews);
+            fetchedNewsList.add(newsItem);
         }
 
         return fetchedNewsList;
