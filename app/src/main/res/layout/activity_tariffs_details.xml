@@ -12,13 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        app:titleTextColor="?attr/colorOnPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Tarifa"
         app:navigationIcon="@drawable/baseline_arrow_back_24"
-        app:navigationIconTint="?attr/colorOnPrimary"/>
+        app:navigationIconTint="?attr/colorOnPrimary"
+        app:title="@string/app_name"
+        app:titleTextColor="?attr/colorOnPrimary" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView4"
@@ -42,19 +42,18 @@
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tarifa"
-                android:textSize="24sp"
-                android:textColor="?attr/colorSecondary"/>
+                android:text="@string/tarifas"
+                android:textColor="?attr/colorSecondary"
+                android:textSize="24sp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Preço"
-                android:textSize="16sp"/>
+                android:text="@string/tarifas"
+                android:textSize="16sp" />
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -158,9 +157,9 @@
         android:id="@+id/adView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/9214589741"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-3940256099942544/9214589741" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
