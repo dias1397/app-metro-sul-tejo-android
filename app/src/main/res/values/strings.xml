@@ -421,4 +421,6 @@
     <string name="line_2_nok">Line 2 NOK</string>
     <string name="line_3_ok">Line 3 OK</string>
     <string name="line_3_nok">Line 3 NOk</string>
+    <string name="mensagem_zero_horarios">Sem mais horários.\nVolte amanhã!</string>
+    <string name="warning_icon_description">Warning icon</string>
 </resources>
