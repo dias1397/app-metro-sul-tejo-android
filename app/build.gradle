@@ -11,8 +11,8 @@ android {
         compileSdk 34
         minSdkVersion 26
         targetSdkVersion 34
-        versionCode 8
-        versionName "1.8"
+        versionCode 12
+        versionName "2.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [ads_application_id: appProperties['ads_application_id']]
@@ -21,6 +21,14 @@ android {
         resValue("string", "ads_unit_id_live", appProperties['ads_unit_id_live'])
         resValue("string", "ads_unit_id_info", appProperties['ads_unit_id_info'])
         resValue("string", "ads_unit_id_map", appProperties['ads_unit_id_map'])
+
+        resValue("string", "main_activity_banner_ad", appProperties['main_activity_banner_ad'])
+        resValue("string", "live_activity_banner_ad", appProperties['live_activity_banner_ad'])
+        resValue("string", "routes_activity_banner_ad", appProperties['routes_activity_banner_ad'])
+        resValue("string", "schedule_activity_banner_ad", appProperties['schedule_activity_banner_ad'])
+        resValue("string", "map_activity_banner_ad", appProperties['map_activity_banner_ad'])
+        resValue("string", "tariff_activity_banner_ad", appProperties['tariff_activity_banner_ad'])
+        resValue("string", "news_activity_banner_ad", appProperties['news_activity_banner_ad'])
     }
     buildTypes {
         release {
@@ -41,23 +49,25 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.activity:activity:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.activity:activity:1.9.2'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.test:monitor:1.6.1'
+    implementation 'androidx.test:monitor:1.7.2'
+
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.1'
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
     implementation 'com.github.AppIntro:AppIntro:5.1.0'
-    implementation 'com.google.android.gms:play-services-ads:23.1.0'
+    implementation 'com.google.android.gms:play-services-ads:23.3.0'
     implementation 'com.google.android.material:material:1.12.0'
-    implementation 'org.jsoup:jsoup:1.17.2'
     implementation 'com.google.code.gson:gson:2.10.1'
-    implementation 'org.osmdroid:osmdroid-android:6.1.11'
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    androidTestImplementation 'androidx.test:runner:1.5.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'org.jsoup:jsoup:1.17.2'
+    implementation 'org.osmdroid:osmdroid-android:6.1.11'
+
+    androidTestImplementation 'androidx.test:runner:1.6.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 
     testImplementation 'junit:junit:4.13.2'
 }
