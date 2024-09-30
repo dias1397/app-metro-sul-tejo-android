@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initializeViews();
-        loadAds();
 
         setupUI();
+        setupAds();
         addSearchFragment();
         setupButtonListeners();
 
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         loadingProgressBar.setVisibility(View.VISIBLE);
     }
 
-    private void loadAds() {
+    private void setupAds() {
         MobileAds.initialize(this, initializationStatus -> {});
 
         AdRequest adRequest = new AdRequest.Builder().build();

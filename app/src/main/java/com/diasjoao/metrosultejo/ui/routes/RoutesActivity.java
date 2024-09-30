@@ -1,6 +1,5 @@
 package com.diasjoao.metrosultejo.ui.routes;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -21,21 +20,32 @@ import java.util.Objects;
 
 public class RoutesActivity extends AppCompatActivity {
 
-    private ViewPager view_pager;
-    private TabLayout tab_layout;
+    private MaterialToolbar materialToolbar;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+    private AdView adBannerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_routes);
 
-        MobileAds.initialize(this, initializationStatus -> {});
+        initializeViews();
 
-        AdView adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        adView.loadAd(adRequest);
+        setupUI();
+        setupAds();
+        setupViewPager();
+    }
+
+    private void initializeViews() {
+        materialToolbar = findViewById(R.id.toolbar);
+        viewPager = findViewById(R.id.view_pager);
+        tabLayout = findViewById(R.id.tab_layout);
+        adBannerView = findViewById(R.id.adView);
+    }
+
+    private void setupUI() {
+        EdgeToEdge.enable(this);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -43,44 +53,37 @@ public class RoutesActivity extends AppCompatActivity {
             return insets;
         });
 
-        initToolbar();
-        initComponent();
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
 
-        Intent intent = getIntent();
-        int lineId = intent.getIntExtra("lineId", 0);
-
-        for (int i = 0; i < tab_layout.getTabCount(); i++) {
-            Objects.requireNonNull(tab_layout.getTabAt(i)).setIcon(R.drawable.baseline_bus_24);
-        }
-
-        view_pager.setCurrentItem(lineId + 1);
-        view_pager.setCurrentItem(lineId);
-    }
-
-    private void initToolbar() {
-        MaterialToolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(v -> {
+        setSupportActionBar(materialToolbar);
+        materialToolbar.setNavigationOnClickListener(v -> {
             getOnBackPressedDispatcher().onBackPressed();
         });
 
-        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
+        RoutesPagerAdapter routesPagerAdapter = new RoutesPagerAdapter(getSupportFragmentManager());
+        routesPagerAdapter.addFragment(RoutesFragment.newInstance("LINHA 1"), "LINHA 1");
+        routesPagerAdapter.addFragment(RoutesFragment.newInstance("LINHA 2"), "LINHA 2");
+        routesPagerAdapter.addFragment(RoutesFragment.newInstance("LINHA 3"), "LINHA 3");
+
+        viewPager.setAdapter(routesPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
+    private void setupAds() {
+        MobileAds.initialize(this, initializationStatus -> {
+        });
 
-    private void initComponent() {
-        view_pager = (ViewPager) findViewById(R.id.view_pager);
-        setupViewPager(view_pager);
-
-        tab_layout = (TabLayout) findViewById(R.id.tab_layout);
-        tab_layout.setupWithViewPager(view_pager);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adBannerView.loadAd(adRequest);
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        RoutesPagerAdapter adapter = new RoutesPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(RoutesFragment.newInstance("LINHA 1"), "LINHA 1");
-        adapter.addFragment(RoutesFragment.newInstance("LINHA 2"), "LINHA 2");
-        adapter.addFragment(RoutesFragment.newInstance("LINHA 3"), "LINHA 3");
-        viewPager.setAdapter(adapter);
+    private void setupViewPager() {
+        int lineId = getIntent().getIntExtra("lineId", 0);
+
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            Objects.requireNonNull(tabLayout.getTabAt(i)).setIcon(R.drawable.baseline_bus_24);
+        }
+
+        viewPager.setCurrentItem(lineId);
     }
 }
