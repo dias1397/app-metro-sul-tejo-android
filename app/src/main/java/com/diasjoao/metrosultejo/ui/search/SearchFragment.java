@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.ui.live.LiveActivity;
@@ -30,67 +29,81 @@ public class SearchFragment extends Fragment {
     private Spinner spinnerStation;
     private Button buttonSearch;
 
-    private Map<String, List<String>> lineStationMap;
+    private int lineId = 0;
+    private ArrayAdapter<String> lineAdapter;
+    private ArrayAdapter<String> stationAdapter;
+    private List<String> lines = new ArrayList<>();
+    private Map<String, List<String>> stationsByLineMap;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
-        // Initialize the views
-        spinnerLine = view.findViewById(R.id.spinner_line);
-        spinnerStation = view.findViewById(R.id.spinner_station);
-        buttonSearch = view.findViewById(R.id.button_search);
+        initVars();
+        initViews(view);
 
-        // Set up the data
-        setupData();
-
-        // Set up the Spinners
-        setupLineSpinner();
-
-        // Set up the Search button click listener
-        buttonSearch.setOnClickListener(v -> performSearch());
-
-        Bundle args = getArguments();
-        if (args != null) {
-            spinnerLine.setSelection(args.getInt("lineId"));
-        }
+        setupUI();
+        setupListeners();
 
         return view;
     }
 
-    private void setupData() {
+    private void initVars() {
+        Bundle args = getArguments();
+        if (args != null) {
+            lineId = args.getInt("lineId");
+        }
+
+        stationsByLineMap = fetchLineStationMap();
+        lines = new ArrayList<>(stationsByLineMap.keySet());
+
+        lineAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, lines);
+        lineAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        updateStationAdapter(lines.get(lineId));
+    }
+
+    private Map<String, List<String>> fetchLineStationMap() {
         Resources res = requireContext().getResources();
         String[] lines = {"line_11", "line_12", "line_21", "line_22", "line_31", "line_32"};
 
-        lineStationMap = new LinkedHashMap<>();
+        Map<String, List<String>> lineStationMap = new LinkedHashMap<>();
         for (String line : lines) {
+            String lineName = res.getString(res.getIdentifier(line + "_name", "string", requireContext().getPackageName()));
             String[] stations = res.getStringArray(res.getIdentifier(line + "_stations", "array", requireContext().getPackageName()));
 
-            List<String> stationList = Arrays.asList(stations);
-
-            String lineName = res.getString(res.getIdentifier(line + "_name", "string", requireContext().getPackageName()));
-            lineStationMap.put(lineName, stationList);
+            lineStationMap.put(lineName, Arrays.asList(stations));
         }
+
+        return lineStationMap;
     }
 
-    private void setupLineSpinner() {
-        // Populate the Line Spinner with lines
-        final List<String> lines = new ArrayList<>(lineStationMap.keySet());
-        ArrayAdapter<String> lineAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, lines);
-        lineAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerLine.setAdapter(lineAdapter);
+    private void initViews(View view) {
+        spinnerLine = view.findViewById(R.id.spinner_line);
+        spinnerStation = view.findViewById(R.id.spinner_station);
 
-        // Set an item selected listener to update the Station Spinner when a line is selected
+        buttonSearch = view.findViewById(R.id.button_search);
+    }
+
+    private void setupUI() {
+        spinnerLine.setAdapter(lineAdapter);
+        spinnerStation.setAdapter(stationAdapter);
+    }
+
+    private void setupListeners() {
         spinnerLine.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedLine = lines.get(position);
-                updateStationSpinner(selectedLine);
+                updateStationAdapter(selectedLine);
 
                 if (getArguments() != null) {
                     spinnerStation.setSelection(getArguments().getInt("stationId"));
                     getArguments().clear();
+                } else {
+                    spinnerStation.setAdapter(stationAdapter);
+                    spinnerStation.setSelection(0);
                 }
             }
 
@@ -99,21 +112,15 @@ public class SearchFragment extends Fragment {
                 // Do nothing
             }
         });
+        spinnerLine.setSelection(lineId);
 
-        // Initialize the Station Spinner with the first line's stations
-        if (!lines.isEmpty()) {
-            updateStationSpinner(lines.get(0));
-        }
+        buttonSearch.setOnClickListener(v -> performSearch());
     }
 
-    private void updateStationSpinner(String selectedLine) {
-        // Get the stations corresponding to the selected line
-        List<String> stations = lineStationMap.get(selectedLine);
-
-        // Populate the Station Spinner with stations
-        ArrayAdapter<String> stationAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, stations);
+    private void updateStationAdapter(String line) {
+        stationAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item,
+                stationsByLineMap.get(line));
         stationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerStation.setAdapter(stationAdapter);
     }
 
     private void performSearch() {
