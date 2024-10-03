@@ -1,13 +1,9 @@
 package com.diasjoao.metrosultejo.ui.schedule;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 
@@ -26,28 +22,59 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.Arrays;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ScheduleActivity extends AppCompatActivity {
 
-    private ExecutorService executorService;
-    private Handler handler;
+    private MaterialToolbar materialToolbar;
+    private ProgressBar progressBar;
+    private Spinner lineSpinner;
+    private SwitchMaterial seasonSwitchMaterial;
+    private NavigationBarView navigationBarView;
+    private AdView adBannerView;
 
     private int dayId, lineId, seasonId = 1;
+    private ArrayAdapter<String> lineAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_schedule);
 
-        MobileAds.initialize(this, initializationStatus -> {});
+        initVars();
+        initViews();
 
-        AdView adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        adView.loadAd(adRequest);
+        setupUI();
+        setupListeners();
+        setupAds();
+    }
+
+    private void initVars() {
+        seasonId = getIntent().getIntExtra("seasonId", 1);
+
+        lineAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
+                Arrays.asList(
+                        getResources().getString(R.string.line11_name), getResources().getString(R.string.line12_name),
+                        getResources().getString(R.string.line21_name), getResources().getString(R.string.line22_name),
+                        getResources().getString(R.string.line31_name), getResources().getString(R.string.line32_name)
+                )
+        );
+        lineAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    }
+
+    private void initViews() {
+        materialToolbar = findViewById(R.id.toolbar);
+
+        progressBar = findViewById(R.id.progress_bar);
+        lineSpinner = findViewById(R.id.spinner_line);
+        seasonSwitchMaterial = findViewById(R.id.switch_season);
+        navigationBarView = findViewById(R.id.bottom_navigation);
+
+        adBannerView = findViewById(R.id.adView);
+    }
+
+    private void setupUI() {
+        EdgeToEdge.enable(this);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -55,47 +82,28 @@ public class ScheduleActivity extends AppCompatActivity {
             return insets;
         });
 
-        MaterialToolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(v -> {
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
+
+        setSupportActionBar(materialToolbar);
+        materialToolbar.setNavigationOnClickListener(v -> {
             getOnBackPressedDispatcher().onBackPressed();
         });
 
-        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
-
-        Intent intent = getIntent();
-        seasonId = intent.getIntExtra("seasonId", 1);
-
-        ProgressBar progressBar = findViewById(R.id.progress_bar);
-        Spinner lineSpinner = findViewById(R.id.spinner_line);
-        SwitchMaterial seasonSwitch = findViewById(R.id.switch_season);
-        seasonSwitch.setChecked(seasonId == 2);
-
-        executorService = Executors.newSingleThreadExecutor();
-        handler = new Handler(Looper.getMainLooper());
-
-        String line11 = getResources().getString(R.string.line11_name);
-        String line12 = getResources().getString(R.string.line12_name);
-        String line21 = getResources().getString(R.string.line21_name);
-        String line22 = getResources().getString(R.string.line22_name);
-        String line31 = getResources().getString(R.string.line31_name);
-        String line32 = getResources().getString(R.string.line32_name);
-
-        ArrayAdapter<String> lineAdapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, Arrays.asList(line11, line12, line21, line22, line31, line32));
-        lineAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         lineSpinner.setAdapter(lineAdapter);
+        seasonSwitchMaterial.setChecked(seasonId == 2);
+    }
 
+    private void setupListeners() {
         lineSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 progressBar.setVisibility(View.VISIBLE);
 
-                executorService.execute(() -> {
+                Executors.newSingleThreadExecutor().execute(() -> {
                     lineId = position + 1;
                     updateFragment(seasonId, dayId, lineId);
 
-                    handler.post(() -> progressBar.setVisibility(View.GONE));
+                    runOnUiThread(() -> progressBar.setVisibility(View.GONE));
                 });
             }
 
@@ -105,25 +113,21 @@ public class ScheduleActivity extends AppCompatActivity {
             }
         });
 
-        seasonSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                progressBar.setVisibility(View.VISIBLE);
+        seasonSwitchMaterial.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            progressBar.setVisibility(View.VISIBLE);
 
-                executorService.execute(() -> {
-                    seasonId = isChecked ? 2 : 1;
-                    updateFragment(seasonId, dayId, lineId);
+            Executors.newSingleThreadExecutor().execute(() -> {
+                seasonId = isChecked ? 2 : 1;
+                updateFragment(seasonId, dayId, lineId);
 
-                    handler.post(() -> progressBar.setVisibility(View.GONE));
-                });
-            }
+                runOnUiThread(() -> progressBar.setVisibility(View.GONE));
+            });
         });
 
-        NavigationBarView navigationBarView = findViewById(R.id.bottom_navigation);
         navigationBarView.setOnItemSelectedListener(item -> {
             progressBar.setVisibility(View.VISIBLE);
 
-            executorService.execute(() -> {
+            Executors.newSingleThreadExecutor().execute(() -> {
                 if (item.getItemId() == R.id.nav_weekday_fragment) {
                     dayId = 1;
                 }
@@ -138,13 +142,19 @@ public class ScheduleActivity extends AppCompatActivity {
 
                 updateFragment(seasonId, dayId, lineId);
 
-                handler.post(() -> progressBar.setVisibility(View.GONE));
+                runOnUiThread(() -> progressBar.setVisibility(View.GONE));
             });
 
             return true;
         });
-
         navigationBarView.setSelectedItemId(R.id.nav_weekday_fragment);
+    }
+
+    private void setupAds() {
+        MobileAds.initialize(this, initializationStatus -> {});
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adBannerView.loadAd(adRequest);
     }
 
     private void updateFragment(int seasonId, int dayId, int lineId) {

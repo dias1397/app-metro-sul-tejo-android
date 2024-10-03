@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         setupUI();
         setupAds();
         addSearchFragment();
-        setupButtonListeners();
+        setupListeners();
 
         loadNewsContent();
     }
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
-    private void setupButtonListeners() {
+    private void setupListeners() {
         routeLinesFab.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, RoutesActivity.class)));
         scheduleFab.setOnClickListener(view -> {
             Intent scheduleIntent = new Intent(MainActivity.this, ScheduleActivity.class);
