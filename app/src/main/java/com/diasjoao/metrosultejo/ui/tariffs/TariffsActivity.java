@@ -22,39 +22,25 @@ import java.util.List;
 
 public class TariffsActivity extends AppCompatActivity {
 
+    private MaterialToolbar materialToolbar;
     private RecyclerView recyclerView;
+    private AdView adBannerView;
+
     private TariffRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_tariffs);
 
-        MobileAds.initialize(this, initializationStatus -> {});
+        initVars();
+        initViews();
 
-        AdView adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        adView.loadAd(adRequest);
+        setupUI();
+        setupAds();
+    }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
-        MaterialToolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(v -> {
-            getOnBackPressedDispatcher().onBackPressed();
-        });
-
-        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
-
-        recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+    private void initVars() {
         String[] tariffsNames = getResources().getStringArray(R.array.tariff_names);
         String[] tariffsPrices = getResources().getStringArray(R.array.tariff_prices);
 
@@ -64,6 +50,38 @@ public class TariffsActivity extends AppCompatActivity {
         }
 
         adapter = new TariffRecyclerViewAdapter(tariffList, this);
+    }
+
+    private void initViews() {
+        materialToolbar = findViewById(R.id.toolbar);
+        recyclerView = findViewById(R.id.recycler_view);
+        adBannerView = findViewById(R.id.adView);
+    }
+
+    private void setupUI() {
+        EdgeToEdge.enable(this);
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
+        setSupportActionBar(materialToolbar);
+        materialToolbar.setNavigationOnClickListener(v -> {
+            getOnBackPressedDispatcher().onBackPressed();
+        });
+
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+    }
+
+    private void setupAds() {
+        MobileAds.initialize(this, initializationStatus -> {});
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adBannerView.loadAd(adRequest);
     }
 }
