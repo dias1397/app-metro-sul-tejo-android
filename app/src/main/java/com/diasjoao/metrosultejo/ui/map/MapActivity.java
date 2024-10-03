@@ -27,22 +27,44 @@ import java.util.List;
 
 public class MapActivity extends AppCompatActivity {
 
+    private MaterialToolbar materialToolbar;
     private MapView mapView;
-    private DataManager dataManager;
+    private AdView adBannerView;
+
+    private GeoPoint startPoint;
     private Drawable drawable;
+    private DataManager dataManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_map);
 
-        MobileAds.initialize(this, initializationStatus -> {});
+        initVars();
+        initViews();
 
-        AdView adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        adView.loadAd(adRequest);
+        setupUI();
+        setupAds();
+
+        addPolylinesAndMarkers();
+    }
+
+    private void initVars() {
+        Configuration.getInstance().setUserAgentValue(getPackageName());
+
+        startPoint = new GeoPoint(38.6662430, -9.1779545);
+        drawable = getResources().getDrawable(R.drawable.custom_marker, null);
+        dataManager = new DataManager(this);
+    }
+
+    private void initViews() {
+        materialToolbar = findViewById(R.id.toolbar);
+        mapView = findViewById(R.id.mapView);
+        adBannerView = findViewById(R.id.adView);
+    }
+
+    private void setupUI() {
+        EdgeToEdge.enable(this);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -50,28 +72,23 @@ public class MapActivity extends AppCompatActivity {
             return insets;
         });
 
-        MaterialToolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(v -> {
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
+
+        setSupportActionBar(materialToolbar);
+        materialToolbar.setNavigationOnClickListener(v -> {
             getOnBackPressedDispatcher().onBackPressed();
         });
 
-        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
-
-        Configuration.getInstance().setUserAgentValue(getPackageName());
-
-        mapView = findViewById(R.id.mapView);
         mapView.setMultiTouchControls(true);
         mapView.getController().setZoom(14.5);
-
-        GeoPoint startPoint = new GeoPoint(38.6662430, -9.1779545);
         mapView.getController().setCenter(startPoint);
+    }
 
-        drawable = getResources().getDrawable(R.drawable.custom_marker, null);
+    private void setupAds() {
+        MobileAds.initialize(this, initializationStatus -> {});
 
-        dataManager = new DataManager(this);
-
-        addPolylinesAndMarkers();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adBannerView.loadAd(adRequest);
     }
 
     private void addPolylinesAndMarkers() {
@@ -109,8 +126,8 @@ public class MapActivity extends AppCompatActivity {
 
             geoPoints.add(temp);
         }
-        polyline.setPoints(geoPoints);
 
+        polyline.setPoints(geoPoints);
         polyline.setWidth(10.0f);
 
         mapView.getOverlays().add(polyline);
@@ -133,12 +150,12 @@ public class MapActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        mapView.onResume(); // needed for osmdroid map lifecycle
+        mapView.onResume();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        mapView.onPause(); // needed for osmdroid map lifecycle
+        mapView.onPause();
     }
 }
