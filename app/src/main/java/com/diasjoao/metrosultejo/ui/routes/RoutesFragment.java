@@ -22,6 +22,13 @@ public class RoutesFragment extends Fragment {
 
     private static final String LINE_NAME = "line_name";
 
+    private TextView lineNameTextView;
+    private RecyclerView stationsRecyclerView;
+
+    private String lineName;
+    private int lineColor;
+    private RoutesAdapter routesAdapter;
+
     public static RoutesFragment newInstance(String lineName) {
         RoutesFragment fragment = new RoutesFragment();
         Bundle args = new Bundle();
@@ -35,73 +42,63 @@ public class RoutesFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_route, container, false);
 
-        // Retrieve the line name from the arguments
-        String lineName = getArguments().getString(LINE_NAME);
+        initVars();
+        initViews(view);
 
-        // Initialize RecyclerView or other UI components
-        setupRecyclerView(view, lineName);
+        setupUI();
 
         return view;
     }
 
-    private void setupRecyclerView(View view, String lineName) {
-        TextView lineNameTextview = view.findViewById(R.id.line_name);
-        lineNameTextview.setText(getLineName(lineName));
-        lineNameTextview.setBackgroundColor(getLineColor(lineName));
+    private void initVars() {
+        String lineNameId = requireArguments().getString(LINE_NAME, null);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        lineName = getLineName(lineNameId);
+        lineColor = getLineColor(lineNameId);
 
-        // Retrieve stations for the line and set up the adapter
-        List<String> stations = getStationsForLine(lineName);
-        RoutesAdapter adapter = new RoutesAdapter(stations, getLineColor(lineName), station -> {
-            // Handle station click
-            /*Intent intent = new Intent(getActivity(), StationDetailActivity.class);
-            intent.putExtra("station_name", station);
-            startActivity(intent);*/
-        });
+        routesAdapter = new RoutesAdapter(getStationsForLine(lineNameId), lineColor, null);
+    }
 
-        recyclerView.setAdapter(adapter);
+    private void initViews(View view) {
+        lineNameTextView = view.findViewById(R.id.line_name);
+        stationsRecyclerView = view.findViewById(R.id.recycler_view);
+    }
+
+    private void setupUI() {
+        lineNameTextView.setText(lineName);
+        lineNameTextView.setBackgroundColor(lineColor);
+
+        stationsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        stationsRecyclerView.setAdapter(routesAdapter);
     }
 
     private String getLineName(String lineName) {
-        switch (lineName) {
-            case "LINHA 1":
-                return getResources().getString(R.string.line11_name);
-            case "LINHA 2":
-                return getResources().getString(R.string.line21_name);
-            case "LINHA 3":
-                return getResources().getString(R.string.line31_name);
-            default:
-                return null;
-        }
-    }
-
-    private List<String> getStationsForLine(String lineName) {
-        // Return the list of stations based on the line name
-        switch (lineName) {
-            case "LINHA 1":
-                return Arrays.asList(getResources().getStringArray(R.array.line_11_stations));
-            case "LINHA 2":
-                return Arrays.asList(getResources().getStringArray(R.array.line_21_stations));
-            case "LINHA 3":
-                return Arrays.asList(getResources().getStringArray(R.array.line_31_stations));
-            default:
-                return Collections.emptyList();
-        }
+        return switch (lineName) {
+            case "LINHA 1" -> getResources().getString(R.string.line11_name);
+            case "LINHA 2" -> getResources().getString(R.string.line21_name);
+            case "LINHA 3" -> getResources().getString(R.string.line31_name);
+            default -> null;
+        };
     }
 
     private int getLineColor(String lineName) {
-        // Return color based on line name
-        switch (lineName) {
-            case "LINHA 1":
-                return getResources().getColor(R.color.linha1, null);
-            case "LINHA 2":
-                return getResources().getColor(R.color.linha2, null);
-            case "LINHA 3":
-                return getResources().getColor(R.color.linha3, null);
-            default:
-                return Color.BLACK;
-        }
+        return switch (lineName) {
+            case "LINHA 1" -> getResources().getColor(R.color.linha1, null);
+            case "LINHA 2" -> getResources().getColor(R.color.linha2, null);
+            case "LINHA 3" -> getResources().getColor(R.color.linha3, null);
+            default -> Color.BLACK;
+        };
+    }
+
+    private List<String> getStationsForLine(String lineName) {
+        return switch (lineName) {
+            case "LINHA 1" ->
+                    Arrays.asList(getResources().getStringArray(R.array.line_11_stations));
+            case "LINHA 2" ->
+                    Arrays.asList(getResources().getStringArray(R.array.line_21_stations));
+            case "LINHA 3" ->
+                    Arrays.asList(getResources().getStringArray(R.array.line_31_stations));
+            default -> Collections.emptyList();
+        };
     }
 }
