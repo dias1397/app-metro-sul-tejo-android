@@ -1,7 +1,5 @@
 package com.diasjoao.metrosultejo.ui.routes;
 
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +19,6 @@ public class RoutesAdapter extends RecyclerView.Adapter<RoutesAdapter.StationVie
     private final int lineColor;
     private final OnRoutesClickListener onRoutesClickListener;
 
-    // Interface for handling station click events
-    public interface OnRoutesClickListener {
-        void onStationClick(String stationName);
-    }
-
-    // Constructor
     public RoutesAdapter(List<String> stations, int lineColor, OnRoutesClickListener onRoutesClickListener) {
         this.stations = stations;
         this.lineColor = lineColor;
@@ -36,21 +28,17 @@ public class RoutesAdapter extends RecyclerView.Adapter<RoutesAdapter.StationVie
     @NonNull
     @Override
     public StationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Inflate the layout for each station item
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.routes_recycler_view_row, parent, false);
         return new StationViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull StationViewHolder holder, int position) {
-        // Get the station name for the current position
         String stationName = stations.get(position);
 
-        // Set the station name and color the background based on the line color
         holder.stationNameTextView.setText(stationName);
         holder.stationImageView.setBackgroundColor(lineColor);
 
-        // Handle the click event for each station
         holder.itemView.setOnClickListener(v -> onRoutesClickListener.onStationClick(stationName));
     }
 
@@ -59,7 +47,10 @@ public class RoutesAdapter extends RecyclerView.Adapter<RoutesAdapter.StationVie
         return stations.size();
     }
 
-    // ViewHolder class for each station item
+    public interface OnRoutesClickListener {
+        void onStationClick(String stationName);
+    }
+
     public static class StationViewHolder extends RecyclerView.ViewHolder {
         ImageView stationImageView;
         TextView stationNameTextView;

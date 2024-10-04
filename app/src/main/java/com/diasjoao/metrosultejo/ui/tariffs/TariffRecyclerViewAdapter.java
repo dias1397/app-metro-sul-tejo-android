@@ -17,8 +17,8 @@ import java.util.List;
 
 public class TariffRecyclerViewAdapter extends RecyclerView.Adapter<TariffRecyclerViewAdapter.TariffViewHolder> {
 
-    private List<Tariff> tariffList;
-    private Context context;
+    private final List<Tariff> tariffList;
+    private final Context context;
 
     public TariffRecyclerViewAdapter(List<Tariff> tariffList, Context context) {
         this.tariffList = tariffList;
@@ -36,8 +36,9 @@ public class TariffRecyclerViewAdapter extends RecyclerView.Adapter<TariffRecycl
     @Override
     public void onBindViewHolder(@NonNull TariffViewHolder holder, int position) {
         Tariff tariff = tariffList.get(position);
-        holder.ticketName.setText(tariff.getName());
-        holder.ticketPrice.setText("Preço: " + tariff.getPrice());
+
+        holder.ticketNameTextView.setText(tariff.getName());
+        holder.ticketPriceTextView.setText(String.format("Preço: %s", tariff.getPrice()));
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, TariffsDetailsActivity.class);
@@ -53,13 +54,14 @@ public class TariffRecyclerViewAdapter extends RecyclerView.Adapter<TariffRecycl
     }
 
 
-    public class TariffViewHolder extends RecyclerView.ViewHolder {
-        private TextView ticketName, ticketPrice;
+    public static class TariffViewHolder extends RecyclerView.ViewHolder {
+        TextView ticketNameTextView;
+        TextView ticketPriceTextView;
 
         public TariffViewHolder(@NonNull View itemView) {
             super(itemView);
-            ticketName = itemView.findViewById(R.id.ticket_name);
-            ticketPrice = itemView.findViewById(R.id.ticket_price);
+            ticketNameTextView = itemView.findViewById(R.id.ticket_name);
+            ticketPriceTextView = itemView.findViewById(R.id.ticket_price);
         }
     }
 }
