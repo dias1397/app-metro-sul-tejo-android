@@ -2,11 +2,7 @@ package com.diasjoao.metrosultejo.ui.news;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.Html;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -16,8 +12,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.adapters.NewsAdapter;
-import com.diasjoao.metrosultejo.data.model.News;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -27,33 +21,63 @@ import com.squareup.picasso.Picasso;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.concurrent.Executors;
 
 public class NewsActivity extends AppCompatActivity {
 
-    private PhotoView newsImageView;
+    private MaterialToolbar materialToolbar;
     private TextView newsTitleTextView;
+    private PhotoView newsImageView;
     private TextView newsDetailsTextView;
     private TextView newsDateTextView;
+    private AdView adBannerView;
 
     private String newsUrl;
+    private String newsTitle;
+    private String newsImageURL;
+    private String newsDetails;
+    private String newsDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_news);
 
-        MobileAds.initialize(this, initializationStatus -> {});
+        initVars();
+        initViews();
 
-        AdView adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        adView.loadAd(adRequest);
+        setupUI();
+        setupAds();
+
+        fetchNewsDetail();
+    }
+
+    private void initVars() {
+        Intent intent = getIntent();
+
+        newsUrl = intent.getStringExtra("NEWS_URL");
+        newsTitle = intent.getStringExtra("NEWS_TITLE");
+        newsImageURL = intent.getStringExtra("NEWS_IMAGE_URL");
+        newsDetails = intent.getStringExtra("NEWS_DETAILS");
+        newsDate = intent.getStringExtra("NEWS_DATE");
+    }
+
+    private void initViews() {
+        materialToolbar = findViewById(R.id.toolbar);
+
+        newsImageView = findViewById(R.id.newsImageView);
+        newsTitleTextView = findViewById(R.id.newsTitleTextView);
+        newsDetailsTextView = findViewById(R.id.newsDetailsTextView);
+        newsDateTextView = findViewById(R.id.newsDateTextView);
+
+        adBannerView = findViewById(R.id.adView);
+    }
+
+    private void setupUI() {
+        EdgeToEdge.enable(this);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -61,51 +85,41 @@ public class NewsActivity extends AppCompatActivity {
             return insets;
         });
 
-        MaterialToolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(v -> {
-            getOnBackPressedDispatcher().onBackPressed();
-        });
-
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
 
-        newsImageView = findViewById(R.id.newsImageView);
-        newsTitleTextView = findViewById(R.id.newsTitleTextView);
-        newsDetailsTextView = findViewById(R.id.newsDetailsTextView);
-        newsDateTextView = findViewById(R.id.newsDateTextView);
-
-        Intent intent = getIntent();
-        String newsTitle = intent.getStringExtra("NEWS_TITLE");
-        newsUrl = intent.getStringExtra("NEWS_URL");
-        String newsDetails = intent.getStringExtra("NEWS_DETAILS");
-        String newsImageURL = intent.getStringExtra("NEWS_IMAGE_URL");
-        String newsDate = intent.getStringExtra("NEWS_DATE");
+        setSupportActionBar(materialToolbar);
+        materialToolbar.setNavigationOnClickListener(v -> getOnBackPressedDispatcher().onBackPressed());
 
         newsTitleTextView.setText(newsTitle);
-        newsDetailsTextView.setText(newsDetails);
-        newsDateTextView.setText(newsDate);
-        if (newsImageURL != null && !newsImageURL.isEmpty()) {
+        if (!newsImageURL.isBlank()) {
             Picasso.get().load(newsImageURL).into(newsImageView);
         }
-
-        Executors.newSingleThreadExecutor().execute(this::getNewsDetail);
+        newsDateTextView.setText(newsDate);
+        newsDetailsTextView.setText(newsDetails);
     }
 
-    private void getNewsDetail() {
-        try {
-            Document doc = Jsoup.connect(newsUrl).get();
+    private void setupAds() {
+        MobileAds.initialize(this, initializationStatus -> {
+        });
 
-            Element main = doc.getElementById("main");
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adBannerView.loadAd(adRequest);
+    }
 
-            Elements newsElements = main.select("div > section").first().children();
+    private void fetchNewsDetail() {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            try {
+                Document doc = Jsoup.connect(newsUrl).get();
 
-            String details = newsElements.select("div").html();
-
-            new Handler(Looper.getMainLooper()).post(() -> {
-                newsDetailsTextView.setText(Html.fromHtml(details));
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                Optional.ofNullable(doc.getElementById("main"))
+                        .map(main -> main.select("div > section").first())
+                        .map(section -> section.children().select("div").html())
+                        .ifPresent(details ->
+                                runOnUiThread(() -> newsDetailsTextView.setText(Html.fromHtml(details)))
+                        );
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

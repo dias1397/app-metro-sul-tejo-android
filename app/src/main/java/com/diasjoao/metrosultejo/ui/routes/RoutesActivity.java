@@ -30,14 +30,14 @@ public class RoutesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_routes);
 
-        initializeViews();
+        initViews();
 
         setupUI();
         setupAds();
         setupViewPager();
     }
 
-    private void initializeViews() {
+    private void initViews() {
         materialToolbar = findViewById(R.id.toolbar);
         viewPager = findViewById(R.id.view_pager);
         tabLayout = findViewById(R.id.tab_layout);
