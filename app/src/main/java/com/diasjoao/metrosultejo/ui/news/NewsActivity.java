@@ -3,6 +3,8 @@ package com.diasjoao.metrosultejo.ui.news;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -31,6 +33,7 @@ public class NewsActivity extends AppCompatActivity {
     private MaterialToolbar materialToolbar;
     private TextView newsTitleTextView;
     private PhotoView newsImageView;
+    private ProgressBar newsProgressBar;
     private TextView newsDetailsTextView;
     private TextView newsDateTextView;
     private AdView adBannerView;
@@ -61,7 +64,6 @@ public class NewsActivity extends AppCompatActivity {
         newsUrl = intent.getStringExtra("NEWS_URL");
         newsTitle = intent.getStringExtra("NEWS_TITLE");
         newsImageURL = intent.getStringExtra("NEWS_IMAGE_URL");
-        newsDetails = intent.getStringExtra("NEWS_DETAILS");
         newsDate = intent.getStringExtra("NEWS_DATE");
     }
 
@@ -70,6 +72,7 @@ public class NewsActivity extends AppCompatActivity {
 
         newsImageView = findViewById(R.id.newsImageView);
         newsTitleTextView = findViewById(R.id.newsTitleTextView);
+        newsProgressBar = findViewById(R.id.progressBar);
         newsDetailsTextView = findViewById(R.id.newsDetailsTextView);
         newsDateTextView = findViewById(R.id.newsDateTextView);
 
@@ -99,8 +102,7 @@ public class NewsActivity extends AppCompatActivity {
     }
 
     private void setupAds() {
-        MobileAds.initialize(this, initializationStatus -> {
-        });
+        MobileAds.initialize(this, initializationStatus -> { });
 
         AdRequest adRequest = new AdRequest.Builder().build();
         adBannerView.loadAd(adRequest);
@@ -108,18 +110,27 @@ public class NewsActivity extends AppCompatActivity {
 
     private void fetchNewsDetail() {
         Executors.newSingleThreadExecutor().execute(() -> {
+            String errorMessage = "Unable to fetch news data";
+            String newsDetails = errorMessage;
+
             try {
                 Document doc = Jsoup.connect(newsUrl).get();
-
-                Optional.ofNullable(doc.getElementById("main"))
+                newsDetails = Optional.ofNullable(doc.getElementById("main"))
                         .map(main -> main.select("div > section").first())
                         .map(section -> section.children().select("div").html())
-                        .ifPresent(details ->
-                                runOnUiThread(() -> newsDetailsTextView.setText(Html.fromHtml(details)))
-                        );
+                        .orElse(errorMessage);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+            String finalNewsDetails = newsDetails;
+            runOnUiThread(() -> {
+                newsDetailsTextView.setText(Html.fromHtml(finalNewsDetails));
+
+                newsProgressBar.setVisibility(View.GONE);
+                newsDetailsTextView.setVisibility(View.VISIBLE);
+            });
         });
+
     }
 }

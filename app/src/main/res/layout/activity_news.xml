@@ -54,6 +54,11 @@
                     android:layout_height="wrap_content"
                     android:scaleType="centerInside" />
 
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/newsDetailsTextView"
@@ -62,7 +67,8 @@
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginBottom="8dp"
                     android:justificationMode="inter_word"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:visibility="gone" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/newsDateTextView"
