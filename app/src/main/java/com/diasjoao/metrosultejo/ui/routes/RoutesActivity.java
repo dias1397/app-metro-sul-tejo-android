@@ -56,9 +56,7 @@ public class RoutesActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
 
         setSupportActionBar(materialToolbar);
-        materialToolbar.setNavigationOnClickListener(v -> {
-            getOnBackPressedDispatcher().onBackPressed();
-        });
+        materialToolbar.setNavigationOnClickListener(v -> getOnBackPressedDispatcher().onBackPressed());
 
         RoutesPagerAdapter routesPagerAdapter = new RoutesPagerAdapter(getSupportFragmentManager());
         routesPagerAdapter.addFragment(RoutesFragment.newInstance("LINHA 1"), "LINHA 1");
@@ -70,8 +68,7 @@ public class RoutesActivity extends AppCompatActivity {
     }
 
     private void setupAds() {
-        MobileAds.initialize(this, initializationStatus -> {
-        });
+        MobileAds.initialize(this, initializationStatus -> { });
 
         AdRequest adRequest = new AdRequest.Builder().build();
         adBannerView.loadAd(adRequest);

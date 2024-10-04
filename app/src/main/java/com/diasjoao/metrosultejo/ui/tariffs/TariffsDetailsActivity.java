@@ -1,9 +1,7 @@
 package com.diasjoao.metrosultejo.ui.tariffs;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,35 +16,77 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
-import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
 public class TariffsDetailsActivity extends AppCompatActivity {
+
+    private MaterialToolbar materialToolbar;
+    private TextView titleTextView;
+    private TextView priceTextView;
+    private TextView descriptionTextView;
+    private TextView definitionTitleTextView;
+    private TextView definitionTextView;
+    private TextView expirationTitleTextView;
+    private TextView expirationTextView;
+    private TextView acquisitionTitleTextView;
+    private TextView acquisitionTextView;
+    private TextView supportTitleTextView;
+    private TextView supportTextView;
+    private AdView adBannerView;
+
+    private JSONObject tariff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_tariffs_details);
 
-        MobileAds.initialize(this, initializationStatus -> {});
+        initVars();
+        initViews();
 
-        AdView adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        adView.loadAd(adRequest);
+        setupUI();
+        setupAds();
+    }
+
+    private void initVars() {
+        int tariffId = getIntent().getIntExtra("TARIFF_ID", 0);
+
+        String json = loadJSONFromAsset(this, "tariffs.json");
+        if (json != null) {
+            try {
+                tariff = new JSONObject(json)
+                        .getJSONArray("tarifarios")
+                        .getJSONObject(tariffId);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void initViews() {
+        materialToolbar = findViewById(R.id.toolbar);
+
+        titleTextView = findViewById(R.id.title);
+        priceTextView = findViewById(R.id.price);
+        descriptionTextView = findViewById(R.id.descriptionText);
+        definitionTitleTextView = findViewById(R.id.definitionTitle);
+        definitionTextView = findViewById(R.id.definitionText);
+        expirationTitleTextView = findViewById(R.id.validadeTitle);
+        expirationTextView = findViewById(R.id.validadeText);
+        acquisitionTitleTextView = findViewById(R.id.aquisicaoTitle);
+        acquisitionTextView = findViewById(R.id.aquisicaoText);
+        supportTitleTextView = findViewById(R.id.suporteTitle);
+        supportTextView = findViewById(R.id.suporteText);
+
+        adBannerView = findViewById(R.id.adView);
+    }
+
+    private void setupUI() {
+        EdgeToEdge.enable(this);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -54,77 +94,49 @@ public class TariffsDetailsActivity extends AppCompatActivity {
             return insets;
         });
 
-        Intent intent = getIntent();
-        int tarifId = intent.getIntExtra("TARIFF_ID", 0);
-
-        MaterialToolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(v -> {
-            getOnBackPressedDispatcher().onBackPressed();
-        });
-
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
 
-        TextView title = findViewById(R.id.title);
-        TextView price = findViewById(R.id.price);
+        setSupportActionBar(materialToolbar);
+        materialToolbar.setNavigationOnClickListener(v -> getOnBackPressedDispatcher().onBackPressed());
 
-        TextView description = findViewById(R.id.descriptionText);
-        TextView definitionTitle = findViewById(R.id.definitionTitle);
-        TextView definitionText = findViewById(R.id.definitionText);
-        TextView validadeTitle = findViewById(R.id.validadeTitle);
-        TextView validadeText = findViewById(R.id.validadeText);
-        TextView aquisicaoTitle = findViewById(R.id.aquisicaoTitle);
-        TextView aquisicaoText = findViewById(R.id.aquisicaoText);
-        TextView suporteTitle = findViewById(R.id.suporteTitle);
-        TextView suporteText = findViewById(R.id.suporteText);
-
-        String json = loadJSONFromAsset(this, "tariffs.json");
-        if (json != null) {
+        if (tariff != null) {
             try {
-                JSONObject jsonObject = new JSONObject(json);
-                JSONArray tarifarios = jsonObject.getJSONArray("tarifarios");
-                JSONObject tarifario = tarifarios.getJSONObject(tarifId);
+                titleTextView.setText(tariff.getString("title"));
+                priceTextView.setText("Preço: " + tariff.getString("price"));
 
-                title.setText(tarifario.getString("title"));
-                price.setText("Preço: " + tarifario.getString("price"));
-
-                if (tarifario.has("descrição")) {
-                    description.setText(tarifario.getString("descrição"));
-                    description.setVisibility(View.VISIBLE);
-                }
-
-                if (tarifario.has("definição")) {
-                    definitionTitle.setText("Definição");
-                    definitionTitle.setVisibility(View.VISIBLE);
-                    definitionText.setText(tarifario.getString("definição"));
-                    definitionText.setVisibility(View.VISIBLE);
-                }
-
-                if (tarifario.has("validade")) {
-                    validadeTitle.setText("Validade");
-                    validadeTitle.setVisibility(View.VISIBLE);
-                    validadeText.setText(tarifario.getString("validade"));
-                    validadeText.setVisibility(View.VISIBLE);
-                }
-
-                if (tarifario.has("aquisição")) {
-                    aquisicaoTitle.setText("Aquisição");
-                    aquisicaoTitle.setVisibility(View.VISIBLE);
-                    aquisicaoText.setText(tarifario.getString("aquisição"));
-                    aquisicaoText.setVisibility(View.VISIBLE);
-                }
-
-                if (tarifario.has("suporte")) {
-                    suporteTitle.setText("Suporte");
-                    suporteTitle.setVisibility(View.VISIBLE);
-                    suporteText.setText(tarifario.getString("suporte"));
-                    suporteText.setVisibility(View.VISIBLE);
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
+                setTextViewVisibility(tariff, "descrição", descriptionTextView);
+                setTextViewWithTitleVisibility(tariff, "definição", "Definição", definitionTitleTextView, definitionTextView);
+                setTextViewWithTitleVisibility(tariff, "validade", "Validade", expirationTitleTextView, expirationTextView);
+                setTextViewWithTitleVisibility(tariff, "aquisição", "Aquisição", acquisitionTitleTextView, acquisitionTextView);
+                setTextViewWithTitleVisibility(tariff, "suporte", "Suporte", supportTitleTextView, supportTextView);
+            } catch (Exception exception) {
+                exception.printStackTrace();
             }
         }
+    }
+
+    private void setTextViewVisibility(JSONObject tariff, String key, TextView textView) throws JSONException {
+        if (tariff.has(key)) {
+            textView.setText(tariff.getString(key));
+            textView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void setTextViewWithTitleVisibility(JSONObject tariff, String key, String title, TextView titleView, TextView contentView) throws JSONException {
+        if (tariff.has(key)) {
+            titleView.setText(title);
+            titleView.setVisibility(View.VISIBLE);
+            contentView.setText(tariff.getString(key));
+            contentView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void setupAds() {
+        MobileAds.initialize(this, initializationStatus -> {
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adBannerView.loadAd(adRequest);
     }
 
     private String loadJSONFromAsset(Context context, String fileName) {

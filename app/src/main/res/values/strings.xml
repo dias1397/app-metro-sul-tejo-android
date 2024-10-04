@@ -406,6 +406,7 @@
     <string name="euro_icon_description">Euro icon</string>
     <string name="warning_icon_description">Warning icon</string>
     <string name="station_dot_icon_description">Station dot icon</string>
+    <string name="arrow_icon_description">Arrow icon</string>
 
     <string name="linhas">Linhas</string>
     <string name="horarios">Horários</string>

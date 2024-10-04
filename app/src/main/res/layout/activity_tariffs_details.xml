@@ -25,9 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -44,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tarifas"
                 android:textColor="?attr/colorSecondary"
-                android:textSize="24sp" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/price"
@@ -52,106 +49,110 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/tarifas"
-                android:textSize="16sp" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:scrollbars="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView4">
 
-        <LinearLayout
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:orientation="vertical">
+            android:layout_margin="16dp">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/descriptionText"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:justificationMode="inter_word"
-                android:textSize="14sp"
-                android:visibility="gone" />
+                android:layout_margin="16dp"
+                android:orientation="vertical">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/definitionTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="?attr/colorSecondary"
-                android:textSize="16sp"
-                android:visibility="gone" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/descriptionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:justificationMode="inter_word"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:visibility="gone" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/definitionText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:justificationMode="inter_word"
-                android:textSize="14sp"
-                android:visibility="gone" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/definitionTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorSecondary"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:visibility="gone" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/validadeTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="?attr/colorSecondary"
-                android:textSize="16sp"
-                android:visibility="gone" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/definitionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:justificationMode="inter_word"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:visibility="gone" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/validadeText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:justificationMode="inter_word"
-                android:textSize="14sp"
-                android:visibility="gone" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/validadeTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorSecondary"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:visibility="gone" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/aquisicaoTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="?attr/colorSecondary"
-                android:textSize="16sp"
-                android:visibility="gone" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/validadeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:justificationMode="inter_word"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:visibility="gone" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/aquisicaoText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:justificationMode="inter_word"
-                android:textSize="14sp"
-                android:visibility="gone" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/aquisicaoTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorSecondary"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:visibility="gone" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/suporteTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="?attr/colorSecondary"
-                android:textSize="16sp"
-                android:visibility="gone" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/aquisicaoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:justificationMode="inter_word"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:visibility="gone" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/suporteText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:justificationMode="inter_word"
-                android:textSize="14sp"
-                android:visibility="gone" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/suporteTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorSecondary"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:visibility="gone" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/suporteText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:justificationMode="inter_word"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
