@@ -110,7 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            app:menu="@menu/timetable_nav_menu" />
+            app:menu="@menu/menu_schedule_day" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <ProgressBar
