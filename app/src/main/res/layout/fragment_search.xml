@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="@string/selecione_a_linha"
+        android:text="@string/line_selection"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         android:textColor="?attr/colorSecondary" />
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="@string/selecione_a_estacao"
+        android:text="@string/station_selection"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         android:textColor="?attr/colorSecondary" />

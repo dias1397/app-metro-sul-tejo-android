@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/android:windowBackground"
-    tools:context=".ui.live.LiveActivity">
+    tools:context=".ui.activity.LiveActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/baseline_arrow_back_24"
+        app:navigationIcon="@drawable/ic_arrow_back"
         app:navigationIconTint="?attr/colorOnPrimary"
         app:title="@string/app_name"
         app:titleTextColor="?attr/colorOnPrimary" />
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_card"
-        tools:listitem="@layout/item_live_arrival" />
+        tools:listitem="@layout/item_live_time" />
 
     <LinearLayout
         android:id="@+id/no_times_layout"
@@ -70,14 +70,14 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:contentDescription="@string/warning_icon_description"
-            android:src="@drawable/baseline_warning_24"
+            android:src="@drawable/ic_warning"
             app:tint="?attr/colorSecondary" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/mensagem_zero_horarios"
+            android:text="@string/no_times_error_message"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             android:textColor="?attr/colorSecondary" />
 

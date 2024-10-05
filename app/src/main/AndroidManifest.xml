@@ -14,85 +14,39 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
         <activity
-            android:name=".ui.news.NewsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.tariffs.TariffsDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.live.LiveActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.routes.RoutesActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.map.MapActivity"
+            android:name=".ui.activity.LiveActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.schedule.ScheduleActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.tariffs.TariffsActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.activities.LiveActivity"
+            android:name=".ui.activity.LinesActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.LineActivity"
-            android:exported="false"
-            android:label="@string/title_activity_line"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+            android:name=".ui.activity.ScheduleActivity"
+            android:exported="false" />
         <activity
-            android:name=".ui.activities.LiveActivity3"
-            android:exported="false"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+            android:name=".ui.activity.MapActivity"
+            android:exported="false" />
         <activity
-            android:name=".ui.activities.IntroActivity"
-            android:theme="@style/AppTheme1.NoActionBar" />
+            android:name=".ui.activity.TariffsActivity"
+            android:exported="false" />
         <activity
-            android:name=".ui.activities.MenuActivityOld"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme1.NoActionBar" />
+            android:name=".ui.activity.TariffActivity"
+            android:exported="false" />
         <activity
-            android:name=".ui.activities.LiveActivityOld"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme1.NoActionBar" />
-        <activity
-            android:name=".ui.activities.ScheduleActivity"
-            android:configChanges="orientation"
-            android:noHistory="true"
-            android:screenOrientation="landscape"
-            android:theme="@style/AppTheme1.NoActionBar" />
-        <activity
-            android:name=".ui.activities.MapActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme1.NoActionBar" />
-        <activity
-            android:name=".ui.activities.InfoActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activities.HomeActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".ui.activity.NewsActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="${ads_application_id}" />
     </application>
-
 </manifest>
