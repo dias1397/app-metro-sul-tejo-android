@@ -15,12 +15,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.data.model.Station;
-import com.diasjoao.metrosultejo.data.repository.ScheduleRepository;
-import com.diasjoao.metrosultejo.helpers.DateHelper;
-import com.diasjoao.metrosultejo.ui.adapter.LiveAdapter;
+import com.diasjoao.metrosultejo.model.Station;
+import com.diasjoao.metrosultejo.repository.ScheduleRepository;
+import com.diasjoao.metrosultejo.util.DateHelper;
+import com.diasjoao.metrosultejo.ui.adapter.LiveTimesAdapter;
 import com.diasjoao.metrosultejo.ui.fragment.SearchFragment;
-import com.diasjoao.metrosultejo.utils.DateUtils;
+import com.diasjoao.metrosultejo.util.DateUtils;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -47,7 +47,7 @@ public class LiveActivity extends AppCompatActivity {
     private AdView adBannerView;
 
     private List<LocalDateTime> stationTimes;
-    private LiveAdapter liveAdapter;
+    private LiveTimesAdapter liveTimesAdapter;
     private CountDownTimer countDownTimer;
 
     @Override
@@ -89,7 +89,7 @@ public class LiveActivity extends AppCompatActivity {
         stationTimes = station.getConvertedTimes().stream()
                 .filter(time -> time.isAfter(rightNow.minusMinutes(9)) && time.isBefore(endBound))
                 .collect(Collectors.toList());
-        liveAdapter = new LiveAdapter(this, stationTimes,
+        liveTimesAdapter = new LiveTimesAdapter(this, stationTimes,
                 String.format(routes.get(lineId - 1), station.getName())
         );
     }
@@ -123,7 +123,7 @@ public class LiveActivity extends AppCompatActivity {
 
         if (!stationTimes.isEmpty()) {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setAdapter(liveAdapter);
+            recyclerView.setAdapter(liveTimesAdapter);
             startCountdown();
         }
 
@@ -161,7 +161,7 @@ public class LiveActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                liveAdapter.notifyDataSetChanged();
+                liveTimesAdapter.notifyDataSetChanged();
                 startCountdown();
             }
         };

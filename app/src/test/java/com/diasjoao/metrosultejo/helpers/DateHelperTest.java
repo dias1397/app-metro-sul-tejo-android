@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import android.content.Context;
 
+import com.diasjoao.metrosultejo.util.DateHelper;
+
 import org.junit.Before;
 import org.junit.Test;
 

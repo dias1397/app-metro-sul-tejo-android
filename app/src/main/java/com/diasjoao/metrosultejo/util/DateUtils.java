@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.utils;
+package com.diasjoao.metrosultejo.util;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;

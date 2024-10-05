@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataManager {
+public class MapDataManager {
 
     // Line class to store line metadata and its stations
     public class Line {
@@ -58,7 +58,7 @@ public class DataManager {
     // Stores all parsed lines with metadata
     private List<Line> lines = new ArrayList<>();
 
-    public DataManager(Context context) {
+    public MapDataManager(Context context) {
         loadData(context);
     }
 

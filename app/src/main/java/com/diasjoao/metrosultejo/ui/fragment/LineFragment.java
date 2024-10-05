@@ -13,13 +13,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.ui.adapter.RoutesAdapter;
+import com.diasjoao.metrosultejo.ui.adapter.LineAdapter;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class RoutesFragment extends Fragment {
+public class LineFragment extends Fragment {
 
     private static final String LINE_NAME = "line_name";
 
@@ -28,10 +28,10 @@ public class RoutesFragment extends Fragment {
 
     private String lineName;
     private int lineColor;
-    private RoutesAdapter routesAdapter;
+    private LineAdapter lineAdapter;
 
-    public static RoutesFragment newInstance(String lineName) {
-        RoutesFragment fragment = new RoutesFragment();
+    public static LineFragment newInstance(String lineName) {
+        LineFragment fragment = new LineFragment();
         Bundle args = new Bundle();
         args.putString(LINE_NAME, lineName);
         fragment.setArguments(args);
@@ -57,7 +57,7 @@ public class RoutesFragment extends Fragment {
         lineName = getLineName(lineNameId);
         lineColor = getLineColor(lineNameId);
 
-        routesAdapter = new RoutesAdapter(getStationsForLine(lineNameId), lineColor, null);
+        lineAdapter = new LineAdapter(getStationsForLine(lineNameId), lineColor, null);
     }
 
     private void initViews(View view) {
@@ -70,7 +70,7 @@ public class RoutesFragment extends Fragment {
         lineNameTextView.setBackgroundColor(lineColor);
 
         stationsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        stationsRecyclerView.setAdapter(routesAdapter);
+        stationsRecyclerView.setAdapter(lineAdapter);
     }
 
     private String getLineName(String lineName) {

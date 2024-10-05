@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.data.repository.ScheduleRepository;
-import com.diasjoao.metrosultejo.ui.adapter.TimetableAdapter;
+import com.diasjoao.metrosultejo.repository.ScheduleRepository;
+import com.diasjoao.metrosultejo.ui.adapter.ScheduleAdapter;
 
 public class ScheduleFragment extends Fragment {
 
@@ -20,7 +20,7 @@ public class ScheduleFragment extends Fragment {
     private int seasonId = 1;
     private int dayId = 1;
     private int lineId = 1;
-    private TimetableAdapter timetableAdapter;
+    private ScheduleAdapter scheduleAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,7 +43,7 @@ public class ScheduleFragment extends Fragment {
         }
 
         ScheduleRepository scheduleRepository = new ScheduleRepository(requireContext());
-        timetableAdapter = new TimetableAdapter(
+        scheduleAdapter = new ScheduleAdapter(
                 scheduleRepository.findStationsBySeasonAndDayAndLine(seasonId, dayId, lineId)
         );
     }
@@ -55,6 +55,6 @@ public class ScheduleFragment extends Fragment {
     private void setupUI() {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(timetableAdapter);
+        recyclerView.setAdapter(scheduleAdapter);
     }
 }

@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.data.model;
+package com.diasjoao.metrosultejo.model;
 
 public class Tariff {
 

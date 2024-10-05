@@ -13,13 +13,13 @@ import com.diasjoao.metrosultejo.R;
 
 import java.util.List;
 
-public class RoutesAdapter extends RecyclerView.Adapter<RoutesAdapter.StationViewHolder> {
+public class LineAdapter extends RecyclerView.Adapter<LineAdapter.StationViewHolder> {
 
     private final List<String> stations;
     private final int lineColor;
     private final OnRoutesClickListener onRoutesClickListener;
 
-    public RoutesAdapter(List<String> stations, int lineColor, OnRoutesClickListener onRoutesClickListener) {
+    public LineAdapter(List<String> stations, int lineColor, OnRoutesClickListener onRoutesClickListener) {
         this.stations = stations;
         this.lineColor = lineColor;
         this.onRoutesClickListener = onRoutesClickListener;

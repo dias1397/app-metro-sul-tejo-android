@@ -1,9 +1,9 @@
-package com.diasjoao.metrosultejo.data.repository;
+package com.diasjoao.metrosultejo.repository;
 
 import android.content.Context;
 
-import com.diasjoao.metrosultejo.data.model.Season;
-import com.diasjoao.metrosultejo.data.model.Station;
+import com.diasjoao.metrosultejo.model.Season;
+import com.diasjoao.metrosultejo.model.Station;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;

@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.data.model;
+package com.diasjoao.metrosultejo.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.data.model.News;
+import com.diasjoao.metrosultejo.model.News;
 import com.diasjoao.metrosultejo.ui.activity.NewsActivity;
 import com.squareup.picasso.Picasso;
 

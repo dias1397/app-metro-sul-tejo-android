@@ -18,13 +18,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 
-public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.LiveViewHolder> {
+public class LiveTimesAdapter extends RecyclerView.Adapter<LiveTimesAdapter.LiveViewHolder> {
 
     private final Context context;
     private final List<LocalDateTime> times;
     private final String route;
 
-    public LiveAdapter(Context context, List<LocalDateTime> times, String route) {
+    public LiveTimesAdapter(Context context, List<LocalDateTime> times, String route) {
         this.context = context;
         this.times = times;
         this.route = route;

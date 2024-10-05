@@ -27,7 +27,7 @@
             android:name=".ui.activity.LiveActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activity.RoutesActivity"
+            android:name=".ui.activity.LinesActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.ScheduleActivity"
@@ -39,7 +39,7 @@
             android:name=".ui.activity.TariffsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activity.TariffsDetailsActivity"
+            android:name=".ui.activity.TariffActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.NewsActivity"

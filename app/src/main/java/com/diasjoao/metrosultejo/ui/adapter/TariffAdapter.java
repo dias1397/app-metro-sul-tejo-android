@@ -11,17 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.data.model.Tariff;
-import com.diasjoao.metrosultejo.ui.activity.TariffsDetailsActivity;
+import com.diasjoao.metrosultejo.model.Tariff;
+import com.diasjoao.metrosultejo.ui.activity.TariffActivity;
 
 import java.util.List;
 
-public class TariffRecyclerViewAdapter extends RecyclerView.Adapter<TariffRecyclerViewAdapter.TariffViewHolder> {
+public class TariffAdapter extends RecyclerView.Adapter<TariffAdapter.TariffViewHolder> {
 
     private final List<Tariff> tariffList;
     private final Context context;
 
-    public TariffRecyclerViewAdapter(List<Tariff> tariffList, Context context) {
+    public TariffAdapter(List<Tariff> tariffList, Context context) {
         this.tariffList = tariffList;
         this.context = context;
     }
@@ -42,7 +42,7 @@ public class TariffRecyclerViewAdapter extends RecyclerView.Adapter<TariffRecycl
         holder.ticketPriceTextView.setText(String.format("Preço: %s", tariff.getPrice()));
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, TariffsDetailsActivity.class);
+            Intent intent = new Intent(context, TariffActivity.class);
             intent.putExtra("TARIFF_NAME", tariff.getName());
             intent.putExtra("TARIFF_ID", position);
             context.startActivity(intent);

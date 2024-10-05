@@ -22,7 +22,7 @@ import org.json.JSONObject;
 
 import java.io.InputStream;
 
-public class TariffsDetailsActivity extends AppCompatActivity {
+public class TariffActivity extends AppCompatActivity {
 
     private MaterialToolbar materialToolbar;
     private TextView titleTextView;

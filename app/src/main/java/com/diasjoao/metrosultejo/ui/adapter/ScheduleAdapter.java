@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.diasjoao.metrosultejo.data.model.Station;
+import com.diasjoao.metrosultejo.model.Station;
 
 import java.util.HashSet;
 import java.util.List;
@@ -17,13 +17,13 @@ import java.util.Set;
 
 import com.diasjoao.metrosultejo.R;
 
-public class TimetableAdapter extends RecyclerView.Adapter<TimetableAdapter.TimetableViewHolder> {
+public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.TimetableViewHolder> {
 
     private List<Station> stationList;
     private Set<RecyclerView> timesRecyclerViews = new HashSet<>();
     private boolean isSyncing = false;
 
-    public TimetableAdapter(List<Station> stationList) {
+    public ScheduleAdapter(List<Station> stationList) {
         this.stationList = stationList;
     }
 
@@ -63,7 +63,7 @@ public class TimetableAdapter extends RecyclerView.Adapter<TimetableAdapter.Time
         holder.timesRecyclerView.setHasFixedSize(true);
         holder.timesRecyclerView.setLayoutManager(
                 new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
-        holder.timesRecyclerView.setAdapter(new TimeAdapter(station.getConvertedTimes()));
+        holder.timesRecyclerView.setAdapter(new ScheduleRowAdapter(station.getConvertedTimes()));
 
         timesRecyclerViews.add(holder.timesRecyclerView);
         holder.timesRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

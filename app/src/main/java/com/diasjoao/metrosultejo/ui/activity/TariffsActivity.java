@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.data.model.Tariff;
-import com.diasjoao.metrosultejo.ui.adapter.TariffRecyclerViewAdapter;
+import com.diasjoao.metrosultejo.model.Tariff;
+import com.diasjoao.metrosultejo.ui.adapter.TariffAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -27,7 +27,7 @@ public class TariffsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdView adBannerView;
 
-    private TariffRecyclerViewAdapter adapter;
+    private TariffAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class TariffsActivity extends AppCompatActivity {
             tariffList.add(new Tariff(tariffsNames[i], tariffsPrices[i]));
         }
 
-        adapter = new TariffRecyclerViewAdapter(tariffList, this);
+        adapter = new TariffAdapter(tariffList, this);
     }
 
     private void initViews() {

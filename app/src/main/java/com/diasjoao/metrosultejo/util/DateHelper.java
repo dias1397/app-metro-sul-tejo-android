@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.helpers;
+package com.diasjoao.metrosultejo.util;
 
 import android.content.Context;
 

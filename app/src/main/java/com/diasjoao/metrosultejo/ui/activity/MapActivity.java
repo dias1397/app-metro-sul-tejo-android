@@ -10,7 +10,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.data.DataManager;
+import com.diasjoao.metrosultejo.data.MapDataManager;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -33,7 +33,7 @@ public class MapActivity extends AppCompatActivity {
 
     private GeoPoint startPoint;
     private Drawable drawable;
-    private DataManager dataManager;
+    private MapDataManager mapDataManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class MapActivity extends AppCompatActivity {
 
         startPoint = new GeoPoint(38.6662430, -9.1779545);
         drawable = getResources().getDrawable(R.drawable.custom_marker, null);
-        dataManager = new DataManager(this);
+        mapDataManager = new MapDataManager(this);
     }
 
     private void initViews() {
@@ -92,13 +92,13 @@ public class MapActivity extends AppCompatActivity {
     }
 
     private void addPolylinesAndMarkers() {
-        for (DataManager.Line line : dataManager.getLines()) { // Assuming 3 lines
+        for (MapDataManager.Line line : mapDataManager.getLines()) { // Assuming 3 lines
             addPolylines(line);
             addMarkers(line);
         }
     }
 
-    private void addPolylines(DataManager.Line line) {
+    private void addPolylines(MapDataManager.Line line) {
         Polyline polyline = new Polyline();
 
         polyline.setColor(
@@ -106,7 +106,7 @@ public class MapActivity extends AppCompatActivity {
         );
 
         List<GeoPoint> geoPoints = new ArrayList<>();
-        for (DataManager.Station station : line.getStations()) {
+        for (MapDataManager.Station station : line.getStations()) {
             GeoPoint temp = station.getGeoPoint().clone();
 
             if (line.getColor().equals("linha1")) {
@@ -133,8 +133,8 @@ public class MapActivity extends AppCompatActivity {
         mapView.getOverlays().add(polyline);
     }
 
-    private void addMarkers(DataManager.Line line) {
-        for (DataManager.Station station : line.getStations()) {
+    private void addMarkers(MapDataManager.Line line) {
+        for (MapDataManager.Station station : line.getStations()) {
             Marker marker = new Marker(mapView);
 
             marker.setPosition(station.getGeoPoint());

@@ -10,8 +10,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.ui.fragment.RoutesFragment;
-import com.diasjoao.metrosultejo.ui.adapter.RoutesPagerAdapter;
+import com.diasjoao.metrosultejo.ui.fragment.LineFragment;
+import com.diasjoao.metrosultejo.ui.adapter.LinePageAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -20,7 +20,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;
 
-public class RoutesActivity extends AppCompatActivity {
+public class LinesActivity extends AppCompatActivity {
 
     private MaterialToolbar materialToolbar;
     private ViewPager viewPager;
@@ -60,12 +60,12 @@ public class RoutesActivity extends AppCompatActivity {
         setSupportActionBar(materialToolbar);
         materialToolbar.setNavigationOnClickListener(v -> getOnBackPressedDispatcher().onBackPressed());
 
-        RoutesPagerAdapter routesPagerAdapter = new RoutesPagerAdapter(getSupportFragmentManager());
-        routesPagerAdapter.addFragment(RoutesFragment.newInstance("LINHA 1"), "LINHA 1");
-        routesPagerAdapter.addFragment(RoutesFragment.newInstance("LINHA 2"), "LINHA 2");
-        routesPagerAdapter.addFragment(RoutesFragment.newInstance("LINHA 3"), "LINHA 3");
+        LinePageAdapter linePageAdapter = new LinePageAdapter(getSupportFragmentManager());
+        linePageAdapter.addFragment(LineFragment.newInstance("LINHA 1"), "LINHA 1");
+        linePageAdapter.addFragment(LineFragment.newInstance("LINHA 2"), "LINHA 2");
+        linePageAdapter.addFragment(LineFragment.newInstance("LINHA 3"), "LINHA 3");
 
-        viewPager.setAdapter(routesPagerAdapter);
+        viewPager.setAdapter(linePageAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
 

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.ui.adapter.NewsAdapter;
-import com.diasjoao.metrosultejo.data.model.News;
+import com.diasjoao.metrosultejo.model.News;
 import com.diasjoao.metrosultejo.ui.fragment.SearchFragment;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupListeners() {
-        routeLinesFab.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, RoutesActivity.class)));
+        routeLinesFab.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, LinesActivity.class)));
         scheduleFab.setOnClickListener(view -> {
             Intent scheduleIntent = new Intent(MainActivity.this, ScheduleActivity.class);
             scheduleIntent.putExtra("seasonId", 2);
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startRouteActivity(int lineId) {
-        Intent routeIntent = new Intent(MainActivity.this, RoutesActivity.class);
+        Intent routeIntent = new Intent(MainActivity.this, LinesActivity.class);
         routeIntent.putExtra("lineId", lineId);
         startActivity(routeIntent);
     }

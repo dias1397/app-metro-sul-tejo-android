@@ -14,11 +14,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.TimeViewHolder> {
+public class ScheduleRowAdapter extends RecyclerView.Adapter<ScheduleRowAdapter.TimeViewHolder> {
 
     private List<LocalDateTime> times;
 
-    public TimeAdapter(List<LocalDateTime> times) {
+    public ScheduleRowAdapter(List<LocalDateTime> times) {
         this.times = times;
     }
 
