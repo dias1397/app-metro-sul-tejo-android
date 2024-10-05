@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.adapters;
+package com.diasjoao.metrosultejo.ui.news;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,13 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.data.model.News;
-import com.diasjoao.metrosultejo.ui.news.NewsActivity;
-import com.diasjoao.metrosultejo.ui.tariffs.TariffsDetailsActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

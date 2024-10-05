@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.adapters.TimetableAdapter;
 import com.diasjoao.metrosultejo.data.repository.ScheduleRepository;
 
 public class ScheduleFragment extends Fragment {

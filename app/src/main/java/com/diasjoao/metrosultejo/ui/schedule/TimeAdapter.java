@@ -1,6 +1,5 @@
-package com.diasjoao.metrosultejo.adapters;
+package com.diasjoao.metrosultejo.ui.schedule;
 
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;

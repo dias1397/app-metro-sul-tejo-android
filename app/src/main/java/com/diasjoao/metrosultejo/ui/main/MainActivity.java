@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.adapters.NewsAdapter;
+import com.diasjoao.metrosultejo.ui.news.NewsAdapter;
 import com.diasjoao.metrosultejo.data.model.News;
 import com.diasjoao.metrosultejo.ui.tariffs.TariffsActivity;
 import com.diasjoao.metrosultejo.ui.map.MapActivity;
