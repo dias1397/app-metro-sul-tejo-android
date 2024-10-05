@@ -30,15 +30,14 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class LiveActivity extends AppCompatActivity {
 
-    private final Map<Integer, String> destinationByLineId = Map.of(
-            1, "Cacilhas", 2, "Corroios",
-            3, "Pragal", 4, "Corroios",
-            5, "Universidade", 6, "Cacilhas");
+    private final List<String> routes = List.of(
+            "%s → Cacilhas", "%s → Corroios", "%s → Pragal",
+            "%s → Corroios", "%s → Universidade", "%s → Cacilhas"
+    );
 
     private MaterialToolbar materialToolbar;
     private SearchFragment searchFragment;
@@ -90,7 +89,8 @@ public class LiveActivity extends AppCompatActivity {
                 .filter(time -> time.isAfter(rightNow.minusMinutes(9)) && time.isBefore(endBound))
                 .collect(Collectors.toList());
         liveAdapter = new LiveAdapter(this, stationTimes,
-                station.getName() + " → " + destinationByLineId.get(lineId));
+                String.format(routes.get(lineId - 1), station.getName())
+        );
     }
 
     private void initViews() {
@@ -134,7 +134,8 @@ public class LiveActivity extends AppCompatActivity {
     }
 
     private void setupAds() {
-        MobileAds.initialize(this, initializationStatus -> {});
+        MobileAds.initialize(this, initializationStatus -> {
+        });
 
         AdRequest adRequest = new AdRequest.Builder().build();
         adBannerView.loadAd(adRequest);
