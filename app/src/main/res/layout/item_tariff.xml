@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/arrow_icon_description"
-        android:src="@drawable/baseline_arrow_forward_24"
+        android:src="@drawable/ic_arrow_forward"
         app:tint="?attr/colorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

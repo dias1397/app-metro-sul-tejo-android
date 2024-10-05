@@ -10,7 +10,7 @@
         android:id="@+id/station_image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/station_dot_white" />
+        app:srcCompat="@drawable/ic_station_dot" />
 
     <TextView
         android:id="@+id/station_name_text_view"

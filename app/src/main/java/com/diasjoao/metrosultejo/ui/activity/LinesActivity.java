@@ -80,7 +80,7 @@ public class LinesActivity extends AppCompatActivity {
         int lineId = getIntent().getIntExtra("lineId", 0);
 
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
-            Objects.requireNonNull(tabLayout.getTabAt(i)).setIcon(R.drawable.baseline_bus_24);
+            Objects.requireNonNull(tabLayout.getTabAt(i)).setIcon(R.drawable.ic_bus);
         }
 
         viewPager.setCurrentItem(lineId);

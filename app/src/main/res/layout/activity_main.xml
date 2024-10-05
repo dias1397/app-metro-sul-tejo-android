@@ -69,7 +69,7 @@
                     android:contentDescription="@string/bus_icon_description"
                     app:backgroundTint="?attr/colorPrimary"
                     app:rippleColor="?attr/colorSecondary"
-                    app:srcCompat="@drawable/baseline_bus_24"
+                    app:srcCompat="@drawable/ic_bus"
                     app:tint="?attr/colorOnPrimary" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -96,7 +96,7 @@
                     android:contentDescription="@string/time_icon_description"
                     app:backgroundTint="?attr/colorPrimary"
                     app:rippleColor="?attr/colorSecondary"
-                    app:srcCompat="@drawable/baseline_schedule_24"
+                    app:srcCompat="@drawable/ic_clock"
                     app:tint="?attr/colorOnPrimary" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -123,7 +123,7 @@
                     android:contentDescription="@string/map_icon_description"
                     app:backgroundTint="?attr/colorPrimary"
                     app:rippleColor="?attr/colorSecondary"
-                    app:srcCompat="@drawable/baseline_map_24"
+                    app:srcCompat="@drawable/ic_map"
                     app:tint="?attr/colorOnPrimary" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -150,7 +150,7 @@
                     android:contentDescription="@string/euro_icon_description"
                     app:backgroundTint="?attr/colorPrimary"
                     app:rippleColor="?attr/colorSecondary"
-                    app:srcCompat="@drawable/baseline_euro_24"
+                    app:srcCompat="@drawable/ic_euro"
                     app:tint="?attr/colorOnPrimary" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -231,7 +231,7 @@
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="16dp"
                     android:contentDescription="@string/line_1_ok"
-                    android:src="@drawable/ic_check_black_24dp"
+                    android:src="@drawable/ic_checkmark"
                     android:visibility="gone"
                     app:tint="?attr/colorOnPrimary" />
 
@@ -242,7 +242,7 @@
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="16dp"
                     android:contentDescription="@string/line_1_nok"
-                    android:src="@drawable/baseline_warning_24"
+                    android:src="@drawable/ic_warning"
                     android:visibility="gone"
                     app:tint="?attr/colorOnPrimary" />
 
@@ -295,7 +295,7 @@
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="16dp"
                     android:contentDescription="@string/line_2_ok"
-                    android:src="@drawable/ic_check_black_24dp"
+                    android:src="@drawable/ic_checkmark"
                     android:visibility="gone"
                     app:tint="?attr/colorOnPrimary" />
 
@@ -306,7 +306,7 @@
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="16dp"
                     android:contentDescription="@string/line_2_nok"
-                    android:src="@drawable/baseline_warning_24"
+                    android:src="@drawable/ic_warning"
                     android:visibility="gone"
                     app:tint="?attr/colorOnPrimary" />
 
@@ -359,7 +359,7 @@
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="16dp"
                     android:contentDescription="@string/line_3_ok"
-                    android:src="@drawable/ic_check_black_24dp"
+                    android:src="@drawable/ic_checkmark"
                     android:visibility="gone"
                     app:tint="?attr/colorOnPrimary" />
 
@@ -370,7 +370,7 @@
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="16dp"
                     android:contentDescription="@string/line_3_nok"
-                    android:src="@drawable/baseline_warning_24"
+                    android:src="@drawable/ic_warning"
                     android:visibility="gone"
                     app:tint="?attr/colorOnPrimary" />
 

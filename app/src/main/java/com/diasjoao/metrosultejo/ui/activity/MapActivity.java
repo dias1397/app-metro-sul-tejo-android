@@ -53,7 +53,7 @@ public class MapActivity extends AppCompatActivity {
         Configuration.getInstance().setUserAgentValue(getPackageName());
 
         startPoint = new GeoPoint(38.6662430, -9.1779545);
-        drawable = getResources().getDrawable(R.drawable.custom_marker, null);
+        drawable = getResources().getDrawable(R.drawable.ic_map_marker, null);
         mapDataManager = new MapDataManager(this);
     }
 
