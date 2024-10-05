@@ -35,26 +35,73 @@ import java.util.stream.Collectors;
 
 public class LiveActivity extends AppCompatActivity {
 
-    private int dayId, lineId, stationId = 1;
     private final Map<Integer, String> destinationByLineId = Map.of(
             1, "Cacilhas", 2, "Corroios",
             3, "Pragal", 4, "Corroios",
             5, "Universidade", 6, "Cacilhas");
+
+    private MaterialToolbar materialToolbar;
+    private SearchFragment searchFragment;
+    private LinearLayout errorLayout;
+    private RecyclerView recyclerView;
+    private AdView adBannerView;
+
+    private List<LocalDateTime> stationTimes;
     private LiveAdapter liveAdapter;
     private CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_live);
 
-        MobileAds.initialize(this, initializationStatus -> {});
+        initVars();
+        initViews();
 
-        AdView adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        adView.loadAd(adRequest);
+        setupUI();
+        setupAds();
+    }
+
+    private void initVars() {
+        Intent intent = getIntent();
+        int lineId = intent.getIntExtra("lineId", 1);
+        int stationId = intent.getIntExtra("stationId", 0);
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("lineId", lineId - 1);
+        bundle.putInt("stationId", stationId);
+
+        searchFragment = new SearchFragment();
+        searchFragment.setArguments(bundle);
+
+        LocalDateTime rightNow = LocalDateTime.now();
+        int seasonId = DateUtils.getSeasonId(rightNow.minusHours(3));
+        int dayId = getDayId();
+
+        ScheduleRepository scheduleRepository = new ScheduleRepository(this);
+        Station station = scheduleRepository.findStationBySeasonAndDayAndLineAndName(
+                seasonId + 1, dayId, lineId, stationId
+        );
+
+        LocalDateTime endBound = rightNow.plusDays(rightNow.getHour() >= 3 ? 1 : 0)
+                .withHour(3).withMinute(0);
+
+        stationTimes = station.getConvertedTimes().stream()
+                .filter(time -> time.isAfter(rightNow.minusMinutes(9)) && time.isBefore(endBound))
+                .collect(Collectors.toList());
+        liveAdapter = new LiveAdapter(this, stationTimes,
+                station.getName() + " → " + destinationByLineId.get(lineId));
+    }
+
+    private void initViews() {
+        materialToolbar = findViewById(R.id.toolbar);
+        errorLayout = findViewById(R.id.no_times_layout);
+        recyclerView = findViewById(R.id.recyclerView);
+        adBannerView = findViewById(R.id.adView);
+    }
+
+    private void setupUI() {
+        EdgeToEdge.enable(this);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -62,84 +109,52 @@ public class LiveActivity extends AppCompatActivity {
             return insets;
         });
 
-        MaterialToolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(v -> {
-            getOnBackPressedDispatcher().onBackPressed();
-        });
-
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
 
-        // get initialization info
-        Intent intent = getIntent();
-        lineId = intent.getIntExtra("lineId", 1);
-        stationId = intent.getIntExtra("stationId", 0);
-        String stationName = intent.getStringExtra("stationName");
-
-        // updates search fragment
-        SearchFragment searchFragment = new SearchFragment();
-
-        Bundle bundle = new Bundle();
-        bundle.putInt("lineId", lineId - 1);
-        bundle.putInt("stationId", stationId);
-
-        searchFragment.setArguments(bundle);
+        setSupportActionBar(materialToolbar);
+        materialToolbar.setNavigationOnClickListener(v -> {
+            getOnBackPressedDispatcher().onBackPressed();
+        });
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, searchFragment)
                 .commit();
 
-        LinearLayout noTimesLayout = findViewById(R.id.no_times_layout);
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        ScheduleRepository scheduleRepository = new ScheduleRepository(this);
-
-        LocalDate today = LocalDate.from(LocalDateTime.now().minusHours(3));
-        if (DateHelper.isHoliday(this, today) || today.getDayOfWeek() == DayOfWeek.SUNDAY) {
-            dayId = 3;
-        } else if (today.getDayOfWeek() == DayOfWeek.SATURDAY) {
-            dayId = 2;
-        } else {
-            dayId = 1;
-        }
-
-        int seasonId = DateUtils.getSeasonId(LocalDateTime.now().minusHours(3));
-        Station station = scheduleRepository.findStationBySeasonAndDayAndLineAndName(seasonId + 1, dayId, lineId, stationId);
-
-        LocalDateTime startBound = LocalDateTime.now();
-        LocalDateTime endBound = LocalDateTime.now()
-                .plusDays(startBound.getHour() >= 3 ? 1 : 0)
-                .withHour(3)
-                .withMinute(0);
-
-        List<LocalDateTime> times = station.getConvertedTimes().stream()
-                .filter(time -> time.isAfter(startBound.minusMinutes(9)) && time.isBefore(endBound))
-                .collect(Collectors.toList());
-
-        if (times.isEmpty()) {
-            recyclerView.setVisibility(View.GONE);
-            noTimesLayout.setVisibility(View.VISIBLE);
-        } else {
-            recyclerView.setVisibility(View.VISIBLE);
-            noTimesLayout.setVisibility(View.GONE);
-
-            liveAdapter = new LiveAdapter(this, times, stationName + " → " + destinationByLineId.get(lineId));
-
+        if (!stationTimes.isEmpty()) {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(liveAdapter);
-
             startCountdown();
+        }
+
+        int errorVisibility = stationTimes.isEmpty() ? View.VISIBLE : View.GONE;
+        int recyclerVisibility = stationTimes.isEmpty() ? View.GONE : View.VISIBLE;
+
+        errorLayout.setVisibility(errorVisibility);
+        recyclerView.setVisibility(recyclerVisibility);
+    }
+
+    private void setupAds() {
+        MobileAds.initialize(this, initializationStatus -> {});
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adBannerView.loadAd(adRequest);
+    }
+
+    private int getDayId() {
+        LocalDate today = LocalDate.from(LocalDateTime.now().minusHours(3));
+        if (DateHelper.isHoliday(this, today) || today.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            return 3;
+        } else if (today.getDayOfWeek() == DayOfWeek.SATURDAY) {
+            return 2;
+        } else {
+            return 1;
         }
     }
 
     private void startCountdown() {
         countDownTimer = new CountDownTimer(60000, 1000) {
-
             @Override
             public void onTick(long millisUntilFinished) {
-                //int secondsRemaining = (int) (millisUntilFinished / 1000);
-
-                //String timeFormatted = String.format("%02d:%02d", secondsRemaining / 60, secondsRemaining % 60);
-                //System.out.println(timeFormatted);
             }
 
             @Override
