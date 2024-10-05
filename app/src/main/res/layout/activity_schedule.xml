@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="@string/selecione_a_linha"
+                android:text="@string/line_selection"
                 android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 android:textColor="?attr/colorSecondary" />
@@ -60,7 +60,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/estacao_do_ano"
+                    android:text="@string/season_of_the_year"
                     android:textAllCaps="true"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                     android:textColor="?attr/colorSecondary" />
@@ -74,7 +74,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/verao" />
+                    android:text="@string/summer" />
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:id="@+id/switch_season"
@@ -84,7 +84,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/inverno" />
+                    android:text="@string/winter" />
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

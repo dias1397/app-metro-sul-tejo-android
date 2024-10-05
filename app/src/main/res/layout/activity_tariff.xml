@@ -39,7 +39,7 @@
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tarifas"
+                android:text="@string/tariffs"
                 android:textColor="?attr/colorSecondary"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/tarifas"
+                android:text="@string/tariffs"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

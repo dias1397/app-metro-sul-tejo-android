@@ -76,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@string/linhas"
+                    android:text="@string/lines"
                     android:textAllCaps="true"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
             </LinearLayout>
@@ -93,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:contentDescription="@string/time_icon_description"
+                    android:contentDescription="@string/clock_icon_description"
                     app:backgroundTint="?attr/colorPrimary"
                     app:rippleColor="?attr/colorSecondary"
                     app:srcCompat="@drawable/ic_clock"
@@ -103,7 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@string/horarios"
+                    android:text="@string/schedule"
                     android:textAllCaps="true"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
             </LinearLayout>
@@ -130,7 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@string/mapa"
+                    android:text="@string/map"
                     android:textAllCaps="true"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
             </LinearLayout>
@@ -157,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@string/tarifas"
+                    android:text="@string/tariffs"
                     android:textAllCaps="true"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
             </LinearLayout>
@@ -186,7 +186,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginVertical="4dp"
                 android:gravity="center"
-                android:text="@string/estado_das_linhas"
+                android:text="@string/line_status_title"
                 android:textColor="?attr/colorSecondary"
                 android:textSize="16sp" />
 
@@ -207,14 +207,14 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/linha_1"
+                        android:text="@string/line_1"
                         android:textColor="?attr/colorOnPrimary"
                         android:textSize="16sp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/line11_name"
+                        android:text="@string/line_11_name"
                         android:textColor="?attr/colorOnPrimary"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -271,14 +271,14 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/linha_2"
+                        android:text="@string/line_2"
                         android:textColor="?attr/colorOnPrimary"
                         android:textSize="16sp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/line21_name"
+                        android:text="@string/line_21_name"
                         android:textColor="?attr/colorOnPrimary"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -335,14 +335,14 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/linha_3"
+                        android:text="@string/line_3"
                         android:textColor="?attr/colorOnPrimary"
                         android:textSize="16sp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/line31_name"
+                        android:text="@string/line_31_name"
                         android:textColor="?attr/colorOnPrimary"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -387,7 +387,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginVertical="4dp"
                 android:gravity="center"
-                android:text="@string/atualizado"
+                android:text="@string/last_update"
                 android:textSize="12sp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -414,7 +414,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginVertical="4dp"
                 android:gravity="center"
-                android:text="@string/noticias"
+                android:text="@string/news"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 android:textColor="?attr/colorSecondary" />
 

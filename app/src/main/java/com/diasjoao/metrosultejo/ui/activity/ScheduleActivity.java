@@ -55,9 +55,9 @@ public class ScheduleActivity extends AppCompatActivity {
 
         lineAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
                 Arrays.asList(
-                        getResources().getString(R.string.line11_name), getResources().getString(R.string.line12_name),
-                        getResources().getString(R.string.line21_name), getResources().getString(R.string.line22_name),
-                        getResources().getString(R.string.line31_name), getResources().getString(R.string.line32_name)
+                        getResources().getString(R.string.line_11_name), getResources().getString(R.string.line_12_name),
+                        getResources().getString(R.string.line_21_name), getResources().getString(R.string.line_22_name),
+                        getResources().getString(R.string.line_31_name), getResources().getString(R.string.line_32_name)
                 )
         );
         lineAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

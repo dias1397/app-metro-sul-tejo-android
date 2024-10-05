@@ -75,9 +75,9 @@ public class LineFragment extends Fragment {
 
     private String getLineName(String lineName) {
         return switch (lineName) {
-            case "LINHA 1" -> getResources().getString(R.string.line11_name);
-            case "LINHA 2" -> getResources().getString(R.string.line21_name);
-            case "LINHA 3" -> getResources().getString(R.string.line31_name);
+            case "LINHA 1" -> getResources().getString(R.string.line_11_name);
+            case "LINHA 2" -> getResources().getString(R.string.line_21_name);
+            case "LINHA 3" -> getResources().getString(R.string.line_31_name);
             default -> null;
         };
     }
