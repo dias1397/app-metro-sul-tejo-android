@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.model.Station;
 import com.diasjoao.metrosultejo.repository.ScheduleRepository;
-import com.diasjoao.metrosultejo.util.DateHelper;
 import com.diasjoao.metrosultejo.ui.adapter.LiveTimesAdapter;
 import com.diasjoao.metrosultejo.ui.fragment.SearchFragment;
 import com.diasjoao.metrosultejo.util.DateUtils;
@@ -27,8 +26,6 @@ import com.google.android.gms.ads.MobileAds;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -76,7 +73,7 @@ public class LiveActivity extends AppCompatActivity {
 
         LocalDateTime rightNow = LocalDateTime.now();
         int seasonId = DateUtils.getSeasonId(rightNow.minusHours(3));
-        int dayId = getDayId();
+        int dayId = DateUtils.getDayTypeId(rightNow.minusHours(3));
 
         ScheduleRepository scheduleRepository = new ScheduleRepository(this);
         Station station = scheduleRepository.findStationBySeasonAndDayAndLineAndName(
@@ -140,17 +137,6 @@ public class LiveActivity extends AppCompatActivity {
 
         AdRequest adRequest = new AdRequest.Builder().build();
         adBannerView.loadAd(adRequest);
-    }
-
-    private int getDayId() {
-        LocalDate today = LocalDate.from(LocalDateTime.now().minusHours(3));
-        if (DateHelper.isHoliday(this, today) || today.getDayOfWeek() == DayOfWeek.SUNDAY) {
-            return 3;
-        } else if (today.getDayOfWeek() == DayOfWeek.SATURDAY) {
-            return 2;
-        } else {
-            return 1;
-        }
     }
 
     private void startCountdown() {
