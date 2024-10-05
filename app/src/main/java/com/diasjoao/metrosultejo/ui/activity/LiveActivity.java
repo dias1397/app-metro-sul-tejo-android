@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.ui.live;
+package com.diasjoao.metrosultejo.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,8 @@ import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.data.model.Station;
 import com.diasjoao.metrosultejo.data.repository.ScheduleRepository;
 import com.diasjoao.metrosultejo.helpers.DateHelper;
-import com.diasjoao.metrosultejo.ui.search.SearchFragment;
+import com.diasjoao.metrosultejo.ui.adapter.LiveAdapter;
+import com.diasjoao.metrosultejo.ui.fragment.SearchFragment;
 import com.diasjoao.metrosultejo.utils.DateUtils;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;

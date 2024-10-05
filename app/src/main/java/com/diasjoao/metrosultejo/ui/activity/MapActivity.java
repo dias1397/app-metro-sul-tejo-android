@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.ui.map;
+package com.diasjoao.metrosultejo.ui.activity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;

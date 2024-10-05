@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.ui.schedule;
+package com.diasjoao.metrosultejo.ui.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

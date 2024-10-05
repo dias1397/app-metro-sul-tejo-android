@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.ui.tariffs;
+package com.diasjoao.metrosultejo.ui.activity;
 
 import android.content.Context;
 import android.os.Bundle;

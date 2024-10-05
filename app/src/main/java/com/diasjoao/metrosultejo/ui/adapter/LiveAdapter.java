@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.ui.live;
+package com.diasjoao.metrosultejo.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

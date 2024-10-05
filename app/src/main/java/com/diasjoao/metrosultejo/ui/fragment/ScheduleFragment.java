@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.ui.schedule;
+package com.diasjoao.metrosultejo.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.data.repository.ScheduleRepository;
+import com.diasjoao.metrosultejo.ui.adapter.TimetableAdapter;
 
 public class ScheduleFragment extends Fragment {
 

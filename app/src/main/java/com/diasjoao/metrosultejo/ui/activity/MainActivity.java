@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.ui.main;
+package com.diasjoao.metrosultejo.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,13 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.ui.news.NewsAdapter;
+import com.diasjoao.metrosultejo.ui.adapter.NewsAdapter;
 import com.diasjoao.metrosultejo.data.model.News;
-import com.diasjoao.metrosultejo.ui.tariffs.TariffsActivity;
-import com.diasjoao.metrosultejo.ui.map.MapActivity;
-import com.diasjoao.metrosultejo.ui.schedule.ScheduleActivity;
-import com.diasjoao.metrosultejo.ui.search.SearchFragment;
-import com.diasjoao.metrosultejo.ui.routes.RoutesActivity;
+import com.diasjoao.metrosultejo.ui.fragment.SearchFragment;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;

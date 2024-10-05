@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.ui.routes;
+package com.diasjoao.metrosultejo.ui.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.ui.routes;
+package com.diasjoao.metrosultejo.ui.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.diasjoao.metrosultejo.R;
+import com.diasjoao.metrosultejo.ui.adapter.RoutesAdapter;
 
 import java.util.Arrays;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.ui.routes;
+package com.diasjoao.metrosultejo.ui.activity;
 
 import android.os.Bundle;
 
@@ -10,6 +10,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.diasjoao.metrosultejo.R;
+import com.diasjoao.metrosultejo.ui.fragment.RoutesFragment;
+import com.diasjoao.metrosultejo.ui.adapter.RoutesPagerAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;

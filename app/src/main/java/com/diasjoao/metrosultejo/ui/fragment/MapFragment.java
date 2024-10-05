@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.ui.map;
+package com.diasjoao.metrosultejo.ui.fragment;
 
 import android.os.Bundle;
 

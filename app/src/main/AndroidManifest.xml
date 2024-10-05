@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,25 +24,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.live.LiveActivity"
+            android:name=".ui.activity.LiveActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.routes.RoutesActivity"
+            android:name=".ui.activity.RoutesActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.schedule.ScheduleActivity"
+            android:name=".ui.activity.ScheduleActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.map.MapActivity"
+            android:name=".ui.activity.MapActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.tariffs.TariffsActivity"
+            android:name=".ui.activity.TariffsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.tariffs.TariffsDetailsActivity"
+            android:name=".ui.activity.TariffsDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.news.NewsActivity"
+            android:name=".ui.activity.NewsActivity"
             android:exported="false" />
 
         <meta-data

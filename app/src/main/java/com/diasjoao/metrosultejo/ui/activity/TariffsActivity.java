@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.ui.tariffs;
+package com.diasjoao.metrosultejo.ui.activity;
 
 import android.os.Bundle;
 
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.data.model.Tariff;
+import com.diasjoao.metrosultejo.ui.adapter.TariffRecyclerViewAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;

@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.ui.schedule;
+package com.diasjoao.metrosultejo.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.diasjoao.metrosultejo.R;
+import com.diasjoao.metrosultejo.ui.fragment.ScheduleFragment;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;

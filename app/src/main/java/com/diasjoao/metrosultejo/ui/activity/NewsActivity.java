@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo.ui.news;
+package com.diasjoao.metrosultejo.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
