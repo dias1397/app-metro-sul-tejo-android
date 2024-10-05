@@ -3,8 +3,6 @@ package com.diasjoao.metrosultejo.data;
 import android.content.Context;
 import android.util.JsonReader;
 
-import com.diasjoao.metrosultejo.R;
-
 import org.osmdroid.util.GeoPoint;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -12,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MapDataManager {
+
+    private final String FILENAME = "locations.json";
 
     // Line class to store line metadata and its stations
     public class Line {
@@ -64,7 +64,7 @@ public class MapDataManager {
 
     private void loadData(Context context) {
         try {
-            InputStream inputStream = context.getResources().openRawResource(R.raw.locations);
+            InputStream inputStream = context.getAssets().open(FILENAME);
             JsonReader reader = new JsonReader(new InputStreamReader(inputStream, "UTF-8"));
 
             reader.beginObject();
@@ -143,5 +143,20 @@ public class MapDataManager {
     // Getter for lines with metadata
     public List<Line> getLines() {
         return lines;
+    }
+
+    private String loadJSONFromAsset(Context context, String fileName) {
+        String json = null;
+        try {
+            InputStream is = context.getAssets().open(fileName);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return json;
     }
 }
