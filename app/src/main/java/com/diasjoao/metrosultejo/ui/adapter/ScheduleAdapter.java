@@ -17,7 +17,7 @@ import java.util.Set;
 
 import com.diasjoao.metrosultejo.R;
 
-public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.TimetableViewHolder> {
+public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder> {
 
     private List<Station> stationList;
     private Set<RecyclerView> timesRecyclerViews = new HashSet<>();
@@ -27,11 +27,11 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Timeta
         this.stationList = stationList;
     }
 
-    public static class TimetableViewHolder extends RecyclerView.ViewHolder {
+    public static class ScheduleViewHolder extends RecyclerView.ViewHolder {
         TextView stopName;
         RecyclerView timesRecyclerView;
 
-        public TimetableViewHolder(@NonNull View itemView) {
+        public ScheduleViewHolder(@NonNull View itemView) {
             super(itemView);
             stopName = itemView.findViewById(R.id.stopName);
             timesRecyclerView = itemView.findViewById(R.id.timesRecyclerView);
@@ -40,14 +40,14 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Timeta
 
     @NonNull
     @Override
-    public TimetableViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ScheduleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_timetable_item, parent, false);
-        return new TimetableViewHolder(view);
+                .inflate(R.layout.item_schedule_row, parent, false);
+        return new ScheduleViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TimetableViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ScheduleViewHolder holder, int position) {
         Station station = stationList.get(position);
         holder.stopName.setText(station.getName());
 

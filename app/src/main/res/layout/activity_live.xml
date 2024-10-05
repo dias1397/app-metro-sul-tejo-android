@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_card"
-        tools:listitem="@layout/item_live_arrival" />
+        tools:listitem="@layout/item_live_time" />
 
     <LinearLayout
         android:id="@+id/no_times_layout"

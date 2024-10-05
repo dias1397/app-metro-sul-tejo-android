@@ -41,7 +41,7 @@ public class LineFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_route, container, false);
+        View view = inflater.inflate(R.layout.fragment_line, container, false);
 
         initVars();
         initViews(view);

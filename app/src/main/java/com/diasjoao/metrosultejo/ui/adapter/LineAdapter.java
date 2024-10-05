@@ -28,7 +28,7 @@ public class LineAdapter extends RecyclerView.Adapter<LineAdapter.StationViewHol
     @NonNull
     @Override
     public StationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.routes_recycler_view_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_station, parent, false);
         return new StationViewHolder(view);
     }
 

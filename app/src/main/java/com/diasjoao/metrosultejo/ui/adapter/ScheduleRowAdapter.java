@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class ScheduleRowAdapter extends RecyclerView.Adapter<ScheduleRowAdapter.TimeViewHolder> {
+public class ScheduleRowAdapter extends RecyclerView.Adapter<ScheduleRowAdapter.ScheduleRowViewHolder> {
 
     private List<LocalDateTime> times;
 
@@ -22,10 +22,10 @@ public class ScheduleRowAdapter extends RecyclerView.Adapter<ScheduleRowAdapter.
         this.times = times;
     }
 
-    public static class TimeViewHolder extends RecyclerView.ViewHolder {
+    public static class ScheduleRowViewHolder extends RecyclerView.ViewHolder {
         TextView time;
 
-        public TimeViewHolder(View itemView) {
+        public ScheduleRowViewHolder(View itemView) {
             super(itemView);
             time = itemView.findViewById(R.id.time);
         }
@@ -33,14 +33,14 @@ public class ScheduleRowAdapter extends RecyclerView.Adapter<ScheduleRowAdapter.
 
     @NonNull
     @Override
-    public TimeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ScheduleRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_timetable_item_time, parent, false);
-        return new TimeViewHolder(view);
+                .inflate(R.layout.item_schedule_row_time, parent, false);
+        return new ScheduleRowViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TimeViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ScheduleRowViewHolder holder, int position) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         holder.time.setText(times.get(position).format(formatter));
 

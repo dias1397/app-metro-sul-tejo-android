@@ -43,7 +43,7 @@ public class TariffActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tariffs_details);
+        setContentView(R.layout.activity_tariff);
 
         initVars();
         initViews();

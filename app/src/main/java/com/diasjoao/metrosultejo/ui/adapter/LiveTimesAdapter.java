@@ -33,7 +33,7 @@ public class LiveTimesAdapter extends RecyclerView.Adapter<LiveTimesAdapter.Live
     @NonNull
     @Override
     public LiveViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_live_arrival, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_live_time, parent, false);
         return new LiveViewHolder(view);
     }
 
