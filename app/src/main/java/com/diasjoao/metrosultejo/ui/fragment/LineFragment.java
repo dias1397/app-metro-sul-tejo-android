@@ -57,7 +57,7 @@ public class LineFragment extends Fragment {
         lineName = getLineName(lineNameId);
         lineColor = getLineColor(lineNameId);
 
-        lineAdapter = new LineAdapter(getStationsForLine(lineNameId), lineColor, null);
+        lineAdapter = new LineAdapter(getStationsForLine(lineNameId), lineColor, stationName -> {});
     }
 
     private void initViews(View view) {
