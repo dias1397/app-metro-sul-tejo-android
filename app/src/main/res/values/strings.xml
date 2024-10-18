@@ -27,6 +27,7 @@
 
     <string name="next_departures">Próximas Partidas</string>
     <string name="no_times_error_message">Sem mais horários.\nVolte amanhã!</string>
+    <string name="no_news_error_message">Sem conexão.\nVerifique a conexão à internet\ne tente novamente.</string>
 
     <string name="season_of_the_year">Estação do ano</string>
     <string name="summer">Verão</string>
@@ -39,6 +40,7 @@
     <string name="map_icon_description">Map icon</string>
     <string name="euro_icon_description">Euro icon</string>
     <string name="warning_icon_description">Warning icon</string>
+    <string name="signal_wifi_off_icon_description">Signal wifi off icon</string>
     <string name="front_arrow_icon_description">Front arrow icon</string>
 
     <string name="line_11_name">Cacilhas ⟷ Corroios</string>

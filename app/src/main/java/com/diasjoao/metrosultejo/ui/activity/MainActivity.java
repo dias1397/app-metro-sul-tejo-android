@@ -18,6 +18,7 @@ import com.diasjoao.metrosultejo.R;
 import com.diasjoao.metrosultejo.ui.adapter.NewsAdapter;
 import com.diasjoao.metrosultejo.model.News;
 import com.diasjoao.metrosultejo.ui.fragment.SearchFragment;
+import com.diasjoao.metrosultejo.util.NetworkUtils;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private AdView adBannerView;
     private FloatingActionButton routeLinesFab, scheduleFab, mapFab, tariffFab;
     private LinearLayout line1Layout, line2Layout, line3Layout;
+    private LinearLayout noNewsLayout;
 
     private final List<News> newsItems = new ArrayList<>();
     private NewsAdapter newsAdapter;
@@ -73,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
         line1Layout = findViewById(R.id.line1_layout);
         line2Layout = findViewById(R.id.line2_layout);
         line3Layout = findViewById(R.id.line3_layout);
+
+        noNewsLayout = findViewById(R.id.no_news_layout);
     }
 
     private void setupUI() {
@@ -132,20 +136,27 @@ public class MainActivity extends AppCompatActivity {
     private void loadNewsContent() {
         Executors.newSingleThreadExecutor().execute(() -> {
             try {
-                List<News> fetchedNews = fetchNewsData();
+                if (NetworkUtils.isInternetAvailable(MainActivity.this)) {
+                    List<News> fetchedNews = fetchNewsData();
 
-                runOnUiThread(() -> {
-                    if (!fetchedNews.isEmpty()) {
-                        newsItems.clear();
-                        newsItems.addAll(fetchedNews);
-                        newsAdapter.notifyDataSetChanged();
-                    }
-                    newsRecyclerView.setVisibility(View.VISIBLE);
+                    runOnUiThread(() -> {
+                        if (!fetchedNews.isEmpty()) {
+                            newsItems.clear();
+                            newsItems.addAll(fetchedNews);
+                            newsAdapter.notifyDataSetChanged();
+                        }
+                        newsRecyclerView.setVisibility(View.VISIBLE);
+                        loadingProgressBar.setVisibility(View.GONE);
+                        noNewsLayout.setVisibility(View.GONE);
+                    });
+                } else {
                     loadingProgressBar.setVisibility(View.GONE);
-                });
+                    noNewsLayout.setVisibility(View.VISIBLE);
+                }
             } catch (IOException e) {
                 runOnUiThread(() -> {
                     loadingProgressBar.setVisibility(View.GONE);
+                    noNewsLayout.setVisibility(View.VISIBLE);
                     e.printStackTrace();
                 });
             }
