@@ -97,7 +97,7 @@ public class SearchFragment extends Fragment {
                 String selectedLine = lines.get(position);
                 updateStationAdapter(selectedLine);
 
-                if (getArguments() != null) {
+                if (getArguments() != null && !getArguments().isEmpty()) {
                     spinnerStation.setSelection(getArguments().getInt("stationId"));
                     getArguments().clear();
                 } else {

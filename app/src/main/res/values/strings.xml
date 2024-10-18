@@ -43,7 +43,7 @@
     <string name="signal_wifi_off_icon_description">Signal wifi off icon</string>
     <string name="front_arrow_icon_description">Front arrow icon</string>
 
-    <string name="line_11_name">Cacilhas ⟷ Corroios</string>
+    <string name="line_11_name">Corroios ⟷ Cacilhas</string>
     <string-array name="line_11_stations">
         <item>Corroios</item>
         <item>Casa do Povo</item>
@@ -60,7 +60,7 @@
         <item>Cacilhas</item>
     </string-array>
 
-    <string name="line_12_name">Corroios ⟷ Cacilhas</string>
+    <string name="line_12_name">Cacilhas ⟷ Corroios</string>
     <string-array name="line_12_stations">
         <item>Cacilhas</item>
         <item>25 de Abril</item>
