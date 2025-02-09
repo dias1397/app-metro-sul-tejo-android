@@ -4,11 +4,15 @@
     <string name="line_selection">Selecione a Linha</string>
     <string name="station_selection">Selecione a Estação</string>
 
+    <string name="homepage">Homepage</string>
     <string name="lines">Linhas</string>
     <string name="schedule">Horários</string>
     <string name="map">Mapa</string>
     <string name="tariffs">Tarifas</string>
     <string name="news">Notícias</string>
+    <string name="settings">Definições</string>
+    <string name="help">Ajuda e Suporte</string>
+    <string name="about">Sobre</string>
 
     <string name="line_1">Linha 1</string>
     <string name="line_1_ok">Line 1 OK</string>
@@ -35,6 +39,7 @@
 
     <string name="placeholder_text">Placeholder text</string>
 
+    <string name="app_logo_description">App logo</string>
     <string name="bus_icon_description">Bus icon</string>
     <string name="clock_icon_description">Clock icon</string>
     <string name="map_icon_description">Map icon</string>

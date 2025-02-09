@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
+import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +25,9 @@ import com.diasjoao.metrosultejo.util.NetworkUtils;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -36,6 +41,10 @@ import java.util.Objects;
 import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
+
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private MaterialToolbar materialToolbar;
 
     private RecyclerView newsRecyclerView;
     private ProgressBar loadingProgressBar;
@@ -63,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeViews() {
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        materialToolbar = findViewById(R.id.toolbar);
+
         newsRecyclerView = findViewById(R.id.news_recycler_view);
         loadingProgressBar = findViewById(R.id.news_progress_bar);
         adBannerView = findViewById(R.id.adView);
@@ -90,6 +103,11 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
 
+        setSupportActionBar(materialToolbar);
+
+        materialToolbar.setNavigationIcon(R.drawable.ic_menu);
+        materialToolbar.setNavigationOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
+
         newsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         newsAdapter = new NewsAdapter(this, newsItems);
         newsRecyclerView.setAdapter(newsAdapter);
@@ -113,6 +131,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupListeners() {
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_lines) {
+                startActivity(new Intent(MainActivity.this, LinesActivity.class));
+            } else if (id == R.id.nav_schedule) {
+                Intent scheduleIntent = new Intent(MainActivity.this, ScheduleActivity.class);
+                scheduleIntent.putExtra("seasonId", 2);
+                startActivity(scheduleIntent);
+            } else if (id == R.id.nav_map) {
+                startActivity(new Intent(MainActivity.this, MapActivity.class));
+            } else if (id == R.id.nav_fares) {
+                startActivity(new Intent(MainActivity.this, TariffsActivity.class));
+            } else if (id == R.id.nav_settings) {
+                Toast.makeText(MainActivity.this, "Settings Selected", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_help) {
+                Toast.makeText(MainActivity.this, "Help Selected", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_about) {
+                Toast.makeText(MainActivity.this, "About Selected", Toast.LENGTH_SHORT).show();
+            }
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
+        });
+
         routeLinesFab.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, LinesActivity.class)));
         scheduleFab.setOnClickListener(view -> {
             Intent scheduleIntent = new Intent(MainActivity.this, ScheduleActivity.class);
