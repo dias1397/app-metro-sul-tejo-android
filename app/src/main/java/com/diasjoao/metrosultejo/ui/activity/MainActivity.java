@@ -1,6 +1,7 @@
 package com.diasjoao.metrosultejo.ui.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
+import com.diasjoao.metrosultejo.SettingsActivity;
 import com.diasjoao.metrosultejo.ui.adapter.NewsAdapter;
 import com.diasjoao.metrosultejo.model.News;
 import com.diasjoao.metrosultejo.ui.fragment.SearchFragment;
@@ -55,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
     private final List<News> newsItems = new ArrayList<>();
     private NewsAdapter newsAdapter;
+
+    private static final String PREFS_NAME = "settings";
+    private static final String THEME_KEY = "theme_mode";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,8 +107,11 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        int savedTheme = prefs.getInt(THEME_KEY, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        AppCompatDelegate.setDefaultNightMode(savedTheme);
 
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryVariant, null));
         setSupportActionBar(materialToolbar);
 
         materialToolbar.setNavigationIcon(R.drawable.ic_menu);
@@ -144,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (id == R.id.nav_fares) {
                 startActivity(new Intent(MainActivity.this, TariffsActivity.class));
             } else if (id == R.id.nav_settings) {
-                Toast.makeText(MainActivity.this, "Settings Selected", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             } else if (id == R.id.nav_help) {
                 Toast.makeText(MainActivity.this, "Help Selected", Toast.LENGTH_SHORT).show();
             } else if (id == R.id.nav_about) {
