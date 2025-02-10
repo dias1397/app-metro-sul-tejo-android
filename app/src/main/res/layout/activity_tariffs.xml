@@ -18,6 +18,7 @@
         app:navigationIcon="@drawable/ic_arrow_back"
         app:navigationIconTint="?attr/colorOnPrimary"
         app:title="@string/tariffs"
+        app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline5"
         app:titleTextColor="?attr/colorOnPrimary" />
 
     <androidx.recyclerview.widget.RecyclerView

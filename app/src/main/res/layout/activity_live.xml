@@ -18,7 +18,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow_back"
         app:navigationIconTint="?attr/colorOnPrimary"
-        app:title="@string/app_name"
+        app:title="@string/next_departures"
+        app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline5"
         app:titleTextColor="?attr/colorOnPrimary" />
 
     <com.google.android.material.card.MaterialCardView
