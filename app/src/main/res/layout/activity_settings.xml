@@ -20,46 +20,107 @@
         app:title="@string/app_name"
         app:titleTextColor="?attr/colorOnPrimary" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tema da aplicação"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-            android:paddingBottom="8dp" />
+            android:orientation="vertical" >
 
-        <RadioGroup
-            android:id="@+id/radioGroupTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RadioButton
-                android:id="@+id/radioLight"
-                android:layout_width="wrap_content"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Claro"/>
+                android:layout_margin="16dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp">
 
-            <RadioButton
-                android:id="@+id/radioDark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Escuro" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/radioSystem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sistema (definições do Android)" />
-        </RadioGroup>
-    </LinearLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Aplicação"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:paddingVertical="8dp"
+                        android:gravity="center_horizontal"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="@color/LightGrey">
+                    </View>
+                    <LinearLayout
+                        android:id="@+id/languageLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="16dp"
+                        android:onClick="clickAction">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Idioma"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/languageTextview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Portugues >"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                            android:textColor="@color/colorSecondary" />
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="@color/LightGrey">
+                    </View>
+                    <LinearLayout
+                        android:id="@+id/themeLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="16dp"
+                        android:onClick="clickAction">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tema"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/themeTextview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Claro >"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                            android:textColor="@color/colorSecondary" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
