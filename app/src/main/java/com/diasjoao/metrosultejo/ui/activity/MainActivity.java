@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
-import com.diasjoao.metrosultejo.SettingsActivity;
 import com.diasjoao.metrosultejo.ui.adapter.NewsAdapter;
 import com.diasjoao.metrosultejo.model.News;
 import com.diasjoao.metrosultejo.ui.fragment.SearchFragment;
@@ -157,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (id == R.id.nav_help) {
                 Toast.makeText(MainActivity.this, "Help Selected", Toast.LENGTH_SHORT).show();
             } else if (id == R.id.nav_about) {
-                Toast.makeText(MainActivity.this, "About Selected", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, AboutActivity.class));
             }
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;

@@ -1,4 +1,4 @@
-package com.diasjoao.metrosultejo;
+package com.diasjoao.metrosultejo.ui.activity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,11 +12,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.diasjoao.metrosultejo.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class SettingsActivity extends AppCompatActivity {

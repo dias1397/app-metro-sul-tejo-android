@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Metro Sul Tejo</string>
+    <string name="app_description">Metro Transportes do Sul (MTS) é a operadora de metro de superfície na margem sul do Tejo, servindo os concelhos de Almada e Seixal. Com esta aplicação, terá acesso a diversas funcionalidades que tornam a sua experiência de transporte mais prática e informada.</string>
+    <string name="version">Versão</string>
+    <string name="appVersionNumber">2.3</string>
 
     <string name="line_selection">Selecione a Linha</string>
     <string name="station_selection">Selecione a Estação</string>
@@ -13,6 +16,9 @@
     <string name="settings">Definições</string>
     <string name="help">Ajuda e Suporte</string>
     <string name="about">Sobre</string>
+
+    <string name="lastUpdate">Atualizado em</string>
+    <string name="lastUpdateDate">Fevereiro 2025</string>
 
     <string name="line_1">Linha 1</string>
     <string name="line_1_ok">Line 1 OK</string>

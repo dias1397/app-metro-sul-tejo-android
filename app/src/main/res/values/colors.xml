@@ -15,7 +15,7 @@
 
     <!-- Text and icons on primary and secondary -->
     <color name="colorOnPrimary">#FFFFFF</color>  <!-- White text on primary -->
-    <color name="colorOnSecondary">#002855</color>  <!-- Dark blue text on secondary -->
+    <color name="colorOnSecondary">#000000</color>  <!-- Dark blue text on secondary -->
     <color name="colorOnBackground">#002855</color>  <!-- Dark blue text on background -->
     <color name="colorOnSurface">#002855</color>  <!-- Dark blue text on surface -->
 

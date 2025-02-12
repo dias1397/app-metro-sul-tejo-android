@@ -14,12 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
         <activity
             android:name=".ui.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -45,7 +45,10 @@
             android:name=".ui.activity.NewsActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".ui.activity.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.AboutActivity"
             android:exported="false" />
 
         <meta-data
