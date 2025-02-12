@@ -1,8 +1,13 @@
 package com.diasjoao.metrosultejo.ui.activity;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
@@ -24,6 +29,10 @@ public class SettingsActivity extends AppCompatActivity {
     private MaterialToolbar materialToolbar;
     private MaterialTextView themeTextview;
     private MaterialTextView languageTextview;
+
+    private LinearLayout rateLayout;
+    private LinearLayout shareLayout;
+    private LinearLayout emailLayout;
 
     private SharedPreferences prefs;
     private String selected_language;
@@ -59,8 +68,7 @@ public class SettingsActivity extends AppCompatActivity {
         languageTextview = findViewById(R.id.languageTextview);
         themeTextview = findViewById(R.id.themeTextview);
 
-        languageTextview.setText(String.format("%s >", LANGUAGES[0]
-        ));
+        languageTextview.setText(LANGUAGES[0]);
 
         prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         int savedTheme = prefs.getInt(THEME_KEY, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
@@ -71,7 +79,16 @@ public class SettingsActivity extends AppCompatActivity {
                 AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
         ).indexOf(savedTheme);
 
-        themeTextview.setText(String.format("%s >", THEMES[themeIndex]));
+        themeTextview.setText(THEMES[themeIndex]);
+
+        rateLayout = findViewById(R.id.rateLayout);
+        rateLayout.setOnClickListener(view -> openPlayStoreForRating());
+
+        shareLayout = findViewById(R.id.shareLayout);
+        shareLayout.setOnClickListener(view -> shareApp());
+
+        emailLayout = findViewById(R.id.emailLayout);
+        emailLayout.setOnClickListener(view -> sendEmail());
     }
 
     public void clickAction(View view) {
@@ -123,5 +140,42 @@ public class SettingsActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("Cancelar", null)
                 .show();
+    }
+
+    private void openPlayStoreForRating() {
+        String packageName = getPackageName();
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
+        }
+    }
+
+    private void shareApp() {
+        String packageName = getPackageName();
+        String shareMessage = "Descubra esta aplicação incrível! 🚀\n\n" +
+                "Descarregue agora na Play Store:\n" +
+                "https://play.google.com/store/apps/details?id=" + packageName;
+
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+
+        startActivity(Intent.createChooser(shareIntent, "Partilhar aplicação via"));
+    }
+
+    private void sendEmail() {
+        String recipient = "mts.appsuporte@gmail.com";
+        String subject = "Feedback sobre a aplicação";
+
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse("mailto:" + recipient));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Enviar email via"));
+        } catch (android.content.ActivityNotFoundException e) {
+            Toast.makeText(this, "Nenhuma aplicação de email encontrada", Toast.LENGTH_SHORT).show();
+        }
     }
 }

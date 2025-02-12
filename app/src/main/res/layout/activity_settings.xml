@@ -49,7 +49,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Aplicação"
+                        android:text="@string/application"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                         android:paddingVertical="8dp"
                         android:gravity="center_horizontal"/>
@@ -59,6 +59,7 @@
                         android:layout_height="0.1dp"
                         android:background="@color/LightGrey">
                     </View>
+
                     <LinearLayout
                         android:id="@+id/languageLayout"
                         android:layout_width="match_parent"
@@ -71,7 +72,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Idioma"
+                            android:text="@string/idiom"
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
 
                         <View
@@ -83,15 +84,23 @@
                             android:id="@+id/languageTextview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Portugues >"
+                            android:text="@string/portuguese"
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                             android:textColor="@color/colorSecondary" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_forward"
+                            app:tint="@color/colorSecondary" />
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.1dp"
                         android:background="@color/LightGrey">
                     </View>
+
                     <LinearLayout
                         android:id="@+id/themeLayout"
                         android:layout_width="match_parent"
@@ -104,7 +113,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Tema"
+                            android:text="@string/theme"
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
 
                         <View
@@ -116,9 +125,163 @@
                             android:id="@+id/themeTextview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Claro >"
+                            android:text="@string/lightMode"
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                             android:textColor="@color/colorSecondary" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_forward"
+                            app:tint="@color/colorSecondary" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Opinião"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:paddingVertical="8dp"
+                        android:gravity="center_horizontal"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="@color/LightGrey">
+                    </View>
+
+                    <LinearLayout
+                        android:id="@+id/rateLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="16dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="8dp"
+                            android:src="@drawable/ic_star"
+                            app:tint="@color/colorOnSecondary" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rate"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_forward"
+                            app:tint="@color/colorSecondary" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="@color/LightGrey">
+                    </View>
+
+                    <LinearLayout
+                        android:id="@+id/shareLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="16dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="8dp"
+                            android:src="@drawable/ic_share"
+                            app:tint="@color/colorOnSecondary" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/share"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_forward"
+                            app:tint="@color/colorSecondary" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="@color/LightGrey">
+                    </View>
+
+                    <LinearLayout
+                        android:id="@+id/emailLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="16dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="8dp"
+                            android:src="@drawable/ic_email"
+                            app:tint="@color/colorOnSecondary" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/talkWithUs"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_forward"
+                            app:tint="@color/colorSecondary" />
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

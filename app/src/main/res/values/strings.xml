@@ -17,6 +17,16 @@
     <string name="help">Ajuda e Suporte</string>
     <string name="about">Sobre</string>
 
+    <string name="rate">Avalie</string>
+    <string name="share">Partilhe</string>
+    <string name="talkWithUs">Fale connosco</string>
+
+    <string name="application">Aplicação</string>
+    <string name="idiom">Idioma</string>
+    <string name="portuguese">Português</string>
+    <string name="theme">Tema</string>
+    <string name="lightMode">Claro</string>
+
     <string name="lastUpdate">Atualizado em</string>
     <string name="lastUpdateDate">Fevereiro 2025</string>
 

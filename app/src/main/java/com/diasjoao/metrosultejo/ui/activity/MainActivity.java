@@ -153,8 +153,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, TariffsActivity.class));
             } else if (id == R.id.nav_settings) {
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-            } else if (id == R.id.nav_help) {
-                Toast.makeText(MainActivity.this, "Help Selected", Toast.LENGTH_SHORT).show();
             } else if (id == R.id.nav_about) {
                 startActivity(new Intent(MainActivity.this, AboutActivity.class));
             }
