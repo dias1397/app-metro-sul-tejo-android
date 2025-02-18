@@ -28,7 +28,7 @@ jobs:
       - name: Decode app.properties file
         env:
           SECRETS_PROPERTIES: ${{ secrets.PROPERTIES_FILE }}
-        run: echo "$SECRETS_PROPERTIES" |
+        run: echo -n "$SECRETS_PROPERTIES" |
           base64 -d > app/src/main/assets/app.properties
         
       - name: Run Tests
