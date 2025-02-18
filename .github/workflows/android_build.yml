@@ -14,12 +14,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 1.17
+          java-version: 17
+
+      - name: Grant execution permissions
+        run:  chmod +x gradlew
               
       - name: Decode app.properties file
         env:
