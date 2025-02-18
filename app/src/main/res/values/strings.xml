@@ -1,67 +1,71 @@
 <resources>
     <string name="app_name">Metro Sul Tejo</string>
-    <string-array name="developerEmails">
-        <item>mts.appsuporte@gmail.com</item>
-    </string-array>
-    <string name="info">Caso tenha alguma dúvida ou sugestão sobre o comportamento da aplicação, clique <u>aqui</u> para contactar o programador</string>
+    <string name="app_description">Metro Transportes do Sul (MTS) é a operadora de metro de superfície na margem sul do Tejo, servindo os concelhos de Almada e Seixal. Com esta aplicação, terá acesso a diversas funcionalidades que tornam a sua experiência de transporte mais prática e informada.</string>
+    <string name="version">Versão</string>
+    <string name="appVersionNumber">2.3</string>
 
-    <string name="intro_1">Seja bem vindo à aplicação não oficial do Metro Transportes do Sul. Desde já relembramos que os horários devem servir apenas como referência, podendo ser alterados pelos operadores sem aviso prévio.</string>
-    <string name="intro_2">Na secção Próximo poderá ficar a par de quando irá passar o próximo metro em cada estação. Ficará ainda a saber quando passou o último metro.</string>
-    <string name="intro_3">Na secção Horários terá à disposição uma tabela com o horário completo para cada linha. Poderá ainda filtrar a tabela pelo dia da semana que desejar.</string>
-    <string name="intro_4">Consulte o diagrama da rede na secção Mapa e fique a saber a localização no mapa de todas as estações.</string>
-    <string name="intro_5">Para mais informações consulte a secção com o mesmo nome ou visite o site oficial www.mts.pt.</string>
+    <string name="line_selection">Selecione a Linha</string>
+    <string name="station_selection">Selecione a Estação</string>
 
-    <string name="estado_das_linhas">Estado das linhas</string>
-    <string name="linha1">Linha 1 (Cacilhas &lt;-&gt; Corroios)</string>
-    <string name="linha2">Linha 2 (Corroios &lt;-&gt; Pragal)</string>
-    <string name="linha3">Linha 3 (Cacilhas &lt;-&gt; Universidade)</string>
-    <string name="atualizado">Atualizado em 00:00</string>
+    <string name="homepage">Homepage</string>
+    <string name="lines">Linhas</string>
+    <string name="schedule">Horários</string>
+    <string name="map">Mapa</string>
+    <string name="tariffs">Tarifas</string>
+    <string name="news">Notícias</string>
+    <string name="settings">Definições</string>
+    <string name="help">Ajuda e Suporte</string>
+    <string name="about">Sobre</string>
 
-    <string name="proximo">Próximo</string>
-    <string name="horario">Horários</string>
-    <string name="mapa">Mapa</string>
-    <string name="informacao">Informação</string>
+    <string name="rate">Avalie</string>
+    <string name="share">Partilhe</string>
+    <string name="talkWithUs">Fale connosco</string>
 
-    <string name="linhas_prompt">Selecione uma linha</string>
-    <string name="estacao_prompt">Selecione uma estação</string>
+    <string name="application">Aplicação</string>
+    <string name="idiom">Idioma</string>
+    <string name="portuguese">Português</string>
+    <string name="theme">Tema</string>
+    <string name="lightMode">Claro</string>
 
-    <string name="ultimo">Último</string>
-    <string name="sem_dados">Sem dados</string>
+    <string name="lastUpdate">Atualizado em</string>
+    <string name="lastUpdateDate">Fevereiro 2025</string>
 
-    <string name="ultima">Última Partida:</string>
-    <string name="proxima">Próxima Partida:</string>
-    <string name="mais_tarde">Mais tarde:</string>
+    <string name="line_1">Linha 1</string>
+    <string name="line_1_ok">Line 1 OK</string>
+    <string name="line_1_nok">Line 1 NOK</string>
 
-    <string name="volte_amanha">Volte Amanhã</string>
+    <string name="line_2">Linha 2</string>
+    <string name="line_2_ok">Line 2 OK</string>
+    <string name="line_2_nok">Line 2 NOK</string>
 
-    <string name="title_activity_paragens">Map</string>
-    <string name="title_activity_menu">MenuActivity</string>
+    <string name="line_3">Linha 3</string>
+    <string name="line_3_ok">Line 3 OK</string>
+    <string name="line_3_nok">Line 3 NOk</string>
 
-    <string-array name="linhas">
-        <item>LINHA 1 - Corroios/Cacilhas</item>
-        <item>LINHA 1 - Cacilhas/Corroios</item>
-        <item>LINHA 2 - Corroios/Pragal</item>
-        <item>LINHA 2 - Pragal/Corroios</item>
-        <item>LINHA 3 - Cacilhas/Universidade</item>
-        <item>LINHA 3 - Universidade/Cacilhas</item>
-    </string-array>
+    <string name="line_status_title">Estado das linhas</string>
+    <string name="last_update">Atualizado em 00:00</string>
 
-    <string-array name="feriados">
-        <item>01-01</item>
-        <item>10-04</item>
-        <item>25-04</item>
-        <item>01-05</item>
-        <item>10-06</item>
-        <item>11-06</item>
-        <item>15-08</item>
-        <item>05-10</item>
-        <item>01-11</item>
-        <item>01-12</item>
-        <item>08-12</item>
-        <item>25-12</item>
-    </string-array>
+    <string name="next_departures">Próximas Partidas</string>
+    <string name="no_times_error_message">Sem mais horários.\nVolte amanhã!</string>
+    <string name="no_news_error_message">Sem conexão.\nVerifique a conexão à internet\ne tente novamente.</string>
 
-    <string-array name="linha_11">
+    <string name="season_of_the_year">Estação do ano</string>
+    <string name="summer">Verão</string>
+    <string name="winter">Inverno</string>
+
+    <string name="placeholder_text">Placeholder text</string>
+
+    <string name="app_logo_description">App logo</string>
+    <string name="bus_icon_description">Bus icon</string>
+    <string name="clock_icon_description">Clock icon</string>
+    <string name="map_icon_description">Map icon</string>
+    <string name="euro_icon_description">Euro icon</string>
+    <string name="warning_icon_description">Warning icon</string>
+    <string name="signal_wifi_off_icon_description">Signal wifi off icon</string>
+    <string name="front_arrow_icon_description">Front arrow icon</string>
+
+    <string name="line_11_name">Corroios ⟷ Cacilhas</string>
+    <string-array name="line_11_stations">
         <item>Corroios</item>
         <item>Casa do Povo</item>
         <item>Santo Amaro</item>
@@ -77,7 +81,8 @@
         <item>Cacilhas</item>
     </string-array>
 
-    <string-array name="linha_12">
+    <string name="line_12_name">Cacilhas ⟷ Corroios</string>
+    <string-array name="line_12_stations">
         <item>Cacilhas</item>
         <item>25 de Abril</item>
         <item>Gil Vicente</item>
@@ -93,7 +98,8 @@
         <item>Corroios</item>
     </string-array>
 
-    <string-array name="linha_21">
+    <string name="line_21_name">Corroios ⟷ Pragal</string>
+    <string-array name="line_21_stations">
         <item>Corroios</item>
         <item>Casa do Povo</item>
         <item>Santo Amaro</item>
@@ -105,7 +111,8 @@
         <item>Pragal</item>
     </string-array>
 
-    <string-array name="linha_22">
+    <string name="line_22_name">Pragal ⟷ Corroios</string>
+    <string-array name="line_22_stations">
         <item>Pragal</item>
         <item>Ramalha</item>
         <item>Cova da Piedade</item>
@@ -117,7 +124,8 @@
         <item>Corroios</item>
     </string-array>
 
-    <string-array name="linha_31">
+    <string name="line_31_name">Cacilhas ⟷ Universidade</string>
+    <string-array name="line_31_stations">
         <item>Cacilhas</item>
         <item>25 de Abril</item>
         <item>Gil Vicente</item>
@@ -132,7 +140,8 @@
         <item>Universidade</item>
     </string-array>
 
-    <string-array name="linha_32">
+    <string name="line_32_name">Universidade ⟷ Cacilhas</string>
+    <string-array name="line_32_stations">
         <item>Universidade</item>
         <item>Monte da Caparica</item>
         <item>Fomega</item>
@@ -147,88 +156,57 @@
         <item>Cacilhas</item>
     </string-array>
 
-    <string-array name="linha_11_alt">
-        <item>Corroios</item>
-        <item>CasadoPovo</item>
-        <item>SantoAmaro</item>
-        <item>Laranjeiro</item>
-        <item>AntónioGedeão</item>
-        <item>ParquedaPaz</item>
-        <item>CovadaPiedade</item>
-        <item>BentoGonçalves</item>
-        <item>Almada</item>
-        <item>SãoJoãoBaptista</item>
-        <item>GilVicente</item>
-        <item>Abril</item>
-        <item>Cacilhas</item>
+    <string-array name="tariff_names">
+        <item>Bilhete Simples</item>
+        <item>Zapping</item>
+        <item>Pré-Comprado (10 Bilhetes)</item>
+        <item>Passe MTS</item>
+        <item>Passe MTS 4_18@escola.tp</item>
+        <item>Passe MTS Sub23@superior.tp</item>
+        <item>Passe MTS 3ª Idade</item>
+        <item>Passe MTS Reformado/Pensionista</item>
+        <item>Complemento MTS</item>
+        <item>Complemento MTS 4_18@escola.tp</item>
+        <item>Complemento MTS Sub23@superior.tp</item>
+        <item>Complemento MTS 3ª Idade</item>
+        <item>Complemento MTS Reformado/Pensionista</item>
+        <item>Navegante Metropolitano</item>
+        <item>Navegante Municipal</item>
+        <item>Navegante 12</item>
+        <item>Navegante +65</item>
+        <item>Navegante Metropolitano 4_18 e sub23</item>
+        <item>Navegante Metropolitano Social + (A)</item>
+        <item>Navegante Municipal Social + (A)</item>
+        <item>Navegante Metropolitano Social</item>
+        <item>Navegante Municipal Social + (B)</item>
+        <item>Navegante Metropolitano Família</item>
+        <item>Navegante Municipal Família</item>
     </string-array>
 
-    <string-array name="linha_12_alt">
-        <item>Cacilhas</item>
-        <item>Abril</item>
-        <item>GilVicente</item>
-        <item>SãoJoãoBaptista</item>
-        <item>Almada</item>
-        <item>BentoGonçalves</item>
-        <item>CovadaPiedade</item>
-        <item>ParquedaPaz</item>
-        <item>AntónioGedeão</item>
-        <item>Laranjeiro</item>
-        <item>SantoAmaro</item>
-        <item>CasadoPovo</item>
-        <item>Corroios</item>
-    </string-array>
-
-    <string-array name="linha_21_alt">
-        <item>Corroios</item>
-        <item>CasadoPovo</item>
-        <item>SantoAmaro</item>
-        <item>Laranjeiro</item>
-        <item>AntónioGedeão</item>
-        <item>ParquedaPaz</item>
-        <item>CovadaPiedade</item>
-        <item>Ramalha</item>
-        <item>Pragal</item>
-    </string-array>
-
-    <string-array name="linha_22_alt">
-        <item>Pragal</item>
-        <item>Ramalha</item>
-        <item>CovadaPiedade</item>
-        <item>ParquedaPaz</item>
-        <item>AntónioGedeão</item>
-        <item>Laranjeiro</item>
-        <item>SantoAmaro</item>
-        <item>CasadoPovo</item>
-        <item>Corroios</item>
-    </string-array>
-
-    <string-array name="linha_31_alt">
-        <item>Cacilhas</item>
-        <item>Abril</item>
-        <item>GilVicente</item>
-        <item>SãoJoãoBaptista</item>
-        <item>Almada</item>
-        <item>BentoGonçalves</item>
-        <item>Ramalha</item>
-        <item>Pragal</item>
-        <item>BoaEsperança</item>
-        <item>Fomega</item>
-        <item>MonteCaparica</item>
-        <item>Universidade</item>
-    </string-array>
-    <string-array name="linha_32_alt">
-        <item>Universidade</item>
-        <item>MonteCaparica</item>
-        <item>Fomega</item>
-        <item>BoaEsperança</item>
-        <item>Pragal</item>
-        <item>Ramalha</item>
-        <item>BentoGonçalves</item>
-        <item>Almada</item>
-        <item>SãoJoãoBaptista</item>
-        <item>GilVicente</item>
-        <item>Abril</item>
-        <item>Cacilhas</item>
+    <string-array name="tariff_prices">
+        <item>0,85 €</item>
+        <item>0,85 €</item>
+        <item>0,75 €</item>
+        <item>16,75 €</item>
+        <item>Gratuito</item>
+        <item>Gratuito</item>
+        <item>9,20 €</item>
+        <item>9,20 €</item>
+        <item>9 €</item>
+        <item>Gratuito</item>
+        <item>Gratuito</item>
+        <item>4,95 €</item>
+        <item>4,95 €</item>
+        <item>40 €</item>
+        <item>30 €</item>
+        <item>Gratuito</item>
+        <item>20 €</item>
+        <item>Gratuito</item>
+        <item>20 €</item>
+        <item>15 €</item>
+        <item>30 €</item>
+        <item>22,50 €</item>
+        <item>80 €</item>
+        <item>60 €</item>
     </string-array>
 </resources>

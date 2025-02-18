@@ -15,12 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activities.IntroActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".ui.activities.MenuActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".ui.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,26 +25,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activities.LiveActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".ui.activity.LiveActivity"
+            android:exported="false" />
         <activity
-            android:name=".ui.activities.ScheduleActivity"
-            android:configChanges="orientation"
-            android:noHistory="true"
-            android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".ui.activity.LinesActivity"
+            android:exported="false" />
         <activity
-            android:name=".ui.activities.MapActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".ui.activity.ScheduleActivity"
+            android:exported="false" />
         <activity
-            android:name=".ui.activities.InfoActivity"
-            android:screenOrientation="portrait" />
+            android:name=".ui.activity.MapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.TariffsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.TariffActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.NewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.AboutActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="${ads_application_id}"/>
+            android:value="${ads_application_id}" />
     </application>
-
 </manifest>
