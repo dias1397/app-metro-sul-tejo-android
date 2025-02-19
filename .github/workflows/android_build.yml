@@ -17,20 +17,34 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK
-        uses: actions/setup-java@v1
-        with:
-          java-version: 17
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v3
 
-      - name: Grant execution permissions
-        run:  chmod +x gradlew
-              
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: 17
+          cache: gradle
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
+
+      - name: Grant execution permissions to Gradle wrapper
+        run: chmod +x gradlew
+
       - name: Decode app.properties file
         env:
           SECRETS_PROPERTIES: ${{ secrets.PROPERTIES_FILE }}
-        run: echo -n "$SECRETS_PROPERTIES" |
-          base64 -d > app/src/main/assets/app.properties
-        
+        run: echo -n "$SECRETS_PROPERTIES" | base64 -d > app/src/main/assets/app.properties
+
       - name: Run Tests
         run: ./gradlew test
 
