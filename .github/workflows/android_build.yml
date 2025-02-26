@@ -4,9 +4,11 @@ on:
   pull_request:
     branches:
       - 'master'
+      - 'develop'
   push:
     branches:
       - 'master'
+      - 'develop'
 
 jobs:
   build:
@@ -14,19 +16,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Dependency Review
+        if: github.event_name == 'pull_request'
+        uses: actions/dependency-review-action@v3
 
       - name: Set up JDK
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v3
         with:
-          java-version: 1.8
-              
+          distribution: 'corretto'
+          java-version: 17
+          cache: gradle
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
+
+      - name: Grant execution permissions to Gradle wrapper
+        run: chmod +x gradlew
+
       - name: Decode app.properties file
         env:
           SECRETS_PROPERTIES: ${{ secrets.PROPERTIES_FILE }}
-        run: echo "$SECRETS_PROPERTIES" |
-          base64 -d > app/src/main/assets/app.properties
-        
+        run: echo -n "$SECRETS_PROPERTIES" | base64 -d > app/src/main/assets/app.properties
+
       - name: Run Tests
         run: ./gradlew test
 
