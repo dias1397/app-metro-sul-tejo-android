@@ -48,6 +48,9 @@ jobs:
           SECRETS_PROPERTIES: ${{ secrets.PROPERTIES_FILE }}
         run: echo -n "$SECRETS_PROPERTIES" | base64 -d > app/src/main/assets/app.properties
 
+      - name: Run Lint
+        run: ./gradlew lint
+
       - name: Run Tests
         run: ./gradlew test
 
