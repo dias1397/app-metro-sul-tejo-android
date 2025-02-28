@@ -1,5 +1,6 @@
 package com.diasjoao.metrosultejo.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -145,6 +146,7 @@ public class LiveActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onFinish() {
                 liveTimesAdapter.notifyDataSetChanged();
