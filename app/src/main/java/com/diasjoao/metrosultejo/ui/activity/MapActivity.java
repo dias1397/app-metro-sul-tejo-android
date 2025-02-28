@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -60,7 +61,7 @@ public class MapActivity extends AppCompatActivity {
         Configuration.getInstance().setUserAgentValue(getPackageName());
 
         startPoint = new GeoPoint(38.6662430, -9.1779545);
-        drawable = getResources().getDrawable(R.drawable.ic_map_marker, null);
+        drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_map_marker, null);
         mapDataManager = new MapDataManager(this);
     }
 
