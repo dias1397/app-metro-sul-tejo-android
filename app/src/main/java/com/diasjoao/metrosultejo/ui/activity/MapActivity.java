@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -24,6 +25,7 @@ import org.osmdroid.views.overlay.Polyline;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MapActivity extends AppCompatActivity {
 
@@ -34,6 +36,12 @@ public class MapActivity extends AppCompatActivity {
     private GeoPoint startPoint;
     private Drawable drawable;
     private MapDataManager mapDataManager;
+
+    private static final Map<String, Integer> linesColorMap = Map.of(
+            "linha1", R.color.linha1,
+            "linha2", R.color.linha2,
+            "linha3", R.color.linha3
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +61,7 @@ public class MapActivity extends AppCompatActivity {
         Configuration.getInstance().setUserAgentValue(getPackageName());
 
         startPoint = new GeoPoint(38.6662430, -9.1779545);
-        drawable = getResources().getDrawable(R.drawable.ic_map_marker, null);
+        drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_map_marker, null);
         mapDataManager = new MapDataManager(this);
     }
 
@@ -100,9 +108,8 @@ public class MapActivity extends AppCompatActivity {
 
     private void addPolylines(MapDataManager.Line line) {
         Polyline polyline = new Polyline();
-
         polyline.setColor(
-                getColor(getResources().getIdentifier(line.getColor(), "color", this.getPackageName()))
+                getColor(linesColorMap.getOrDefault(line.getColor(), R.color.Black))
         );
 
         List<GeoPoint> geoPoints = new ArrayList<>();
@@ -110,7 +117,6 @@ public class MapActivity extends AppCompatActivity {
             GeoPoint temp = station.getGeoPoint().clone();
 
             if (line.getColor().equals("linha1")) {
-                //temp.setLatitude(temp.getLatitude() + 0.0002);
                 temp.setLongitude(temp.getLongitude() + 0.0002);
             }
 
