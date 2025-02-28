@@ -34,6 +34,17 @@ public class SearchFragment extends Fragment {
     private List<String> lines = new ArrayList<>();
     private Map<String, List<String>> stationsByLineMap;
 
+    private static final Map<String, Integer> linesNameResource = Map.of(
+            "line_11", R.string.line_11_name, "line_12", R.string.line_12_name,
+            "line_21", R.string.line_21_name, "line_22", R.string.line_22_name,
+            "line_31", R.string.line_31_name, "line_32", R.string.line_32_name
+    );
+    private static final Map<String, Integer> linesStationsResource = Map.of(
+            "line_11", R.array.line_11_stations, "line_12", R.array.line_12_stations,
+            "line_21", R.array.line_21_stations, "line_22", R.array.line_22_stations,
+            "line_31", R.array.line_31_stations, "line_32", R.array.line_32_stations
+    );
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,8 +80,8 @@ public class SearchFragment extends Fragment {
 
         Map<String, List<String>> lineStationMap = new LinkedHashMap<>();
         for (String line : lines) {
-            String lineName = res.getString(res.getIdentifier(line + "_name", "string", requireContext().getPackageName()));
-            String[] stations = res.getStringArray(res.getIdentifier(line + "_stations", "array", requireContext().getPackageName()));
+            String lineName = res.getString(linesNameResource.getOrDefault(line, R.string.line_11_name));
+            String[] stations = res.getStringArray(linesStationsResource.getOrDefault(line, R.array.line_11_stations));
 
             lineStationMap.put(lineName, Arrays.asList(stations));
         }
