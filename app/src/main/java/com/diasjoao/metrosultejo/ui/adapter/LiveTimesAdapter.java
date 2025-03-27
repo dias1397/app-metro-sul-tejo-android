@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.diasjoao.metrosultejo.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
 
 import java.time.Duration;
@@ -45,6 +46,12 @@ public class LiveTimesAdapter extends RecyclerView.Adapter<LiveTimesAdapter.Live
         holder.textViewHeader.setVisibility(View.GONE);
         holder.textViewArrivalTime.setText(currentTime.format(DateTimeFormatter.ofPattern("HH:mm")));
         holder.textViewDestination.setText(route);
+        holder.textViewDestination.setOnClickListener(view -> {
+            BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+            View view1 = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_live, null);
+            bottomSheetDialog.setContentView(view1);
+            bottomSheetDialog.show();
+        });
 
         if (timeLeft < 0) {
             setTimeLeftUI(holder, "+%02d min", Math.abs(timeLeft), R.color.FireBrick);
