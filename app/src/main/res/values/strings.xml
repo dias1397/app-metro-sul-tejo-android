@@ -161,26 +161,31 @@
         <item>Zapping</item>
         <item>Pré-Comprado (10 Bilhetes)</item>
         <item>Passe MTS</item>
-        <item>Passe MTS 4_18@escola.tp</item>
-        <item>Passe MTS Sub23@superior.tp</item>
+        <item>Passe MTS Sub18</item>
+        <item>Passe MTS Sub23</item>
         <item>Passe MTS 3ª Idade</item>
         <item>Passe MTS Reformado/Pensionista</item>
         <item>Complemento MTS</item>
-        <item>Complemento MTS 4_18@escola.tp</item>
-        <item>Complemento MTS Sub23@superior.tp</item>
+        <item>Complemento MTS Sub18</item>
+        <item>Complemento MTS Sub23</item>
         <item>Complemento MTS 3ª Idade</item>
         <item>Complemento MTS Reformado/Pensionista</item>
         <item>Navegante Metropolitano</item>
         <item>Navegante Municipal</item>
         <item>Navegante 12</item>
         <item>Navegante +65</item>
-        <item>Navegante Metropolitano 4_18 e sub23</item>
-        <item>Navegante Metropolitano Social + (A)</item>
-        <item>Navegante Municipal Social + (A)</item>
-        <item>Navegante Metropolitano Social</item>
-        <item>Navegante Municipal Social + (B)</item>
+        <item>Navegante Metropolitano sub18 e sub23</item>
+        <item>Navegante Metropolitano Circula PT (A)</item>
+        <item>Navegante Municipal Circula PT (A)</item>
+        <item>Navegante Metropolitano Circula PT (B)</item>
+        <item>Navegante Municipal Circula PT (B)</item>
         <item>Navegante Metropolitano Família</item>
         <item>Navegante Municipal Família</item>
+        <item>Antigo Combatente +65 Navegante Metropolitano</item>
+        <item>Antigo Combatente -65 Navegante Municipal</item>
+        <item>Antigo Combatente -65 Navegante Metropolitano</item>
+        <item>Navegante +65 Circula PT (A)</item>
+        <item>Navegante +65 Circula PT (B)</item>
     </string-array>
 
     <string-array name="tariff_prices">
@@ -208,5 +213,10 @@
         <item>22,50 €</item>
         <item>80 €</item>
         <item>60 €</item>
+        <item>Gratuito</item>
+        <item>Gratuito</item>
+        <item>10 €</item>
+        <item>10 €</item>
+        <item>15 €</item>
     </string-array>
 </resources>

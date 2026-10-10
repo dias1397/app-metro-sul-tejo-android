@@ -29,17 +29,17 @@
       "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido"
     },
     {
-      "title": "Passe MTS 4_18@escola.tp",
+      "title": "Passe MTS Sub18",
       "price": "Gratuito",
-      "descrição": "Para estudantes dos 4 aos 18 anos, (inclusive), que possuam cartão com perfil 4_18.",
+      "descrição": "Dos 4 aos 18 anos, (inclusive), que possuam cartão com perfil 4_18.",
       "validade": "Permite viajar em toda a rede do metro por um período de 30 dias. É obrigatório a validação no início de cada viagem.",
       "aquisição": "Pode ser adquirido/carregado nas bilheteiras MTS ou em agentes autorizados MTS.",
       "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido"
     },
     {
-      "title": "Passe MTS Sub23@superior.tp",
+      "title": "Passe MTS Sub23",
       "price": "Gratuito",
-      "descrição": "Para estudantes até aos 23 anos (inclusive), que frequentam o ensino superior e que possuam cartão com perfil sub23.",
+      "descrição": "Para pessoas até aos 23 anos (inclusive), que frequentam o ensino superior e que possuam cartão com perfil sub23.",
       "validade": "Permite viajar em toda a rede do metro por um período de 30 dias. É obrigatório a validação no início de cada viagem.",
       "aquisição": "Pode ser adquirido/carregado nas bilheteiras MTS ou em agentes autorizados MTS.",
       "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
@@ -69,17 +69,17 @@
       "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
     },
     {
-      "title": "Complemento MTS 4_18@escola.tp",
+      "title": "Complemento MTS Sub18",
       "price": "Gratuito",
-      "descrição": "Para estudantes dos 4 aos 18 anos, (inclusive), que possuam cartão com perfil 4_18.\n\nO complemento será disponibilizado a quem antecipadamente possua um passe 4_18@escola.tp, válido para um ou mais Operadores de Transporte, para uma zona que faça conexão com algum ponto da rede do metro.",
+      "descrição": "Dos 4 aos 18 anos, (inclusive), que possuam cartão com perfil 4_18.\n\nO complemento será disponibilizado a quem antecipadamente possua um passe 4_18@escola.tp, válido para um ou mais Operadores de Transporte, para uma zona que faça conexão com algum ponto da rede do metro.",
       "validade": "Permite viajar em toda a rede do metro pelo período de validade do passe antecipadamente existente. É obrigatório a validação no inicio de cada viagem.",
       "aquisição": "Pode ser adquirido/carregado nas bilheteiras MTS ou em agentes autorizados MTS.",
       "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
     },
     {
-      "title": "Complemento MTS Sub23@superior.tp",
+      "title": "Complemento MTS Sub23",
       "price": "Gratuito",
-      "descrição": "Para estudantes até aos 23 anos (inclusive), que frequentam o ensino superior e que possuam cartão com perfil sub23.\n\nO complemento será disponibilizado a quem antecipadamente possua um passe sub23@superior.tp, válido para um ou mais Operadores de Transporte, para uma zona que faça conexão com algum ponto da rede do metro.",
+      "descrição": "Para pessoas até aos 23 anos (inclusive), que frequentam o ensino superior e que possuam cartão com perfil sub23.\n\nO complemento será disponibilizado a quem antecipadamente possua um passe sub23@superior.tp, válido para um ou mais Operadores de Transporte, para uma zona que faça conexão com algum ponto da rede do metro.",
       "validade": "Permite viajar em toda a rede do metro pelo período de validade do passe antecipadamente existente. É obrigatório a validação no inicio de cada viagem.",
       "aquisição": "Pode ser adquirido/carregado nas bilheteiras MTS ou em agentes autorizados MTS.",
       "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
@@ -126,34 +126,32 @@
     {
       "title": "Navegante +65",
       "price": "20 €",
-      "validade": "Permite viajar em toda a rede do metro e em todos os serviços de transporte público regular de passageiros, dos 18 municípios da área metropolitana de Lisboa. Tem uma validade de mês fixo que vai desde o primeiro ao último dia do mês. É obrigatória a validação no inicio de cada viagem.",
-      "aquisição": "Pode ser adquirido/carregado nas máquinas automáticas de venda, na bilheteira ou em agentes autorizados MTS.",
-      "suporte": "Cartão Lisboa Viva/ Navegante, previamente adquirido."
+      "descrição": "O passe Navegante +65, destina-se a cidadãos com idade igual ou superior aos 65 anos de idade, reformados e pensionistas e tem as mesmas características do Navegante Metropolitano.\n\nTem uma validade mensal.\n\nPara carregamento deste título o cliente tem que ter cartão com perfil 3ª idade/ reformado/pensionista."
     },
     {
-      "title": "Navegante Metropolitano 4_18 e sub23",
+      "title": "Navegante Metropolitano sub18 e sub23",
       "price": "Gratuito",
-      "descrição": "O tarifário 4_18 é destinado a estudantes dos 4 aos 18 anos, (inclusive), que possuam o cartão com perfil 4_18.\n\nO tarifário sub23 é destinado a estudantes até aos 23 anos, (inclusive), que possuam o cartão com perfil sub23."
+      "descrição": "O tarifário sub18 é destinado a pessoas dos 4 aos 18 anos, (inclusive), que possuam o cartão com perfil 4_18.\n\nO tarifário sub23 é destinado a pessoas até aos 23 anos, (inclusive), que possuam o cartão com perfil sub23."
     },
     {
-      "title": "Navegante Metropolitano Social + (A)",
+      "title": "Navegante Metropolitano Circula PT (A)",
       "price": "20 €",
-      "descrição": "O tarifário Social + A é destinado a beneficiários do complemento solidário para idosos e a beneficiários do rendimento social de inserção, que possuam o cartão Lisboa Viva com perfil Social + A."
+      "descrição": "O tarifário Circula PT (A) destina-se a indivíduos que, comprovadamente, aufiram rendimentos reduzidos ou sejam portadores de grau de incapacidade permanente, igual ou superior a 60%, mediante a apresentação dos documentos previstos nas portarias 272/2011 de 23/09 e 36/2012 de 08/02, que possuam o cartão Navegante personalizado com o perfil actualizado.\n\nPode ser carregado numa máquina automática de venda, posto de atendimento MTS ou agente autorizado MTS. É obrigatória a validação no início de cada viagem."
     },
     {
-      "title": "Navegante Municipal Social + (A)",
+      "title": "Navegante Municipal Circula PT (A)",
       "price": "15 €",
-      "descrição": "O tarifário Social + A é destinado a beneficiários do complemento solidário para idosos e a beneficiários do rendimento social de inserção, que possuam o cartão Lisboa Viva com perfil Social + A"
+      "descrição": "O tarifário Circula PT (A) destina-se a indivíduos que, comprovadamente, aufiram rendimentos reduzidos ou sejam portadores de grau de incapacidade permanente, igual ou superior a 60%, mediante a apresentação dos documentos previstos nas portarias 272/2011 de 23/09 e 36/2012 de 08/02, que possuam o cartão Navegante personalizado com o perfil actualizado.\n\nPode ser carregado numa máquina automática de venda, posto de atendimento MTS ou agente autorizado MTS. É obrigatória a validação no início de cada viagem."
     },
     {
-      "title": "Navegante Metropolitano Social",
+      "title": "Navegante Metropolitano Circula PT (B)",
       "price": "30 €",
-      "descrição": "O tarifário Social é destinado Reformados e Pensionistas com reforma mensal igual ou inferior a 1,2 vezes o valor do IAS (Indexante de Apoios Sociais); beneficiários do Subsídio de Desemprego de montante mensal igual ou inferior a 1,2 vezes o valor do IAS; clientes que integrem agregados familiares cujo rendimento médio mensal equivalente seja igual ou inferior a 1,2 vezes o valor do IAS, que possuam o cartão Lisboa Viva com perfil Social."
+      "descrição": "O tarifário Circula PT (B) destina-se a indivíduos que, comprovadamente, aufiram rendimentos reduzidos, mediante a apresentação dos documentos previstos nas portarias 272/2011 de 23/09 e 36/2012 de 08/02, que possuam o cartão Navegante personalizado com o perfil actualizado.\n\nPode ser carregado numa máquina automática de venda, posto de atendimento MTS ou agente autorizado MTS. É obrigatória a validação no início de cada viagem."
     },
     {
-      "title": "Navegante Municipal Social + (B)",
+      "title": "Navegante Municipal Circula PT (B)",
       "price": "22,50 €",
-      "descrição": "O tarifário Social + B é destinado Reformados e Pensionistas com reforma mensal igual ou inferior a 1,2 vezes o valor do IAS (Indexante de Apoios Sociais); beneficiários do Subsídio de Desemprego de montante mensal igual ou inferior a 1,2 vezes o valor do IAS; clientes que integrem agregados familiares cujo rendimento médio mensal equivalente seja igual ou inferior a 1,2 vezes o valor do IAS, que possuam o cartão Lisboa Viva com perfil Social + B."
+      "descrição": "O tarifário Circula PT (B) destina-se a indivíduos que, comprovadamente, aufiram rendimentos reduzidos, mediante a apresentação dos documentos previstos nas portarias 272/2011 de 23/09 e 36/2012 de 08/02, que possuam o cartão Navegante personalizado com o perfil actualizado.\n\nPode ser carregado numa máquina automática de venda, posto de atendimento MTS ou agente autorizado MTS. É obrigatória a validação no início de cada viagem."
     },
     {
       "title": "Navegante Metropolitano Família",
@@ -164,6 +162,31 @@
       "title": "Navegante Municipal Família",
       "price": "60 €",
       "descrição": "Este passe permite que cada agregado familiar pague no máximo o valor de 2 passes Navegante Municipal independentemente do número de elementos do agregado familiar. É válido em todas as empresas de serviço público de transporte de passageiros nos limites geográficos do município escolhido de entre os 18 municípios da Área Metropolitana de Lisboa. Tem as mesmas características do Navegante Municipal. Este título é exclusivo para agregados familiares registados no mesmo domicílio fiscal, (na autoridade tributária ou segurança social), residentes num dos 18 municípios da Área Metropolitana de Lisboa (AML).\n\nTem uma validade mensal, para todos os membros do agregado familiar que o carreguem."
+    },
+    {
+      "title": "Antigo Combatente +65 Navegante Metropolitano",
+      "price": "Gratuito",
+      "descrição": "O tarifário navegante antigo combatente destina-se a Antigos Combatentes ou Viúvas(os) de Antigos Combatentes, titulares de cartão de Antigo Combatente ou de Viúva(o) de Antigo Combatente, com residência fiscal num dos 18 municípios da área metropolitana de Lisboa, que possuam o cartão Navegante personalizado com o perfil actualizado.\n\nPode ser carregado numa máquina automática de venda, posto de atendimento MTS ou agente autorizado MTS. É obrigatória a validação no início de cada viagem."
+    },
+    {
+      "title": "Antigo Combatente -65 Navegante Municipal",
+      "price": "Gratuito",
+      "descrição": "O tarifário navegante antigo combatente destina-se a Antigos Combatentes ou Viúvas(os) de Antigos Combatentes, titulares de cartão de Antigo Combatente ou de Viúva(o) de Antigo Combatente, com residência fiscal num dos 18 municípios da área metropolitana de Lisboa, que possuam o cartão Navegante personalizado com o perfil actualizado.\n\nPode ser carregado numa máquina automática de venda, posto de atendimento MTS ou agente autorizado MTS. É obrigatória a validação no início de cada viagem."
+    },
+    {
+      "title": "Antigo Combatente -65 Navegante Metropolitano",
+      "price": "10 €",
+      "descrição": "O tarifário navegante antigo combatente destina-se a Antigos Combatentes ou Viúvas(os) de Antigos Combatentes, titulares de cartão de Antigo Combatente ou de Viúva(o) de Antigo Combatente, com residência fiscal num dos 18 municípios da área metropolitana de Lisboa, que possuam o cartão Navegante personalizado com o perfil actualizado.\n\nPode ser carregado numa máquina automática de venda, posto de atendimento MTS ou agente autorizado MTS. É obrigatória a validação no início de cada viagem."
+    },
+    {
+      "title": "Navegante +65 Circula PT (A)",
+      "price": "10 €",
+      "descrição": "O tarifário Circula PT (A) destina-se a indivíduos que, comprovadamente, aufiram rendimentos reduzidos ou sejam portadores de grau de incapacidade permanente, igual ou superior a 60%, mediante a apresentação dos documentos previstos nas portarias 272/2011 de 23/09 e 36/2012 de 08/02, que possuam o cartão Navegante personalizado com o perfil actualizado.\n\nPode ser carregado numa máquina automática de venda, posto de atendimento MTS ou agente autorizado MTS. É obrigatória a validação no início de cada viagem."
+    },
+    {
+      "title": "Navegante +65 Circula PT (B)",
+      "price": "15 €",
+      "descrição": "O tarifário Circula PT (B) destina-se a indivíduos que, comprovadamente, aufiram rendimentos reduzidos, mediante a apresentação dos documentos previstos nas portarias 272/2011 de 23/09 e 36/2012 de 08/02, que possuam o cartão Navegante personalizado com o perfil actualizado.\n\nPode ser carregado numa máquina automática de venda, posto de atendimento MTS ou agente autorizado MTS. É obrigatória a validação no início de cada viagem."
     }
   ]
 }

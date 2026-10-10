@@ -8,11 +8,11 @@ android {
     namespace 'com.diasjoao.metrosultejo'
     defaultConfig {
         applicationId "com.diasjoao.metrosultejo"
-        compileSdk 35
+        compileSdkVersion 37
         minSdkVersion 26
-        targetSdkVersion 35
-        versionCode 18
-        versionName "2.5.1"
+        targetSdkVersion 37
+        versionCode 19
+        versionName "2.6.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [ads_application_id: appProperties['ads_application_id']]
@@ -32,8 +32,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
     testOptions {
         unitTests.includeAndroidResources = true
@@ -44,25 +44,25 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.activity:activity:1.10.1'
-    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.activity:activity:1.13.0'
+    implementation 'androidx.appcompat:appcompat:1.8.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
-    implementation 'androidx.test:monitor:1.7.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
+    implementation 'androidx.test:monitor:1.8.0'
 
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.22.3'
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
     implementation 'com.github.AppIntro:AppIntro:5.1.0'
-    implementation 'com.google.android.gms:play-services-ads:24.0.0'
-    implementation 'com.google.android.material:material:1.12.0'
-    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.google.android.gms:play-services-ads:25.5.0'
+    implementation 'com.google.android.material:material:1.14.0'
+    implementation 'com.google.code.gson:gson:2.14.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    implementation 'org.jsoup:jsoup:1.17.2'
-    implementation 'org.osmdroid:osmdroid-android:6.1.11'
+    implementation 'org.jsoup:jsoup:1.23.2'
+    implementation 'org.osmdroid:osmdroid-android:6.1.20'
 
-    androidTestImplementation 'androidx.test:runner:1.6.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    androidTestImplementation 'androidx.test:runner:1.7.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
 
     testImplementation 'junit:junit:4.13.2'
 }
