@@ -53,7 +53,7 @@ public class ScheduleFragment extends Fragment {
     }
 
     private void setupUI() {
-        recyclerView.setHasFixedSize(true);
+        //recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(scheduleAdapter);
     }

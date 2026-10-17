@@ -60,7 +60,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
             holder.stopName.setBackgroundColor(holder.itemView.getContext().getColor(R.color.rowAlternate));
         }
 
-        holder.timesRecyclerView.setHasFixedSize(true);
+        //holder.timesRecyclerView.setHasFixedSize(true);
         holder.timesRecyclerView.setLayoutManager(
                 new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         holder.timesRecyclerView.setAdapter(new ScheduleRowAdapter(station.getConvertedTimes()));
