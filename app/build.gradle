@@ -40,6 +40,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        resValues true
     }
 }
 
@@ -50,15 +51,15 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
     implementation 'androidx.test:monitor:1.8.0'
 
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.22.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.23.0'
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
     implementation 'com.github.AppIntro:AppIntro:5.1.0'
     implementation 'com.google.android.gms:play-services-ads:25.5.0'
     implementation 'com.google.android.material:material:1.14.0'
-    implementation 'com.google.code.gson:gson:2.14.0'
+    implementation 'com.google.code.gson:gson:2.15.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    implementation 'org.jsoup:jsoup:1.23.2'
+    implementation 'org.jsoup:jsoup:1.24.1'
     implementation 'org.osmdroid:osmdroid-android:6.1.20'
 
     androidTestImplementation 'androidx.test:runner:1.7.0'
