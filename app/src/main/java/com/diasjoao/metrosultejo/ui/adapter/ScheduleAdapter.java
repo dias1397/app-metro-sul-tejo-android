@@ -48,13 +48,16 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
 
     @Override
     public void onBindViewHolder(@NonNull ScheduleViewHolder holder, int position) {
-        Station station = stationList.get(position);
+        int currentPosition = holder.getBindingAdapterPosition();
+        if (currentPosition == RecyclerView.NO_POSITION) return;
+
+        Station station = stationList.get(currentPosition);
         holder.stopName.setText(station.getName());
 
         int totalWidth = (int) holder.stopName.getPaint().measureText("XXXXXXXXXXXXXXX");
         holder.stopName.setWidth(totalWidth);
 
-        if (position % 2 == 0) {
+        if (currentPosition % 2 == 0) {
             holder.stopName.setBackgroundColor(holder.itemView.getContext().getColor(R.color.rowPrimary));
         } else {
             holder.stopName.setBackgroundColor(holder.itemView.getContext().getColor(R.color.rowAlternate));
@@ -80,7 +83,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
                 isSyncing = false;
             }
         });
-        if (position % 2 == 0) {
+        if (currentPosition % 2 == 0) {
             holder.timesRecyclerView.setBackgroundColor(holder.itemView.getContext().getColor(R.color.rowPrimary));
         } else {
             holder.timesRecyclerView.setBackgroundColor(holder.itemView.getContext().getColor(R.color.rowAlternate));
