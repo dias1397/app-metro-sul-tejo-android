@@ -21,24 +21,14 @@ jobs:
 
       - name: Dependency Review
         if: github.event_name == 'pull_request'
-        uses: actions/dependency-review-action@v3
+        uses: actions/dependency-review-action@v4
 
       - name: Set up JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'corretto'
           java-version: 21
           cache: gradle
-
-      - name: Cache Gradle dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            gradle-${{ runner.os }}-
 
       - name: Grant execution permissions to Gradle wrapper
         run: chmod +x gradlew
@@ -46,7 +36,12 @@ jobs:
       - name: Decode app.properties file
         env:
           SECRETS_PROPERTIES: ${{ secrets.PROPERTIES_FILE }}
-        run: echo -n "$SECRETS_PROPERTIES" | base64 -d > app/src/main/assets/app.properties
+        run: |
+          if [ -n "$SECRETS_PROPERTIES" ]; then
+            echo -n "$SECRETS_PROPERTIES" | base64 --decode > app/src/main/assets/app.properties
+          else
+            echo "PROPERTIES_FILE is not set; using the checked-in app.properties"
+          fi
 
       - name: Run Lint
         run: ./gradlew lint
